@@ -1,0 +1,33 @@
+.banner {
+    position: relative;
+    background-color: var(--cream);
+}
+.banner::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+    background-color: var(--primary);
+    z-index: 1;
+}
+.homepage-container {
+    position: relative;
+    z-index: 9;
+    padding-top: 60px;
+}
+.banner-container {
+    max-width: 495px;
+}
+.homepage-pretitle {
+    font-size: 30px;
+    color: var(--grey);
+}
+.homepage-title {
+    font-weight: 700;
+    font-size: 50px;
+}
+.homepage-describe {
+    margin-bottom: 50px;
+}

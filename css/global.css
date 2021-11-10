@@ -1,19 +1,33 @@
 :root {
     --primary: #384aeb;
     --black: #222;
+    --grey: #777;
+    --cream: #F1F6F7; 
+    --white: #FFF;
 }
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
 }
-.nav-btn {
+.btn {
     padding: 10px 45px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
     border-radius: 30px;
     transition: 0.3s ease;
     font-weight: 500;
+    color: var(--white);
+}
+.btn:hover {
+    background-color: var(--white);
+}
+.nav-btn {
+    border: 1px solid #ddd;
+    background-color: var(--white);
+    color: var(--black);
 }
 .nav-btn:hover {
     border-color: var(--primary);
     color: var(--black);
 }
+
