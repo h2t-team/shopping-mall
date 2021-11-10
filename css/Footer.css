@@ -1,10 +1,13 @@
 .dark-blue {
   background-color: #002347ED;
-  color: white;
 }
 
 .footer {
   padding: 7rem 0;
+}
+
+.footer * {
+  color: var(--white);
 }
 
 .footer .image li {
@@ -13,16 +16,16 @@
 }
 
 .footer p {
-  color: #7b838a;
+  color: var(--grey);
 }
 
 .footer a {
   display: block;
-  color: #7b838a;
+  color: var(--grey);
   padding: 0.5rem 0;
 }
 
 .footer a:hover {
-  color: #4C5CED;
+  color: var(--primary);
 }
 /*# sourceMappingURL=Footer.css.map */
