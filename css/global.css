@@ -9,6 +9,9 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
 }
+a:hover {
+    color: var(--primary);
+}
 .btn {
     padding: 10px 45px;
     border: 1px solid var(--primary);

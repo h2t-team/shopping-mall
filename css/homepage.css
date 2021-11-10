@@ -12,13 +12,14 @@
     background-color: var(--primary);
     z-index: 1;
 }
+.banner-container {
+    top: 1px;
+}
 .homepage-container {
     position: relative;
     z-index: 9;
     padding-top: 60px;
-}
-.banner-container {
-    max-width: 495px;
+    
 }
 .homepage-pretitle {
     font-size: 30px;
@@ -26,8 +27,41 @@
 }
 .homepage-title {
     font-weight: 700;
+    text-transform: uppercase;
+}
+.main-title {
     font-size: 50px;
 }
 .homepage-describe {
     margin-bottom: 50px;
+}
+.homepage-showcase {
+    margin-bottom: 120px;
+}
+.homepage-section {
+    margin: 120px 0 70px 0;
+}
+.homepage-intro {
+    padding-bottom: 60px;
+}
+.trending-info {
+    padding: 1.25rem;
+}
+.homepage-offer {
+    background: url('https://preview.colorlib.com/theme/aroma/img/home/xparallax-bg.png.pagespeed.ic.2seooiZu4q.png');
+    background-position: center;
+    background-size: cover;
+}
+.offer-info {
+    padding: 120px 0;
+}
+.homepage-subscribe {
+    position: relative;
+    top: 100px;
+}
+.subscribe-container {
+    padding: 85px 10px;
+    border-radius: 5px;
+    box-shadow: 0 -5px 20px 0 rgb(56, 74, 235, 0.1);
+    background-color: var(--white);
 }
