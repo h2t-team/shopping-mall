@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="/css/Footer.css">
+    <link rel="stylesheet" href="/css/Detail.css">
+    <title>Homepage</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <nav class="navbar navbar-expand-sm navbar-light border-bottom bg-light">
+                <div class="container">
+                    <a class="navbar-brand logo-primary" href="#">
+                        TiMa
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active p-4" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-4" href="#">Shop</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link p-4" href="#" id="navbarDropdownMenuLink" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Pages
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item px-4 py-2" href="#">Login</a></li>
+                                    <li><a class="dropdown-item px-4 py-2" href="#">Register</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-4" href="#">Contact</a>
+                            </li>
+                        </ul>
+                        <ul class="nav-btns">
+                            <li>
+                                <a href="#" class="nav-btn">Buy Now</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="body my-5">
+            <section class="detail mb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <img src="./image/watch.webp" alt="Watch">
+                        </div>
+                        <div class="offset-lg-1 col-lg-5">
+                            <div class="text-detail">
+                                <h3 class="name fw-bold my-2">Faded SkyBlu Denim Jeans</h3>
+                                <h4 class="price fw-bold my-2">$149.99</h4>
+                                <p><span>Category: </span>Household</p>
+                                <p><span>Availability: </span>In Stock</p>
+                                <p class="description my-5 py-3">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                    elit. Asperiores at neque fugit id porro adipisci. Hic, dignissimos! Libero sapiente
+                                    consequatur labore placeat maiores natus tempore officia, harum, eos, id asperiores!
+                                </p>
+                                <div class="product-count mb-5">
+                                    <label for="qty" class="qty me-3">Quantity</label>
+                                    <button><i class="fas fa-caret-left"></i></button>
+                                    <input type="text" id="qty" value="0" class="border border-1">
+                                    <button><i class="fas fa-caret-right"></i></button>
+                                    <a href="#" class="rounded-pill ms-3">Add to Cart</a>
+                                </div>
+                                <div class="favorite">
+                                    <a href="#"><i class="far fa-gem mx-2"></i></a>
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="rating mb-5">
+                <div class="container">
+                    <ul class="nav nav-tabs justify-content-center" role="tablist">
+                        <li class="nav-item">
+                            <a href="#description" class="nav-link m-1 mx-lg-3 rounded-pill active" id="description-tab"
+                                data-bs-toggle="tab" aria-controls="description" aria-selected="true">Description</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#specification" class="nav-link m-1 mx-lg-3 rounded-pill" id="specification-tab"
+                                data-bs-toggle="tab" aria-controls="specification">Specification</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#comment" class="nav-link m-1 mx-lg-3 rounded-pill" id="comment-tab"
+                                data-bs-toggle="tab" aria-controls="comment">Comment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#review" class="nav-link m-1 mx-lg-3 rounded-pill" id="review-tab"
+                                data-bs-toggle="tab" aria-controls="review">Review</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                            <p class="mb-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+                                accusamus natus, ducimus pariatur nisi dolores, enim inventore culpa vel dolore saepe
+                                sit repellendus rerum quisquam iure. Minima consequuntur nisi nam?
+                                Odit libero, eaque voluptatibus quam minus iusto deleniti rerum adipisci natus aliquid
+                                in ipsam amet dignissimos eius voluptatum itaque, assumenda vel recusandae nihil dolorem
+                                odio et dolore. Est, numquam laudantium?
+                                Accusamus, odit aut eaque consequatur sit dolorem nam architecto quos vel. Beatae
+                                deserunt doloribus pariatur, dolores facilis nesciunt voluptas molestiae laudantium,
+                                deleniti maxime consequuntur illo, est velit in recusandae voluptatibus? Lorem ipsum
+                                dolor sit amet consectetur adipisicing elit. Eos voluptatum nesciunt, provident culpa
+                                vero perferendis asperiores odit sint, dolorum repellendus aut, nobis eaque possimus!
+                                Doloremque molestias eius officiis doloribus excepturi.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, rerum harum nemo
+                                ullam debitis voluptate, neque voluptatem accusantium aspernatur vitae iure. Distinctio
+                                nisi dignissimos dolore magnam molestiae obcaecati vitae inventore?
+                                Ratione praesentium enim ex voluptatibus ab quod adipisci, saepe dolores modi quasi
+                                nihil dolore velit minima necessitatibus dolor perferendis corrupti similique neque
+                                delectus sint. Dolore libero blanditiis adipisci officia? Eligendi?
+                                Debitis, id obcaecati quaerat labore tempore non nisi, magnam qui tempora distinctio
+                                officiis iste aspernatur corporis quas, reprehenderit rem. Commodi id eum rerum fuga nam
+                                a pariatur atque fugit dicta.
+                                Nesciunt tempora sequi, eos accusantium dolorum recusandae quam distinctio? Qui rem
+                                minima harum voluptatibus rerum! Earum eius at, minus libero molestias, velit
+                                consequatur, atque ratione accusantium rerum sapiente dicta necessitatibus. Lorem ipsum
+                                dolor sit amet consectetur adipisicing elit. Eos voluptatum nesciunt, provident culpa
+                                vero perferendis asperiores odit sint, dolorum repellendus aut, nobis eaque possimus!
+                                Doloremque molestias eius officiis doloribus excepturi.</p>
+                        </div>
+                        <div class="tab-pane" id="specification" role="tabpanel" aria-labelledby="specification-tab">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Width</td>
+                                        <td>128mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Height</td>
+                                        <td>508mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Depth</td>
+                                        <td>85mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Weight</td>
+                                        <td>52gm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quality checking</td>
+                                        <td>yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Freshness Duration</td>
+                                        <td>03days</td>
+                                    </tr>
+                                    <tr>
+                                        <td>When packeting</td>
+                                        <td>Without touch of hand</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Each Box contains</td>
+                                        <td>60pcs</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="comment" role="tabpanel" aria-labelledby="comment-tab">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="comment-list">
+                                        <div class="comment-item">
+                                            <div class="d-flex position-relative mb-2">
+                                                <div class="avatar">
+                                                    <img src="/image/avatar(1).png" alt="avatar">
+                                                </div>
+                                                <div class="info">
+                                                    <h5>Blake Ruiz</h5>
+                                                    <h6>12th Feb, 2018 at 05:56 pm</h6>
+                                                    <a href="/" class="border border-1 rounded-pill">Reply</a>
+                                                </div>
+                                            </div>
+                                            <p class="comment">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                                Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
+                                                ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
+                                                officia repellat asperiores aut debitis.</p>
+                                        </div>
+                                        <div class="comment-item reply">
+                                            <div class="d-flex position-relative mb-2">
+                                                <div class="avatar">
+                                                    <img src="/image/avatar(2).png" alt="avatar">
+                                                </div>
+                                                <div class="info">
+                                                    <h5>Blake Ruiz</h5>
+                                                    <h6>12th Feb, 2018 at 05:56 pm</h6>
+                                                    <a href="/" class="border border-1 rounded-pill">Reply</a>
+                                                </div>
+                                            </div>
+                                            <p class="comment">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                                Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
+                                                ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
+                                                officia repellat asperiores aut debitis.</p>
+                                        </div>
+                                        <div class="comment-item">
+                                            <div class="d-flex position-relative mb-2">
+                                                <div class="avatar">
+                                                    <img src="/image/avatar(3).png" alt="avatar">
+                                                </div>
+                                                <div class="info">
+                                                    <h5>Blake Ruiz</h5>
+                                                    <h6>12th Feb, 2018 at 05:56 pm</h6>
+                                                    <a href="/" class="border border-1 rounded-pill">Reply</a>
+                                                </div>
+                                            </div>
+                                            <p class="comment">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                                Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
+                                                ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
+                                                officia repellat asperiores aut debitis.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 ps-5">
+                                    <h2 class="mb-2">Post a comment</h2>
+                                    <form class="comment-form">
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Your Fullname" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Email Address" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Phone Number" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Message" />
+                                        </div>
+                                        <input class="form-control mb-2 text-uppercase fw-bold" type="submit"
+                                            value="Submit now" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="review" role="tabpanel" aria-labelledby="review-tab">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-6 overall text-center">
+                                            <h4 class="fw-bolder">Overall</h4>
+                                            <h1>4.0</h1>
+                                            <p>(03 Reviews)</p>
+                                        </div>
+                                        <div class="col-6 rate">
+                                            <h5 class="mb-2">Base on 3 Reviews</h5>
+                                            <ul>
+                                                <li>
+                                                    5 Star
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    01
+                                                </li>
+                                                <li>
+                                                    4 Star
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    01
+                                                </li>
+                                                <li>
+                                                    3 Star
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    01
+                                                </li>
+                                                <li>
+                                                    2 Star
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    01
+                                                </li>
+                                                <li>
+                                                    1 Star
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    01
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="review-list">
+                                        <div class="review-item">
+                                            <div class="d-flex position-relative mb-2">
+                                                <div class="avatar">
+                                                    <img src="/image/avatar(1).png" alt="avatar">
+                                                </div>
+                                                <div class="info">
+                                                    <h5>Blake Ruiz</h3>
+                                                        <div>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <p class="review">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                                Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
+                                                ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
+                                                officia repellat asperiores aut debitis.</p>
+                                        </div>
+                                        <div class="review-item">
+                                            <div class="d-flex position-relative mb-2">
+                                                <div class="avatar">
+                                                    <img src="/image/avatar(2).png" alt="avatar">
+                                                </div>
+                                                <div class="info">
+                                                    <h5>Blake Ruiz</h5>
+                                                    <div>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="review">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                                Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
+                                                ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
+                                                officia repellat asperiores aut debitis.</p>
+                                        </div>
+                                        <div class="review-item">
+                                            <div class="d-flex position-relative mb-2">
+                                                <div class="avatar">
+                                                    <img src="/image/avatar(3).png" alt="avatar">
+                                                </div>
+                                                <div class="info">
+                                                    <h5>Blake Ruiz</h5>
+                                                    <div>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="review">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                                Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
+                                                ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
+                                                officia repellat asperiores aut debitis.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 ps-5">
+                                    <h2 class="mb-2">Add a review</h2>
+                                    <form class="review-form">
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Enter your name" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Enter your email" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Your review" />
+                                        </div>
+                                        <input class="form-control mb-2 text-uppercase fw-bold" type="submit"
+                                            value="Submit now" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="footer dark-blue">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 p-3">
+                        <h3>About us</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium maiores dolorem pariatur
+                            soluta natus odio. Deleniti id tenetur temporibus repudiandae, consequuntur ullam nobis modi
+                            fuga at, mollitia dolore accusantium amet.</p>
+                    </div>
+                    <div class="offset-lg-1 col-lg-2 col-md-6 p-3">
+                        <h3>Link</h3>
+                        <a href="/">Home</a>
+                        <a href="/shop">Shop</a>
+                        <a href="/product">Product</a>
+                        <a href="/brand">Brand</a>
+                        <a href="/contact">Contact</a>
+                    </div>
+                    <div class="col-lg-2 col-md-6 p-3">
+                        <h3>Gallery</h3>
+                        <ul class="image d-flex flex-wrap">
+                            <li class="bg-light m-1"></li>
+                            <li class="bg-light m-1"></li>
+                            <li class="bg-light m-1"></li>
+                            <li class="bg-light m-1"></li>
+                            <li class="bg-light m-1"></li>
+                            <li class="bg-light m-1"></li>
+                        </ul>
+                    </div>
+                    <div class="offset-lg-1 col-lg-3 col-md-6 p-3">
+                        <h3>Contact Us</h3>
+                        <div class="row mb-2">
+                            <h5>Phone Number</h5>
+                            <p>+123456789</p>
+                            <p>+123456789</p>
+                        </div>
+                        <div class="row mb-2">
+                            <h5>Github</h5>
+                            <p>github.com</p>
+                        </div>
+                        <div class="row"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
