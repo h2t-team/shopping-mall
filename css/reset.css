@@ -11,6 +11,7 @@ ul {
     margin: 0;
 }
 a {
+    display: block;
     text-decoration: none;
     color: #222;
 }

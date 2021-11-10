@@ -7,7 +7,7 @@
     content: '';
     top: 0;
     left: 0;
-    width: 35%;
+    width: 5%;
     height: 100%;
     background-color: var(--primary);
     z-index: 1;
@@ -19,49 +19,89 @@
     position: relative;
     z-index: 9;
     padding-top: 60px;
-    
 }
 .homepage-pretitle {
     font-size: 30px;
     color: var(--grey);
 }
 .homepage-title {
-    font-weight: 700;
-    text-transform: uppercase;
-}
-.main-title {
-    font-size: 50px;
+    font-size: 25px;
 }
 .homepage-describe {
-    margin-bottom: 50px;
-}
-.homepage-showcase {
-    margin-bottom: 120px;
+    margin-bottom: 10px;
 }
 .homepage-section {
-    margin: 120px 0 70px 0;
+    margin: 45px 0;
 }
 .homepage-intro {
     padding-bottom: 60px;
 }
-.trending-info {
-    padding: 1.25rem;
+.section-title {
+    font-size: 36px;
+}
+.section-title-style {
+    border-bottom: 2px solid var(--primary);
 }
 .homepage-offer {
     background: url('https://preview.colorlib.com/theme/aroma/img/home/xparallax-bg.png.pagespeed.ic.2seooiZu4q.png');
-    background-position: center;
     background-size: cover;
 }
 .offer-info {
     padding: 120px 0;
 }
+.offer-title {
+    font-size: 35px;
+}
 .homepage-subscribe {
     position: relative;
-    top: 100px;
+    top: 70px;
 }
 .subscribe-container {
     padding: 85px 10px;
     border-radius: 5px;
     box-shadow: 0 -5px 20px 0 rgb(56, 74, 235, 0.1);
     background-color: var(--white);
+}
+.subscribe-title {
+    font-size: 28px;
+}
+
+@media screen and (max-width: 575px) {
+    .banner-info {
+        padding-bottom: 50px;
+    }
+}
+@media screen and (min-width: 575px) {
+    .banner::before {
+        width: 20%;
+    }
+    .offer-title {
+        font-size: 50px;
+    }
+}
+@media screen and (min-width: 767px) {
+    .homepage-section {
+        margin: 70px 0;
+    }
+    .homepage-title {
+        font-size: 30px;
+        margin-bottom: 25px;
+    }
+    .homepage-describe {
+        margin-bottom: 50px;
+    }
+}
+@media screen and (min-width: 991px) {
+    .homepage-section {
+        margin: 120px 0 70px 0;
+    }
+    .homepage-title {
+        font-size: 50px;
+    }
+    .banner::before {
+        width: 35%;
+    }
+    .subscribe-title {
+        font-size: 36px;
+    }
 }
