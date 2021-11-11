@@ -33,15 +33,6 @@
 .homepage-section {
     margin: 45px 0;
 }
-.homepage-intro {
-    padding-bottom: 60px;
-}
-.section-title {
-    font-size: 36px;
-}
-.section-title-style {
-    border-bottom: 2px solid var(--primary);
-}
 .homepage-offer {
     background: url('https://preview.colorlib.com/theme/aroma/img/home/xparallax-bg.png.pagespeed.ic.2seooiZu4q.png');
     background-size: cover;
@@ -51,16 +42,6 @@
 }
 .offer-title {
     font-size: 35px;
-}
-.homepage-subscribe {
-    position: relative;
-    top: 70px;
-}
-.subscribe-container {
-    padding: 85px 10px;
-    border-radius: 5px;
-    box-shadow: 0 -5px 20px 0 rgb(56, 74, 235, 0.1);
-    background-color: var(--white);
 }
 .subscribe-title {
     font-size: 28px;
@@ -100,8 +81,5 @@
     }
     .banner::before {
         width: 35%;
-    }
-    .subscribe-title {
-        font-size: 36px;
     }
 }

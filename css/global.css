@@ -18,7 +18,6 @@ a {
 a:hover {
     color: var(--primary);
 }
-
 .navbar-brand {
     font-size: 2rem;
 }
@@ -40,6 +39,15 @@ a:hover {
 .nav-btn:hover {
     border-color: var(--primary);
     color: var(--black);
+}
+.section-intro {
+    padding-bottom: 60px;
+}
+.section-title {
+    font-size: 36px;
+}
+.section-title-style {
+    border-bottom: 2px solid var(--primary);
 }
 .product-overlay {
     position: absolute;
@@ -79,9 +87,24 @@ a:hover {
     font-size: 18px;
     font-weight: 500;
 }
+.subscribe-container {
+    padding: 85px 10px;
+    border-radius: 5px;
+    box-shadow: 0 -5px 20px 0 rgb(56, 74, 235, 0.1);
+    background-color: var(--white);
+}
+.subscribe {
+    position: relative;
+    top: 70px;
+}
 @media screen and (max-width: 767px) {
     .btn {
         padding: 8px 25px!important;
+    }
+}
+@media screen and (min-width: 991px) {
+    .subscribe-title {
+        font-size: 36px;
     }
 }
 
