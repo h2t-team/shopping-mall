@@ -1,6 +1,5 @@
 .blue {
-  background-color: #4C5CED;
-  color: white;
+  background-color: var(--primary);
 }
 
 @media (min-width: 992px) {
@@ -13,6 +12,10 @@
 .side-box {
   padding: 20% 0;
   height: 100%;
+}
+
+.side-box h3, .side-box p {
+  color: var(--white) !important;
 }
 
 .side-box .context {
