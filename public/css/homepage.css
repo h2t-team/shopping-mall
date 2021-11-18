@@ -1,0 +1,85 @@
+.banner {
+    position: relative;
+    background-color: var(--cream);
+}
+.banner::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 5%;
+    height: 100%;
+    background-color: var(--primary);
+    z-index: 1;
+}
+.banner-container {
+    top: 1px;
+}
+.homepage-container {
+    position: relative;
+    z-index: 9;
+    padding-top: 60px;
+}
+.homepage-pretitle {
+    font-size: 30px;
+    color: var(--grey);
+}
+.homepage-title {
+    font-size: 25px;
+}
+.homepage-describe {
+    margin-bottom: 10px;
+}
+.homepage-section {
+    margin: 45px 0;
+}
+.homepage-offer {
+    background: url('https://preview.colorlib.com/theme/aroma/img/home/xparallax-bg.png.pagespeed.ic.2seooiZu4q.png');
+    background-size: cover;
+}
+.offer-info {
+    padding: 120px 0;
+}
+.offer-title {
+    font-size: 35px;
+}
+.subscribe-title {
+    font-size: 28px;
+}
+
+@media screen and (max-width: 575px) {
+    .banner-info {
+        padding-bottom: 50px;
+    }
+}
+@media screen and (min-width: 575px) {
+    .banner::before {
+        width: 20%;
+    }
+    .offer-title {
+        font-size: 50px;
+    }
+}
+@media screen and (min-width: 767px) {
+    .homepage-section {
+        margin: 70px 0;
+    }
+    .homepage-title {
+        font-size: 30px;
+        margin-bottom: 25px;
+    }
+    .homepage-describe {
+        margin-bottom: 50px;
+    }
+}
+@media screen and (min-width: 991px) {
+    .homepage-section {
+        margin: 120px 0 70px 0;
+    }
+    .homepage-title {
+        font-size: 50px;
+    }
+    .banner::before {
+        width: 35%;
+    }
+}

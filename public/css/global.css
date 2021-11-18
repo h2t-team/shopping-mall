@@ -1,0 +1,110 @@
+:root {
+    --primary: #384aeb;
+    --black: #222;
+    --grey: #777;
+    --cream: #F1F6F7; 
+    --white: #FFF;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+h2, h3 {
+    font-family: 'Oswald', sans-serif;
+}
+a {
+    transition: 0.3s ease;
+}
+a:hover {
+    color: var(--primary);
+}
+.navbar-brand {
+    font-size: 2rem;
+}
+.btn {
+    padding: 10px 45px;
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
+    font-weight: 500;
+    color: var(--white);
+}
+.btn:hover {
+    background-color: var(--white);
+}
+.nav-btn {
+    border: 1px solid #ddd;
+    background-color: var(--white);
+    color: var(--black);
+}
+.nav-btn:hover {
+    border-color: var(--primary);
+    color: var(--black);
+}
+.section-intro {
+    padding-bottom: 60px;
+}
+.section-title {
+    font-size: 36px;
+}
+.section-title-style {
+    border-bottom: 2px solid var(--primary);
+}
+.product-overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 30px 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: 0.3s ease;
+    z-index: -1;
+    transform: translateY(30px);
+}
+.product-card:hover .product-overlay {
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0);
+}
+.product-icon {
+    padding: 7px 12px;
+    background-color: #8894ff;
+    color: var(--white);
+}
+.product-icon:hover {
+    color: var(--white);
+    background-color: var(--primary);
+}
+.product-info {
+    padding: 1.25rem;
+}
+.product-info-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    line-height: 1.3;
+}
+.product-price {
+    font-size: 18px;
+    font-weight: 500;
+}
+.subscribe-container {
+    padding: 85px 10px;
+    border-radius: 5px;
+    box-shadow: 0 -5px 20px 0 rgb(56, 74, 235, 0.1);
+    background-color: var(--white);
+}
+.subscribe {
+    position: relative;
+    top: 70px;
+}
+@media screen and (max-width: 767px) {
+    .btn {
+        padding: 8px 25px!important;
+    }
+}
+@media screen and (min-width: 991px) {
+    .subscribe-title {
+        font-size: 36px;
+    }
+}
+

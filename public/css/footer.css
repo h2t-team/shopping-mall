@@ -1,0 +1,31 @@
+.dark-blue {
+  background-color: #002347ED;
+}
+
+.footer {
+  padding: 7rem 0;
+}
+
+.footer * {
+  color: var(--white);
+}
+
+.footer .image li {
+  width: 50px;
+  height: 50px;
+}
+
+.footer p {
+  color: var(--grey);
+}
+
+.footer a {
+  display: block;
+  color: var(--grey);
+  padding: 0.5rem 0;
+}
+
+.footer a:hover {
+  color: var(--primary);
+}
+/*# sourceMappingURL=Footer.css.map */

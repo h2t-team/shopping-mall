@@ -1,0 +1,76 @@
+.blue {
+  background-color: var(--primary);
+}
+
+@media (min-width: 992px) {
+  .login,
+  .register {
+    width: 960px !important;
+  }
+}
+
+.side-box {
+  padding: 20% 0;
+  height: 100%;
+}
+
+.side-box h3, .side-box p {
+  color: var(--white) !important;
+}
+
+.side-box .context {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.side-box a {
+  max-width: 50%;
+  margin: auto;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  color: white;
+  border: 1px solid white;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.side-box a:hover {
+  border: 1px solid #c5322d;
+  background-color: #c5322d;
+  color: white;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.login-form,
+.register-form {
+  max-width: 75%;
+}
+
+.login-form input[type=submit],
+.register-form input[type=submit] {
+  border-radius: 15px;
+  background-color: #4C5CED;
+  color: white;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.login-form input[type=submit]:hover,
+.register-form input[type=submit]:hover {
+  border-radius: 15px;
+  border: 1px solid #4C5CED;
+  background-color: white;
+  color: black;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.login-form a,
+.register-form a {
+  color: #666;
+  font-size: 0.9rem;
+}
+/*# sourceMappingURL=Login.css.map */

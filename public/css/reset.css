@@ -1,0 +1,30 @@
+*, ::after, ::before {
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+ul {
+    padding: 0;
+    list-style-type: none;
+    margin: 0;
+}
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: #222;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    color: var(--black);
+}
+p, label {
+    margin: 0;
+    color: var(--grey);
+}
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
