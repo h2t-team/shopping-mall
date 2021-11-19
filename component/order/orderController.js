@@ -1,6 +1,12 @@
-module.exports.checkout = (req, res, next) => {
+const checkout = (req, res, next) => {
     res.render('order/checkout', { title: 'Checkout' });
 }
-module.exports.confirm = (req, res, next) => {
+
+const confirm = (req, res, next) => {
     res.render('order/confirmation', { title: 'Confirmation' });
+}
+
+module.exports = {
+    checkout,
+    confirm
 }

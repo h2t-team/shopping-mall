@@ -14,9 +14,18 @@ const hbs = require('hbs');
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'component'));
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + '/views/partials', function (err) {});
+hbs.registerPartials(__dirname + '/component/partials', function (err) {});
+hbs.registerHelper('productDetail', id =>  "/product/"+id);
+hbs.registerHelper('page', num => {
+  var item = "";
+  for(let i =1 ; i <= num/9+1; i++){
+    item += "<li><a href=\"?page="+i+"\">"+i+"</a></li>\n";
+  }
+  return item;
+});
+
 
 app.use(logger('dev'));
 app.use(express.json());

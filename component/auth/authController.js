@@ -1,6 +1,12 @@
-module.exports.login = (req,res) => {
+const login = (req,res) => {
     res.render('auth/login', { title: 'Login' });
 }
-module.exports.regist = (req,res) => {
+
+const regist = (req,res) => {
     res.render('auth/register', { title: 'Register' });
+}
+
+module.exports = {
+    login,
+    regist
 }

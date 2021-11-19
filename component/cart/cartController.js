@@ -1,3 +1,5 @@
-module.exports.page = (req, res, next) => {
-    res.render('order/cart', { title: 'Cart' });
+const page = (req, res, next) => {
+    res.render('cart/cart', { title: 'Cart' });
 }
+
+module.exports = page
