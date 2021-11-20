@@ -3,28 +3,23 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const hbs = require('hbs');
+const app = express();
 
+// require Router
 const indexRouter = require('./component/homepage');
 const productRouter = require('./component/product');
 const authRouter = require('./component/auth');
 const cartRouter = require('./component/cart');
 const orderRouter = require('./component/order');
-const hbs = require('hbs');
-
-const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'component'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/component/partials', function (err) {});
-hbs.registerHelper('productDetail', id =>  "/product/"+id);
-hbs.registerHelper('page', num => {
-  var item = "";
-  for(let i =1 ; i <= num/9+1; i++){
-    item += "<li><a href=\"?page="+i+"\">"+i+"</a></li>\n";
-  }
-  return item;
-});
+// load helpers
+const helpers = require('./hbsHelpers');
+helpers.helpers(hbs);
 
 
 app.use(logger('dev'));
@@ -33,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Route
 app.use('/', indexRouter);
 app.use('/product', productRouter);
 app.use('/auth', authRouter);

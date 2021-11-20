@@ -9,97 +9,21 @@
                             <form>
                                 <div class="shop-sidebar-type">
                                     <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-categories"
-                                            id="radio-men">
-                                        <label class="form-check-label" for="radio-men">
-                                            Men (3600)
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-categories"
-                                            id="radio-women">
-                                        <label class="form-check-label" for="radio-women">
-                                            Women (3600)
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-categories"
-                                            id="radio-accessories">
-                                        <label class="form-check-label" for="radio-accessories">
-                                            Accessories (3600)
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-categories"
-                                            id="radio-footwear">
-                                        <label class="form-check-label" for="radio-footwear">
-                                            Footwear (3600)
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-categories"
-                                            id="radio-bay">
-                                        <label class="form-check-label" for="radio-bay">
-                                            Bay item (3600)
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-categories"
-                                            id="radio-electronics">
-                                        <label class="form-check-label" for="radio-electronics">
-                                            Electronics (3600)
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="shop-categories"
-                                            id="radio-food">
-                                        <label class="form-check-label" for="radio-food">
-                                            Food (3600)
-                                        </label>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="shop-sidebar mb-4 mx-3">
-                        <h3 class="shop-sidebar-heading px-4 fw-normal">Product Filters</h3>
-                        <div class="shop-sidebar-list p-4 bg-light">
-                            <form>
-                                <div class="shop-sidebar-type">
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-brands"
-                                            id="radio-apple">
-                                        <label class="form-check-label" for="radio-apple">
-                                            Apple
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-brands" id="radio-asus">
-                                        <label class="form-check-label" for="radio-asus">
-                                            Asus
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-brands"
-                                            id="radio-gionee">
-                                        <label class="form-check-label" for="radio-gionee">
-                                            Gionee
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-brands"
-                                            id="radio-micromax">
-                                        <label class="form-check-label" for="radio-micromax">
-                                            Micromax
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="shop-brands"
-                                            id="radio-samsung">
-                                        <label class="form-check-label" for="radio-samsung">
-                                            Samsung
-                                        </label>
-                                    </div>
+                                            <input class="form-check-input" type="radio" 
+                                            name="shop-categories" checked id='0' onclick="window.location='/product';">
+                                            <label class="form-check-label" for='0'>
+                                                All
+                                            </label>
+                                        </div>
+                                    {{#each category}}
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" 
+                                            name="shop-categories" {{{radioChecked id ../catOption}}} id={{id}} onclick="window.location='?category={{id}}'">
+                                            <label class="form-check-label" for={{id}}>
+                                                {{name}} ({{total_products}})
+                                            </label>
+                                        </div>
+                                    {{/each}}
                                 </div>
                             </form>
                         </div>
@@ -128,7 +52,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        {{#each products}}
+                        {{#each products.rows}}
                         <div class="col-sm-6 col-lg-4">
                             <div class="product-card text-center mb-4">
                                 <div class="product-img position-relative">
@@ -153,18 +77,18 @@
                                 </div>
                                 <div class="product-info">
                                     <p>{{'category.name'}}</p>
-                                    <a href={{productDetail id}} class="product-info-name mb-2">{{name}}</a>
-                                    <p class="product-price">{{price}} đ</p>
+                                    <a href="/product/{{id}}" class="product-info-name mb-2">{{name}}</a>
+                                    <p class="product-price">{{currencyFormat price}}</p>
                                 </div>
                             </div>
                         </div>
                         {{/each}}
                     </div>
                 </div>
-                <div class="col-md-12 page-nav d-flex justify-content-center">
+                <div class="col-md-12 page-nav d-flex justify-content-end">
                     <button><i class="fas fa-caret-left"></i></button>
                     <ul class="d-flex">
-                        {{#page products.length}}
+                        {{#page products.count page}}
                         {{/page}}
                     </ul>
                     <button><i class="fas fa-caret-right"></i></button>

@@ -16,7 +16,7 @@
 }
 
 .detail .text-detail .product-count button {
-  width: 20px;
+  padding: 0 0.5rem;
   border: none;
 }
 
@@ -197,4 +197,3 @@
 .top-seller .product:hover .detail a {
   color: var(--primary);
 }
-/*# sourceMappingURL=Detail.css.map */

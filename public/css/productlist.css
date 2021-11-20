@@ -8,15 +8,21 @@
     color: var(--white);
 }
 .page-nav a{
-    background-color: var(--primary);
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--primary);
+    border: solid 1px var(--primary);
     padding: 0.5rem 1rem;
     margin: 0.3rem;
 }
+
+.page-nav .active{
+    background-color: var(--primary);
+    color: var(--white);
+}
+
 .page-nav a:hover{
-    background-color: var(--white);
-    color: var(--primary);
-    box-shadow: 0 .125rem .25rem rgba(0,0,0, .2);
+    background-color: var(--primary);
+    color: var(--white);
     transition: all 0.3s;
 }
 

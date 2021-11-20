@@ -4,23 +4,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img src="/images/watch.webp" alt="Watch">
+                        <img src={{detail.[product_images.image_url]}} alt={{detail.name}}>
                     </div>
                     <div class="offset-lg-1 col-lg-5">
                         <div class="text-detail">
-                            <h3 class="name fw-bold my-2">Faded SkyBlu Denim Jeans</h3>
-                            <h4 class="price fw-bold my-2">$149.99</h4>
-                            <p><span>Category: </span>Household</p>
+                            <h3 class="name fw-bold my-2">{{detail.name}}</h3>
+                            <h4 class="price fw-bold my-2">{{currencyFormat detail.price}}</h4>
+                            <p><span>Category: </span>{{detail.[category.name]}}</p>
                             <p><span>Availability: </span>In Stock</p>
-                            <p class="description my-5 py-3">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                elit. Asperiores at neque fugit id porro adipisci. Hic, dignissimos! Libero sapiente
-                                consequatur labore placeat maiores natus tempore officia, harum, eos, id asperiores!
-                            </p>
-                            <div class="product-count mb-5">
+                            <p class="description my-5 py-3">{{detail.description}}</p>
+                            <div class="product-count mb-5 d-flex align-items-center">
                                 <label for="qty" class="qty me-3">Quantity</label>
-                                <button><i class="fas fa-caret-left"></i></button>
-                                <input type="text" id="qty" value="0" class="border border-1">
-                                <button><i class="fas fa-caret-right"></i></button>
+                                <div class="d-flex border border-1">
+                                    <button><i class="fas fa-minus"></i></button>
+                                    <input type="text" class="text-center border border-1" id="qty" value="0" class="border border-1">
+                                    <button><i class="fas fa-plus"></i></button>
+                                </div>
                                 <a href="#" class="rounded-pill ms-3">Add to Cart</a>
                             </div>
                             <div class="favorite">
@@ -44,43 +43,13 @@
                             data-bs-toggle="tab" aria-controls="specification">Specification</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#comment" class="nav-link m-1 mx-lg-3 rounded-pill" id="comment-tab"
-                            data-bs-toggle="tab" aria-controls="comment">Comment</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="#review" class="nav-link m-1 mx-lg-3 rounded-pill" id="review-tab" data-bs-toggle="tab"
                             aria-controls="review">Review</a>
                     </li>
                 </ul>
                 <div class="tab-content border border-1">
                     <div class="tab-pane active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                        <p class="mb-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-                            accusamus natus, ducimus pariatur nisi dolores, enim inventore culpa vel dolore saepe
-                            sit repellendus rerum quisquam iure. Minima consequuntur nisi nam?
-                            Odit libero, eaque voluptatibus quam minus iusto deleniti rerum adipisci natus aliquid
-                            in ipsam amet dignissimos eius voluptatum itaque, assumenda vel recusandae nihil dolorem
-                            odio et dolore. Est, numquam laudantium?
-                            Accusamus, odit aut eaque consequatur sit dolorem nam architecto quos vel. Beatae
-                            deserunt doloribus pariatur, dolores facilis nesciunt voluptas molestiae laudantium,
-                            deleniti maxime consequuntur illo, est velit in recusandae voluptatibus? Lorem ipsum
-                            dolor sit amet consectetur adipisicing elit. Eos voluptatum nesciunt, provident culpa
-                            vero perferendis asperiores odit sint, dolorum repellendus aut, nobis eaque possimus!
-                            Doloremque molestias eius officiis doloribus excepturi.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, rerum harum nemo
-                            ullam debitis voluptate, neque voluptatem accusantium aspernatur vitae iure. Distinctio
-                            nisi dignissimos dolore magnam molestiae obcaecati vitae inventore?
-                            Ratione praesentium enim ex voluptatibus ab quod adipisci, saepe dolores modi quasi
-                            nihil dolore velit minima necessitatibus dolor perferendis corrupti similique neque
-                            delectus sint. Dolore libero blanditiis adipisci officia? Eligendi?
-                            Debitis, id obcaecati quaerat labore tempore non nisi, magnam qui tempora distinctio
-                            officiis iste aspernatur corporis quas, reprehenderit rem. Commodi id eum rerum fuga nam
-                            a pariatur atque fugit dicta.
-                            Nesciunt tempora sequi, eos accusantium dolorum recusandae quam distinctio? Qui rem
-                            minima harum voluptatibus rerum! Earum eius at, minus libero molestias, velit
-                            consequatur, atque ratione accusantium rerum sapiente dicta necessitatibus. Lorem ipsum
-                            dolor sit amet consectetur adipisicing elit. Eos voluptatum nesciunt, provident culpa
-                            vero perferendis asperiores odit sint, dolorum repellendus aut, nobis eaque possimus!
-                            Doloremque molestias eius officiis doloribus excepturi.</p>
+                        <p class="mb-2">{{detail.description}}</p>
                     </div>
                     <div class="tab-pane" id="specification" role="tabpanel" aria-labelledby="specification-tab">
                         <table class="table">
@@ -120,88 +89,13 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane" id="comment" role="tabpanel" aria-labelledby="comment-tab">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="comment-list">
-                                    <div class="comment-item">
-                                        <div class="d-flex position-relative mb-2">
-                                            <div class="avatar">
-                                                <img src="/images/avatar(1).png" alt="avatar">
-                                            </div>
-                                            <div class="info">
-                                                <h5>Blake Ruiz</h5>
-                                                <h6>12th Feb, 2018 at 05:56 pm</h6>
-                                                <a href="/" class="border border-1 rounded-pill">Reply</a>
-                                            </div>
-                                        </div>
-                                        <p class="comment">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                            Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
-                                            ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
-                                            officia repellat asperiores aut debitis.</p>
-                                    </div>
-                                    <div class="comment-item reply">
-                                        <div class="d-flex position-relative mb-2">
-                                            <div class="avatar">
-                                                <img src="/images/avatar(2).png" alt="avatar">
-                                            </div>
-                                            <div class="info">
-                                                <h5>Blake Ruiz</h5>
-                                                <h6>12th Feb, 2018 at 05:56 pm</h6>
-                                                <a href="/" class="border border-1 rounded-pill">Reply</a>
-                                            </div>
-                                        </div>
-                                        <p class="comment">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                            Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
-                                            ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
-                                            officia repellat asperiores aut debitis.</p>
-                                    </div>
-                                    <div class="comment-item">
-                                        <div class="d-flex position-relative mb-2">
-                                            <div class="avatar">
-                                                <img src="/images/avatar(3).png" alt="avatar">
-                                            </div>
-                                            <div class="info">
-                                                <h5>Blake Ruiz</h5>
-                                                <h6>12th Feb, 2018 at 05:56 pm</h6>
-                                                <a href="/" class="border border-1 rounded-pill">Reply</a>
-                                            </div>
-                                        </div>
-                                        <p class="comment">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                            Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
-                                            ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
-                                            officia repellat asperiores aut debitis.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 ps-5">
-                                <h2 class="mb-2">Post a comment</h2>
-                                <form class="comment-form">
-                                    <div class="mb-3">
-                                        <input class="form-control" type="text" placeholder="Your Fullname" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <input class="form-control" type="text" placeholder="Email Address" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <input class="form-control" type="text" placeholder="Phone Number" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <input class="form-control" type="text" placeholder="Message" />
-                                    </div>
-                                    <input class="form-control mb-2 text-uppercase fw-bold" type="submit"
-                                        value="Submit now" />
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                     <div class="tab-pane" id="review" role="tabpanel" aria-labelledby="review-tab">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="row">
                                     <div class="col-6 overall text-center">
                                         <h4 class="fw-bolder">Overall</h4>
-                                        <h1>4.0</h1>
+                                        <h1>{{detail.rate}}</h1>
                                         <p>(03 Reviews)</p>
                                     </div>
                                     <div class="col-6 rate">
