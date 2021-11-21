@@ -63,6 +63,7 @@ const topRate = () => {
         raw: true
     });
 }
+
 const detail = id => {
     return models.product.findByPk(id, {
         include: [{
