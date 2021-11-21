@@ -1,7 +1,6 @@
 const service = require('./productService')
 
 const list = async (req,res) => {
-    console.log(req.query);
     const page = !Number.isNaN(req.query.page) && req.query.page > 0 ? req.query.page : 1; 
     const catOption = !Number.isNaN(req.query.category) && req.query.category > 0 ? req.query.category : 0;
     if(catOption){
@@ -17,8 +16,11 @@ const list = async (req,res) => {
 
 const detail = async (req,res) => {
     const detail = await service.detail(req.params.id);
-    res.render('product/productDetail', { title: detail.name, detail});
+    const topRate = await service.topRate();
+    const size = await service.size(req.params.id);
+    res.render('product/productDetail', { title: "", detail, topRate, size});
 }
+
 module.exports = {
     list,
     detail

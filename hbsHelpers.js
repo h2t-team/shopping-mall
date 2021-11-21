@@ -1,9 +1,17 @@
 const helpers = (hbs) => {
-    hbs.registerHelper('page', (num, page) => {
+    hbs.registerHelper('page', (num, page, category) => {
         var item = "";
-        for (let i = 1; i <= num / 9 + 1; i++) {
-            item += i == page ? "<li><a class=\"active\" href=\"?page=" + i + "\">" + i + "</a></li>\n" 
-            : "<li><a href=\"?page=" + i + "\">" + i + "</a></li>\n";
+        if(category == 0){
+            for (let i = 1; i <= num / 9 + 1; i++) {
+                item += i == page ? "<li><a class=\"active\" href=\"?page=" + i + "\">" + i + "</a></li>\n" 
+                : "<li><a href=\"?page=" + i + "\">" + i + "</a></li>\n";
+            }
+        }
+        else{
+            for (let i = 1; i <= num / 9 + 1; i++) {
+                item += i == page ? "<li><a class=\"active\" href=\"?category="+category+"&page=" + i + "\">" + i + "</a></li>\n" 
+                : "<li><a href=\"?category="+category+"&page=" + i + "\">" + i + "</a></li>\n";
+            }
         }
         return item;
     });

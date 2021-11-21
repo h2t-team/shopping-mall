@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { models } = require('../../model');
 
 const category = () => {
@@ -18,7 +19,7 @@ const all = (page = 0, perPage = 9) => {
             as: 'product_images',
             attributes: ['image_url']
         }],
-        offset: page*perPage,
+        offset: page * perPage,
         limit: perPage,
         raw: true
     });
@@ -26,27 +27,44 @@ const all = (page = 0, perPage = 9) => {
 
 const byCategory = (id, page = 0, perPage = 9) => {
     return models.product.findAndCountAll({
-        where: {
-            'category_id': id
-        },
         include: [{
             model: models.category,
             as: 'category',
-            attributes: ['name']
+            attributes: ['name'],
+            where: {
+                [Op.or]: [
+                    { id: id },
+                    { 'parent_id': id }
+                ]
+            }
         },
         {
             model: models.product_image,
             as: 'product_images',
             attributes: ['image_url']
         }],
-        offset: page*perPage,
+        offset: page * perPage,
         limit: perPage,
         raw: true
     });
 }
 
+const topRate = () => {
+    return models.product.findAll({
+        include: [{
+            model: models.product_image,
+            as: 'product_images',
+            attributes: ['image_url']
+        }],
+        where: {
+            'rate': 5
+        },
+        limit: 9,
+        raw: true
+    });
+}
 const detail = id => {
-    return models.product.findByPk(id,{
+    return models.product.findByPk(id, {
         include: [{
             model: models.category,
             as: 'category',
@@ -60,9 +78,21 @@ const detail = id => {
         raw: true
     })
 }
+
+const size = id => {
+    return models.product_size.findAll({
+        where: {
+            'product_id': id
+        },
+        attributes: ['size', 'quantity'],
+        raw: true
+    })
+}
 module.exports = {
     all,
     category,
     byCategory,
-    detail
+    topRate,
+    detail,
+    size
 }

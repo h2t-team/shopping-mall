@@ -16,9 +16,13 @@
                             <div class="product-count mb-5 d-flex align-items-center">
                                 <label for="qty" class="qty me-3">Quantity</label>
                                 <div class="d-flex border border-1">
-                                    <button><i class="fas fa-minus"></i></button>
-                                    <input type="text" class="text-center border border-1" id="qty" value="0" class="border border-1">
-                                    <button><i class="fas fa-plus"></i></button>
+                                    <button
+                                        onclick="const result = document.getElementById('qty'); if(!isNaN(result.value) && result.value>0) result.value--;"><i
+                                            class="fas fa-minus"></i></button>
+                                    <input type="text" class="text-center border border-1" id="qty" value="0"
+                                        class="border border-1">
+                                    <button onclick="const result = document.getElementById('qty'); result.value++;"><i
+                                            class="fas fa-plus"></i></button>
                                 </div>
                                 <a href="#" class="rounded-pill ms-3">Add to Cart</a>
                             </div>
@@ -39,8 +43,8 @@
                             data-bs-toggle="tab" aria-controls="description" aria-selected="true">Description</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#specification" class="nav-link m-1 mx-lg-3 rounded-pill" id="specification-tab"
-                            data-bs-toggle="tab" aria-controls="specification">Specification</a>
+                        <a href="#instock" class="nav-link m-1 mx-lg-3 rounded-pill" id="instock-tab"
+                            data-bs-toggle="tab" aria-controls="instock">In Stock</a>
                     </li>
                     <li class="nav-item">
                         <a href="#review" class="nav-link m-1 mx-lg-3 rounded-pill" id="review-tab" data-bs-toggle="tab"
@@ -51,46 +55,25 @@
                     <div class="tab-pane active" id="description" role="tabpanel" aria-labelledby="description-tab">
                         <p class="mb-2">{{detail.description}}</p>
                     </div>
-                    <div class="tab-pane" id="specification" role="tabpanel" aria-labelledby="specification-tab">
+                    <div class="tab-pane" id="instock" role="tabpanel" aria-labelledby="instock-tab">
                         <table class="table">
+                            <thead>
+                                <td>Size</td>
+                                <td>Quantity</td>
+                            </thead>
                             <tbody>
+                                {{#each size}}
                                 <tr>
-                                    <td>Width</td>
-                                    <td>128mm</td>
+                                    <td>{{size}}</td>
+                                    <td>{{quantity}}</td>
                                 </tr>
-                                <tr>
-                                    <td>Height</td>
-                                    <td>508mm</td>
-                                </tr>
-                                <tr>
-                                    <td>Depth</td>
-                                    <td>85mm</td>
-                                </tr>
-                                <tr>
-                                    <td>Weight</td>
-                                    <td>52gm</td>
-                                </tr>
-                                <tr>
-                                    <td>Quality checking</td>
-                                    <td>yes</td>
-                                </tr>
-                                <tr>
-                                    <td>Freshness Duration</td>
-                                    <td>03days</td>
-                                </tr>
-                                <tr>
-                                    <td>When packeting</td>
-                                    <td>Without touch of hand</td>
-                                </tr>
-                                <tr>
-                                    <td>Each Box contains</td>
-                                    <td>60pcs</td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
                     <div class="tab-pane" id="review" role="tabpanel" aria-labelledby="review-tab">
-                        <div class="row">
+                        Comming soon
+                        {{!-- <div class="row">
                             <div class="col-lg-6">
                                 <div class="row">
                                     <div class="col-6 overall text-center">
@@ -240,7 +223,7 @@
                                         value="Submit now" />
                                 </form>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -253,7 +236,20 @@
                     </h2>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-lg-3">
+                    {{#each topRate}}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="border border-1 px-3 m-2">
+                            <div class="product d-flex py-3">
+                                <a href="#"><img src={{'product_images.image_url'}} alt="product" class="rounded"></a>
+                                <div class="detail ms-3">
+                                    <a href="/product/{{id}}" class="fs-5">{{name}}</a>
+                                    <div class="price">{{currencyFormat price}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{!-- <div class="col-md-6 col-lg-3">
                         <div class="wrapper border border-1 px-3 m-2">
                             <div class="product d-flex py-3">
                                 <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
@@ -356,7 +352,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
