@@ -2,8 +2,9 @@
  * Module dependencies.
  */
 const http = require('http');
-
+//require dotenv
 require('dotenv').config();
+
 const {sequelize} = require('../model');
 
 sequelize.authenticate()

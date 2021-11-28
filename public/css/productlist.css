@@ -7,6 +7,12 @@
     line-height: 50px;
     color: var(--white);
 }
+
+.page-nav .disabled{
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 .page-nav a{
     background-color: var(--white);
     color: var(--primary);
@@ -19,20 +25,19 @@
     background-color: var(--primary);
     color: var(--white);
 }
-
 .page-nav a:hover{
     background-color: var(--primary);
     color: var(--white);
     transition: all 0.3s;
 }
 
-.page-nav button {
-    padding: 0 1rem;
-    margin: 0.2rem;
-    border: none;
-  }
-  
-  .page-nav button:hover {
-    background-color: #ddd;
-    transition: all 0.3s;
-  }
+.page-nav .direct{
+    border: solid 1px var(--white);
+    color: var(--black);
+    background-color: var(--white);
+}
+
+.page-nav .direct:hover{
+    color: var(--primary);
+    background-color: var(--white);
+}
