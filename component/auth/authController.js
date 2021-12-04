@@ -19,12 +19,6 @@ const register = async (req, res) => {
         password,
         confirm } = req.body;
 
-    if (firstname.length == 0 || lastname.length == 0 || username.length == 0 || email.length == 0 ||
-        phone.length == 0 || birthday.length == 0 || password.length == 0 || confirm.length == 0) {
-        req.flash('error', 'Fields are invalid.');
-        res.redirect('/auth/register');
-    }
-
     const user = await service.findUser({ username, email, phone });
     if (user) {
         req.flash('error', 'This account already exists.');
