@@ -1,0 +1,58 @@
+<header class="header">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light border-bottom bg-light">
+        <div class="container">
+            <a class="navbar-brand text-uppercase fw-bold logo-primary" href="/">
+                TiMa
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active p-4" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-4" href="/product">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-4" href="/cart">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-4" href="#">Contact</a>
+                    </li>
+                </ul>
+                {{#if user}}
+                <ul class="nav navbar-nav d-none d-sm-flex align-items-center">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" data-bs-caret="false">
+                            <span class="me-2">
+                                <span class="fw-bold">{{user.[last_name]}} {{user.[first_name]}}</span>
+                            </span>
+                            <img src="{{#avatar user.avatar}} {{/avatar}}" class="rounded-circle" width="36" alt="avatar">
+                        </a>
+                        <div id="account_menu" class="dropdown-menu dropdown-menu-end">
+                            <div class="dropdown-item-text dropdown-item-text--lh">
+                                <div class="fw-bold">{{user.[last_name]}} {{user.[first_name]}}</div>
+                                <div class="text-muted">@{{user.username}}</div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/profile">View Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/auth/logout">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                {{else}}
+                <ul class="nav-btns pb-4 px-4 p-lg-0">
+                    <li>
+                        <a href="/auth/login" class="btn nav-btn rounded-pill">Login</a>
+                    </li>
+                </ul>
+                {{/if}}
+            </div>
+        </div>
+    </nav>
+</header>

@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('admin', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(255),
       allowNull: false,
       primaryKey: true
     },
@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       unique: "username_UNIQUE"
     },
     password: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     first_name: {
@@ -29,6 +29,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     telephone: {
       type: DataTypes.STRING(11),
+      allowNull: true
+    },
+    avatar: {
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {

@@ -1,0 +1,78 @@
+<main>
+    <div class="shop-section">
+        <div class="container">
+            <div class="card mb-5">
+                <div class="row g-0">
+                    <div class="col-lg-4 p-4">
+                        <p class="fw-bold mb-3">Basic Information</p>
+                        <p class="text-muted mb-3">
+                            Edit your account details and settings.
+                        </p>
+                    </div>
+                    <div class="col-lg-8 p-4">
+                        {{#with user}}
+                        <form method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="fname">First name</label>
+                                        <input id="fname" type="text" class="form-control" placeholder="First name"
+                                         name="firstname" value={{first_name}} />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="lname">Last name</label>
+                                        <input id="lname" type="text" class="form-control" placeholder="Last name"
+                                        name="lastname" value={{last_name}} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input id="email" type="text" class="form-control" placeholder="Email"
+                                        name="email" value={{email}} />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="tel">Tel</label>
+                                        <input id="tel" type="text" class="form-control" placeholder="Tel"
+                                        name="phone" value={{telephone}} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="desc">Birthday</label>
+                                <input class="form-control" type="date" placeholder="Birthday" 
+                                name="birthday" value={{dob}} />
+                            </div>
+                            <div class="form-group">
+                                <label>Avatar</label>
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3">
+                                        <div class="avatar" style="width: 80px; height: 80px">
+                                            <img src={{avatar avatar}} class="avatar-img rounded"
+                                                alt="..." data-dz-thumbnail />
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <input type="file" name="photo" class="p-2 fs-6">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button class="btn">Save</button>
+                            </div>
+                        </form>
+                        {{/with}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>

@@ -30,18 +30,25 @@
   margin: auto;
   padding: 0.5rem 2rem;
   border-radius: 2rem;
-  color: white;
-  border: 1px solid white;
+  color: var(--white);
+  border: 1px solid var(--white);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .side-box a:hover {
-  border: 1px solid #c5322d;
-  background-color: #c5322d;
-  color: white;
+  background-color: var(--white);
+  color: var(--primary);
+  font-weight: 500;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+}
+
+.error{
+  border: 1px solid #f44336;
+  color: #f44336;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
 }
 
 .login-form,
@@ -51,20 +58,18 @@
 
 .login-form input[type=submit],
 .register-form input[type=submit] {
-  border-radius: 15px;
-  background-color: #4C5CED;
-  color: white;
-  -webkit-transition: all 0.3s;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 10rem;
+  border: 1px solid var(--primary);
   transition: all 0.3s;
 }
 
 .login-form input[type=submit]:hover,
 .register-form input[type=submit]:hover {
-  border-radius: 15px;
-  border: 1px solid #4C5CED;
-  background-color: white;
-  color: black;
-  -webkit-transition: all 0.3s;
+  background-color: var(--white);
+  color: var(--primary);
+  font-weight: 500;
   transition: all 0.3s;
 }
 

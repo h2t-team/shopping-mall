@@ -2,12 +2,13 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('feedback', {
     id: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     customer_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(255),
       allowNull: false,
       references: {
         model: 'customer',
@@ -56,17 +57,17 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "fk_feedback_customer1_idx",
-        using: "BTREE",
-        fields: [
-          { name: "customer_id" },
-        ]
-      },
-      {
         name: "fk_feedback_order_details1_idx",
         using: "BTREE",
         fields: [
           { name: "order_details_id" },
+        ]
+      },
+      {
+        name: "fk_feedback_customer_idx",
+        using: "BTREE",
+        fields: [
+          { name: "customer_id" },
         ]
       },
     ]

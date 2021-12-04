@@ -1,6 +1,7 @@
-const { models } = require('../model');
-const passport = require('passport')
+const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+const { models } = require('../model');
 
 passport.use(new LocalStrategy(
     async function (username, password, done) {
@@ -19,7 +20,9 @@ passport.use(new LocalStrategy(
     }
 ));
 
-const validPassword = (user, password) => user.password === password;
+const validPassword = (user, password) => {
+    return bcrypt.compareSync(password, user.password);
+}
 
 passport.serializeUser(function (user, done) {
     done(null, user.id);

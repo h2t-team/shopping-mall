@@ -5,24 +5,24 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require("express-session");
 const hbs = require('hbs');
-const app = express();
+const flash = require('connect-flash');
 const passport = require('./auth/passport');
+const app = express();
 
 // require Router
-const indexRouter = require('./component/homepage');
-const productRouter = require('./component/product');
-const authRouter = require('./component/auth');
-const cartRouter = require('./component/cart');
-const orderRouter = require('./component/order');
+const indexRouter = require('./routes/index');
 
 // view engine setup
-app.set('views', path.join(__dirname, 'component'));
+app.set('views',[
+  path.join(__dirname, 'view'),
+  path.join(__dirname, 'component')
+]);
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + '/component/partials', function (err) { });
-// load helpers
-const helpers = require('./hbsHelpers');
-helpers.helpers(hbs);
 
+hbs.registerPartials(__dirname + '/view/partials', function (err) { });
+// load helpers
+const helpers = require('./view/hbsHelpers');
+helpers.helpers(hbs);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -34,20 +34,23 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie:{
-    maxAge: 1000*60*60*24,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24,
   }
 }));
+
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Get user from req
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+})
+
 //Route
 app.use('/', indexRouter);
-app.use('/product', productRouter);
-app.use('/auth', authRouter);
-app.use('/cart', cartRouter);
-app.use('/order', orderRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

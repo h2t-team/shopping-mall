@@ -2,12 +2,13 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('receiver_address', {
     id: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     customer_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(255),
       allowNull: false,
       references: {
         model: 'customer',
@@ -64,7 +65,7 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "fk_customer_address_customer1_idx",
+        name: "fk_address_customer_idx",
         using: "BTREE",
         fields: [
           { name: "customer_id" },

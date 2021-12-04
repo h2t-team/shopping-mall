@@ -24,7 +24,7 @@ p, label {
     color: var(--grey);
 }
 img {
-    width: 100%;
+    max-width: 100%;    
     height: auto;
     display: block;
 }

@@ -26,8 +26,6 @@ function initModels(sequelize) {
   var product_size = _product_size(sequelize, DataTypes);
   var receiver_address = _receiver_address(sequelize, DataTypes);
 
-  cart.belongsToMany(product, { as: 'product_id_products', through: cart_has_product, foreignKey: "customer_id", otherKey: "product_id" });
-  product.belongsToMany(cart, { as: 'customer_id_carts', through: cart_has_product, foreignKey: "product_id", otherKey: "customer_id" });
   cart_has_product.belongsTo(cart, { as: "customer", foreignKey: "customer_id"});
   cart.hasMany(cart_has_product, { as: "cart_has_products", foreignKey: "customer_id"});
   category.belongsTo(category, { as: "parent", foreignKey: "parent_id"});

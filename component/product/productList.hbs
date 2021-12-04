@@ -20,6 +20,7 @@
                                             <input class="form-check-input" type="radio" 
                                             name="category" {{{radioChecked id ../catOption}}} 
                                             id={{id}} onclick="window.location='?category={{id}}'">
+                                            
                                             <label class="form-check-label" for={{id}}>
                                                 {{name}} ({{total_products}})
                                             </label>
@@ -88,7 +89,7 @@
                 </div>
                 <div class="offset-xl-3 offset-lg-4 offset-md-5 col-xl-9 col-lg-8 col-md-7 page-nav d-flex justify-content-center">
                     <ul class="d-flex">
-                        {{#page products.count page catOption}}
+                        {{#page products.count.length page catOption}}
                         {{/page}}
                     </ul>
                 </div>

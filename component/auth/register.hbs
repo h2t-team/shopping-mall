@@ -1,39 +1,76 @@
 <main>
-    <div class="register container mt-5 mb-5 shadow-lg">
-        <div class="row">
-            <div class="col-lg-6 blue">
-                <div class="side-box">
-                    <div class="context text-center">
-                        <h3 class="pb-3 fw-bold">Already have an account?</h3>
-                        <p class="pb-4">Join us now</p>
-                        <a href="/auth/login">Login Now</a>
+    <div class="shop-section">
+        <div class="register container mt-5 mb-5 shadow-lg">
+            <div class="row">
+                <div class="col-lg-6 blue">
+                    <div class="side-box">
+                        <div class="context text-center">
+                            <h3 class="pb-3 fw-bold">Already have an account?</h3>
+                            <p class="pb-4">Join us now</p>
+                            <a href="/auth/login">Login Now</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="register-box my-5 py-2">
-                    <h4 class="text-uppercase text-center mb-5 fw-bold">Create an acount</h4>
-                    <form class="row register-form mx-auto">
-                        <div class="col-md-12 mb-3">
-                            <input class="form-control" type="text" placeholder="Username" />
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <input class="form-control" type="text" placeholder="Email" />
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <input class="form-control" type="password" placeholder="Password" />
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <input class="form-control" type="password" placeholder="Confirm Password" />
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <input class="form-check-input m-1" type="checkbox" id="keep-logged" />
-                            <label class="form-check-label" htmlFor="keep-logged">Keep me logged in</label>
-                        </div>
-                        <div class="col-md-12 mb-3 text-center">
-                            <input class="form-control mb-3" type="submit" value="Register" />
-                        </div>
-                    </form>
+                <div class="col-lg-6">
+                    <div class="register-box my-5 py-2">
+                        <h4 class="text-uppercase text-center mb-5 fw-bold">Create an acount</h4>
+                        <form id="register-form" method="post">
+                            <div class="row register-form mx-auto">
+                                {{#if message}}
+                                <div class="col=md-12 mb-3">
+                                    <div class="error">
+                                        <i class="fas fa-times-circle me-2"></i>
+                                        <span>{{message}}</span>
+                                    </div>
+                                </div>
+                                {{/if}}
+                                <div class="form-group col-md-6">
+                                    <input class="form-control" type="text" 
+                                    placeholder="First Name" name="firstname" rules="required"/>
+                                    <div class="message"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input class="form-control" type="text" 
+                                    placeholder="Last Name" name="lastname" rules="required"/>
+                                    <div class="message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" 
+                                    placeholder="Username" name="username" rules="required"/>
+                                    <div class="message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" 
+                                    placeholder="Email" name="email" rules="required|email"/>
+                                    <div class="message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" 
+                                    placeholder="Phone Number" name="phone" rules="required|min:10|max:11"/>
+                                    <div class="message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="date" 
+                                    placeholder="Birthday" name="birthday"
+                                        value="2018-01-01" rules="required"/>
+                                    <div class="message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="password" 
+                                    placeholder="Password" name="password" rules="required|min:6"/>
+                                    <div class="message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="password" 
+                                    placeholder="Confirm Password" name="confirm" rules="required"/>
+                                    <div class="message"></div>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <input class="form-control mb-3" type="submit" value="Register" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

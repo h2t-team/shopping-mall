@@ -17,11 +17,13 @@ const all = (page = 0, perPage = 9) => {
         {
             model: models.product_image,
             as: 'product_images',
-            attributes: ['image_url']
+            attributes: ['image_url'],
+            duplicating: false,
         }],
         offset: page * perPage,
         limit: perPage,
-        raw: true
+        raw: true,
+        group: ['product.id']
     });
 }
 
@@ -41,10 +43,12 @@ const byCategory = (id, page = 0, perPage = 9) => {
         {
             model: models.product_image,
             as: 'product_images',
-            attributes: ['image_url']
+            attributes: ['image_url'],
+            duplicating: false,
         }],
         offset: page * perPage,
         limit: perPage,
+        group: ['product.id'],
         raw: true
     });
 }
@@ -60,6 +64,9 @@ const topRate = () => {
             'rate': 5
         },
         limit: 9,
+        duplicating: false,
+        required: true,
+        group: ['product.id'],
         raw: true
     });
 }
@@ -74,7 +81,8 @@ const detail = id => {
         {
             model: models.product_image,
             as: 'product_images',
-            attributes: ['image_url']
+            attributes: ['image_url'],
+            duplicating: false
         }],
         raw: true
     })
@@ -90,11 +98,20 @@ const size = id => {
     })
 }
 
+const image = id => {
+    return models.product_image.findAll({
+        raw: true,
+        where: { 'product_id': id },
+        offset: 1
+    })
+}
+
 module.exports = {
     all,
     category,
     byCategory,
     topRate,
     detail,
-    size
+    size,
+    image
 }

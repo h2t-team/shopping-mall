@@ -7,7 +7,13 @@ router.get('/login', controller.login);
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/auth/login',
+    failureFlash: true
 }));
-router.get('/register', controller.regist);
+router.get('/logout',(req, res) => {
+    req.logout();
+    res.redirect('/');
+  });
+router.get('/register', controller.registerPage);
+router.post('/register', controller.register);
 
 module.exports = router;

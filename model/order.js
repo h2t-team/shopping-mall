@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     customer_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(255),
       allowNull: false,
       references: {
         model: 'customer',
@@ -64,7 +64,7 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "fk_order_customer1_idx",
+        name: "fk_order_customer_idx",
         using: "BTREE",
         fields: [
           { name: "customer_id" },
