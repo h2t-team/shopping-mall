@@ -1,5 +1,12 @@
 const bcrypt = require('bcrypt')
 const service = require('./authService')
+
+const isAuthenticated = (req, res, next) => {
+    if (req.user)
+        res.redirect('/');
+    next();
+}
+
 const login = (req, res) => {
     res.render('auth/login', { title: 'Login', message: req.flash('error') });
 }
@@ -19,16 +26,17 @@ const register = async (req, res) => {
         password,
         confirm } = req.body;
 
+    if (password != confirm) {
+        req.flash('error', 'Confirm password does not match.');
+        res.redirect('/auth/register');
+    }
     const user = await service.findUser({ username, email, phone });
     if (user) {
         req.flash('error', 'This account already exists.');
         res.redirect('/auth/register');
     }
-    if (password != confirm) {
-        req.flash('error', 'Confirm password does not match.');
-        res.redirect('/auth/register');
-    }
-    const hashPassword = bcrypt.hashSync(password,10);
+    
+    const hashPassword = bcrypt.hashSync(password, 10);
     await service.createUser({
         firstname, lastname, username, email,
         phone, birthday, hashPassword
@@ -37,6 +45,7 @@ const register = async (req, res) => {
 }
 
 module.exports = {
+    isAuthenticated,
     login,
     registerPage,
     register
