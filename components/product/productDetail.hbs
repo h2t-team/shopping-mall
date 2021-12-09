@@ -95,7 +95,7 @@
                     </div>
                     <div class="tab-pane" id="review" role="tabpanel" aria-labelledby="review-tab">
                         Comming soon
-                        {{!-- <div class="row">
+                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="row">
                                     <div class="col-6 overall text-center">
@@ -222,30 +222,22 @@
                             </div>
                             <div class="col-lg-6 ps-5">
                                 <h2 class="mb-2">Add a review</h2>
-                                <div class="rate mb-3">
-                                    Your Rating:
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    Outstanding
-                                </div>
                                 <form class="review-form">
-                                    <div class="mb-3">
-                                        <input class="form-control" type="text" placeholder="Enter your name" />
+                                    <input type="hidden" value="{{detail.id}}" />
+                                    <div class="rate mb-3">
+                                        Your Rating:
+                                        <input class="form-control" type="number" min="1" max="5" placeholder="5"
+                                            name="rate " />
                                     </div>
                                     <div class="mb-3">
-                                        <input class="form-control" type="text" placeholder="Enter your email" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <input class="form-control" type="text" placeholder="Your review" />
+                                        <input class="form-control" type="text" placeholder="Your review"
+                                            name="content" />
                                     </div>
                                     <input class="form-control mb-2 text-uppercase fw-bold" type="submit"
                                         value="Submit now" />
                                 </form>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -271,112 +263,13 @@
                         </div>
                     </div>
                     {{/each}}
-                    {{!-- <div class="col-md-6 col-lg-3">
-                        <div class="wrapper border border-1 px-3 m-2">
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="wrapper border border-1 px-3 m-2">
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="wrapper border border-1 px-3 m-2">
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="wrapper border border-1 px-3 m-2">
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-                            <div class="product d-flex py-3">
-                                <a href="#"><img src="/images/watch.webp" alt="product" class="rounded"></a>
-                                <div class="detail ms-3">
-                                    <a href="#" class="fs-5">Denim Jeans</a>
-                                    <div class="price">$149.99</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </section>
     </div>
 </main>
+<script>
+    $.getJSON(`/product/${$('input[type=hidden]').val()}/rate`, (data) => {
+        console.log(data);        
+    })    
+</script>

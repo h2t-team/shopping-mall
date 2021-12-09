@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     rate: {
-      type: DataTypes.DECIMAL(10,0),
+      type: DataTypes.FLOAT,
       allowNull: true
     }
   }, {

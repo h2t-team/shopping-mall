@@ -15,11 +15,11 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    order_details_id: {
-      type: DataTypes.INTEGER,
+    product_id: {
+      type: DataTypes.STRING(255),
       allowNull: false,
       references: {
-        model: 'order_details',
+        model: 'product',
         key: 'id'
       }
     },
@@ -57,17 +57,17 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "fk_feedback_order_details1_idx",
-        using: "BTREE",
-        fields: [
-          { name: "order_details_id" },
-        ]
-      },
-      {
         name: "fk_feedback_customer_idx",
         using: "BTREE",
         fields: [
           { name: "customer_id" },
+        ]
+      },
+      {
+        name: "fk_feedback_product_idx",
+        using: "BTREE",
+        fields: [
+          { name: "product_id" },
         ]
       },
     ]

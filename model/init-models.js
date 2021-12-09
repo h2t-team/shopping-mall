@@ -42,10 +42,10 @@ function initModels(sequelize) {
   customer.hasMany(receiver_address, { as: "receiver_addresses", foreignKey: "customer_id"});
   order_details.belongsTo(order, { as: "order", foreignKey: "order_id"});
   order.hasMany(order_details, { as: "order_details", foreignKey: "order_id"});
-  feedback.belongsTo(order_details, { as: "order_detail", foreignKey: "order_details_id"});
-  order_details.hasMany(feedback, { as: "feedbacks", foreignKey: "order_details_id"});
   cart_has_product.belongsTo(product, { as: "product", foreignKey: "product_id"});
   product.hasMany(cart_has_product, { as: "cart_has_products", foreignKey: "product_id"});
+  feedback.belongsTo(product, { as: "product", foreignKey: "product_id"});
+  product.hasMany(feedback, { as: "feedbacks", foreignKey: "product_id"});
   order_details.belongsTo(product, { as: "product", foreignKey: "product_id"});
   product.hasMany(order_details, { as: "order_details", foreignKey: "product_id"});
   product_image.belongsTo(product, { as: "product", foreignKey: "product_id"});

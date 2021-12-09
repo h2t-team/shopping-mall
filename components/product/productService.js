@@ -106,6 +106,30 @@ const image = id => {
     })
 }
 
+const addRate = ({userId, productId, rate, content}) =>{
+    return models.feedback.create({
+        'user_id': userId,
+        'product_id': productId,
+        rate,
+        content,
+        'created_at': Date.now()
+    })
+}
+
+const getRate = productId => {
+    return models.feedback.findAll({
+        raw: true,
+        where:{
+            'product_id': productId
+        },
+        include: {
+            model: models.customer,
+            as:'customer',
+            attributes: ['first_name','last_name','avatar']
+        }
+    })
+}
+
 module.exports = {
     all,
     category,
@@ -113,5 +137,7 @@ module.exports = {
     topRate,
     detail,
     size,
-    image
+    image,
+    addRate,
+    getRate
 }
