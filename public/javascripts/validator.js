@@ -36,7 +36,20 @@ function Validation(selector) {
             input.onblur = handleValidate;
             input.oninput = handleClearError;
         }
-        console.log(formRules);
+        
+        //Handle submit form
+        form.onsubmit = (event) => {
+            event.preventDefault();
+            const inputs = form.querySelectorAll('[name][rules]');
+            var isValid = true;
+            for (let input of inputs) {
+                if (!handleValidate({ target: input })) {
+                    isValid = false;
+                }
+            }
+            if (isValid)
+                form.submit();
+        }
     }
 
     function handleValidate(event) {
@@ -70,17 +83,5 @@ function Validation(selector) {
         }
     }
 
-    //Handle submit form
-    form.onsubmit = (event) => {
-        event.preventDefault();
-        const inputs = form.querySelectorAll('[name][rules]');
-        var isValid = true;
-        for (let input of inputs) {
-            if (!handleValidate({ target: input })) {
-                isValid = false;
-            }
-        }
-        if (isValid)
-            form.submit();
-    }
+
 }

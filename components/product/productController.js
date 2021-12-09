@@ -9,7 +9,8 @@ const list = async (req, res) => {
     const products = catOption ? await service.byCategory(catOption, page - 1) : await service.all(page - 1);
     console.log(products);
     res.render('product/productList', {
-        title: 'Shop',
+        title: 'TiMa Shop',
+        style: 'productlist.css',
         products, 
         category, 
         page, 
@@ -27,6 +28,7 @@ const detail = async (req, res) => {
             ]);
         res.render('product/productDetail', { 
             title: detail.name, 
+            style: 'detail.css',
             detail, 
             topRate, 
             size,

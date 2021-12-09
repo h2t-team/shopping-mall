@@ -8,11 +8,11 @@ const isAuthenticated = (req, res, next) => {
 }
 
 const login = (req, res) => {
-    res.render('auth/login', { title: 'Login', message: req.flash('error') });
+    res.render('auth/login', { title: 'Login', style: 'login.css', message: req.flash('error') });
 }
 
 const registerPage = (req, res) => {
-    res.render('auth/register', { title: 'Register', message: req.flash('error') });
+    res.render('auth/register', { title: 'Register', style: 'login.css', message: req.flash('error') });
 }
 
 const register = async (req, res) => {

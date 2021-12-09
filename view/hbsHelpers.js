@@ -1,4 +1,8 @@
 const helpers = (hbs) => {
+    hbs.registerHelper('section', (name, options) => {
+        console.log(options.fn(this));
+        return null;
+    })
     hbs.registerHelper('page', (num, page, category) => {
         const maxPage = Math.ceil((num / 9));
         //First item
