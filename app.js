@@ -13,16 +13,16 @@ const app = express();
 const indexRouter = require('./routes/index');
 
 // view engine setup
-app.set('views',[
+app.set('views', [
   path.join(__dirname, 'view'),
-  path.join(__dirname, 'component')
+  path.join(__dirname, 'components')
 ]);
 app.set('view engine', 'hbs');
 
 hbs.registerPartials(__dirname + '/view/partials', function (err) { });
 // load helpers
-const helpers = require('./view/hbsHelpers');
-helpers.helpers(hbs);
+const { helpers } = require('./view/hbsHelpers');
+helpers(hbs);
 
 app.use(logger('dev'));
 app.use(express.json());
