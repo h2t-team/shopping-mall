@@ -108,7 +108,7 @@ const image = id => {
 
 const addRate = ({userId, productId, rate, content}) =>{
     return models.feedback.create({
-        'user_id': userId,
+        'customer_id': userId,
         'product_id': productId,
         rate,
         content,
@@ -116,9 +116,11 @@ const addRate = ({userId, productId, rate, content}) =>{
     })
 }
 
-const getRate = productId => {
-    return models.feedback.findAll({
+const getRate = (productId, offset, limit) => {
+    return models.feedback.findAndCountAll({
         raw: true,
+        offset,
+        limit,
         where:{
             'product_id': productId
         },

@@ -94,7 +94,6 @@
                         </table>
                     </div>
                     <div class="tab-pane" id="review" role="tabpanel" aria-labelledby="review-tab">
-                        Comming soon
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="row">
@@ -154,70 +153,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="review-list">
-                                    <div class="review-item">
-                                        <div class="d-flex position-relative mb-2">
-                                            <div class="avatar">
-                                                <img src="/images/avatar(1).png" alt="avatar">
-                                            </div>
-                                            <div class="info">
-                                                <h5>Blake Ruiz</h3>
-                                                    <div>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                        <p class="review">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                            Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
-                                            ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
-                                            officia repellat asperiores aut debitis.</p>
-                                    </div>
-                                    <div class="review-item">
-                                        <div class="d-flex position-relative mb-2">
-                                            <div class="avatar">
-                                                <img src="/images/avatar(2).png" alt="avatar">
-                                            </div>
-                                            <div class="info">
-                                                <h5>Blake Ruiz</h5>
-                                                <div>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p class="review">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                            Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
-                                            ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
-                                            officia repellat asperiores aut debitis.</p>
-                                    </div>
-                                    <div class="review-item">
-                                        <div class="d-flex position-relative mb-2">
-                                            <div class="avatar">
-                                                <img src="/images/avatar(3).png" alt="avatar">
-                                            </div>
-                                            <div class="info">
-                                                <h5>Blake Ruiz</h5>
-                                                <div>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p class="review">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                            Voluptas praesentium voluptatibus minus modi incidunt necessitatibus
-                                            ducimus quidem in provident, nisi ratione, blanditiis laborum sequi, ad
-                                            officia repellat asperiores aut debitis.</p>
-                                    </div>
+                                <div id="review-list">
                                 </div>
                             </div>
                             <div class="col-lg-6 ps-5">
@@ -226,15 +162,15 @@
                                     <input type="hidden" value="{{detail.id}}" />
                                     <div class="rate mb-3">
                                         Your Rating:
-                                        <input class="form-control" type="number" min="1" max="5" placeholder="5"
-                                            name="rate " />
+                                        <input class="form-control" type="number" min="1" max="5" value="5"
+                                            name="rate" />
                                     </div>
                                     <div class="mb-3">
                                         <input class="form-control" type="text" placeholder="Your review"
                                             name="content" />
                                     </div>
                                     <input class="form-control mb-2 text-uppercase fw-bold" type="submit"
-                                        value="Submit now" />
+                                        id="submit-review" value="Submit now" />
                                 </form>
                             </div>
                         </div>
@@ -268,8 +204,3 @@
         </section>
     </div>
 </main>
-<script>
-    $.getJSON(`/product/${$('input[type=hidden]').val()}/rate`, (data) => {
-        console.log(data);        
-    })    
-</script>

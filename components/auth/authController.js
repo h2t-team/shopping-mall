@@ -29,11 +29,14 @@ const register = async (req, res) => {
     if (password != confirm) {
         req.flash('error', 'Confirm password does not match.');
         res.redirect('/auth/register');
+        return;
     }
+
     const user = await service.findUser({ username, email, phone });
     if (user) {
         req.flash('error', 'This account already exists.');
         res.redirect('/auth/register');
+        return;
     }
     
     const hashPassword = bcrypt.hashSync(password, 10);
@@ -41,7 +44,7 @@ const register = async (req, res) => {
         firstname, lastname, username, email,
         phone, birthday, hashPassword
     });
-    res.redirect('/');
+    res.redirect('/auth/login');
 }
 
 module.exports = {

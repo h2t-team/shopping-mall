@@ -7,7 +7,6 @@ const list = async (req, res) => {
     //request from dtb
     const category = await service.category();
     const products = catOption ? await service.byCategory(catOption, page - 1) : await service.all(page - 1);
-    console.log(products);
     res.render('product/productList', {
         title: 'TiMa Shop',
         style: 'productlist.css',
@@ -29,6 +28,7 @@ const detail = async (req, res) => {
         res.render('product/productDetail', {
             title: detail.name,
             style: 'detail.css',
+            scripts: ['productRate.js'],
             detail,
             topRate,
             size,
@@ -40,13 +40,13 @@ const detail = async (req, res) => {
 }
 
 const addRate = async (req, res) => {
-    const { rate, content } = req.body;
-    const userId = req.user.id;
-    const productId = req.params.id;
-    try{
+    try {
+        const { rate, content } = req.body;
+        const userId = req.user.id;
+        const productId = req.params.id;
         const newRating = await service.addRate({ userId, productId, rate, content });
         res.status(201).json(newRating);
-    }catch(error){
+    } catch (error) {
         res.status(500).json({
             message: error.message
         })
@@ -54,16 +54,27 @@ const addRate = async (req, res) => {
 }
 
 const getRate = async (req, res) => {
-    const productId = req.params.id;
-    try{
-        const rates = await service.getRate(productId);
-        res.status(201).json(rates);
-    }catch(error){
+    try {
+        const productId = req.params.id;
+        const page = !Number.isNaN(req.query.page) && req.query.page > 0 ? Number.parseInt(req.query.page) : 1;
+        const limit = !Number.isNaN(req.query.size) && req.query.size > 0 ? Number.parseInt(req.query.size) : 5;
+        const offset = page == 1 ? 0 : page * limit;
+        const rates = await service.getRate(productId, offset, limit);
+        const totalPages = Math.ceil(rates.count / limit);
+        const response = {
+            "totalPages": totalPages,
+            "pageNumber": page,
+            "pageSize": rates.rows.length,
+            "rates": rates.rows
+        }
+        res.status(201).json(response);
+    } catch (error) {
         res.status(500).json({
             message: error.message
         })
     }
 }
+
 module.exports = {
     list,
     detail,
