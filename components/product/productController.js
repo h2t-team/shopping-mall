@@ -56,9 +56,10 @@ const addRate = async (req, res) => {
 const getRate = async (req, res) => {
     try {
         const productId = req.params.id;
+        console.log(req.query);
         const page = !Number.isNaN(req.query.page) && req.query.page > 0 ? Number.parseInt(req.query.page) : 1;
-        const limit = !Number.isNaN(req.query.size) && req.query.size > 0 ? Number.parseInt(req.query.size) : 5;
-        const offset = page == 1 ? 0 : page * limit;
+        const limit = !Number.isNaN(req.query.size) && req.query.size > 0 ? Number.parseInt(req.query.size) : 3;
+        const offset = page == 1 ? 0 : (page-1) * limit;
         const rates = await service.getRate(productId, offset, limit);
         const totalPages = Math.ceil(rates.count / limit);
         const response = {

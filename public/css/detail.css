@@ -106,6 +106,12 @@
   font-weight: bolder;
 }
 
+#review .rate{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 #review .rate li {
   padding: 0.1rem;
 }
@@ -136,12 +142,9 @@
       align-self: center;
 }
 
-#review .review-form input[type=submit] {
-  width: 30%;
-  float: right;
-  background-color: var(--cream);
+#review .pagination i{
+  color: var(--primary);
 }
-
 .top-seller img {
   max-width: 70px;
 }

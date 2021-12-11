@@ -121,6 +121,9 @@ const getRate = (productId, offset, limit) => {
         raw: true,
         offset,
         limit,
+        order: [
+            ['created_at', 'DESC']
+        ],
         where:{
             'product_id': productId
         },
