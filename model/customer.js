@@ -46,7 +46,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     lock: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 0
     }
   }, {
     sequelize,
