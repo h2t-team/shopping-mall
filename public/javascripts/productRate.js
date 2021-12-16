@@ -84,37 +84,40 @@ function buildPagination(totalPages) {
     }
     pageIndex = '<li class="page-item"><a class="page-link"><i class="fas fa-caret-right"></i></a></li>';
     $("ul.pagination").append(pageIndex);
+
+    //add event 
+    $(document).on('click', 'ul.pagination li', e => {
+        let value = e.target.text;
+        if (!value) {
+            value = e.target.classList.value.includes('fas') ? e.target.classList.value
+                : e.target.childNodes[0].classList.value;
+            if (value.includes('left')) {
+                const curentPage = $("li.active");
+                const page = Number.parseInt(curentPage.text());
+                if (page > 1) {
+                    loadRate(page - 1);
+                    $("li.active").removeClass("active");
+                    curentPage.prev().addClass('active');
+                }
+            }
+            else {
+                const totalPages = $("ul.pagination li").length - 2;
+                const curentPage = $("li.active");
+                const page = Number.parseInt(curentPage.text());
+                if (page < totalPages) {
+                    loadRate(page + 1);
+                    $("li.active").removeClass("active");
+                    curentPage.next().addClass('active');
+                }
+            }
+        } else {
+            loadRate(value);
+            $("li.active").removeClass("active");
+            e.target.parentElement.classList.add('active');
+        }
+    })
 }
 
-$(document).on('click', 'ul.pagination li', e => {
-    let value = e.target.text;
-    if (!value) {
-        value = e.target.classList.value.includes('fas') ? e.target.classList.value
-            : e.target.childNodes[0].classList.value;
-        if (value.includes('left')) {
-            const curentPage = $("li.active");
-            const page = Number.parseInt(curentPage.text());
-            if (page > 1) {
-                loadRate(page - 1);
-                $("li.active").removeClass("active");
-                curentPage.prev().addClass('active');
-            }
-        }
-        else {
-            const totalPages = $("ul.pagination li").length - 2;
-            const curentPage = $("li.active");
-            const page = Number.parseInt(curentPage.text());
-            if (page < totalPages) {
-                loadRate(page + 1);
-                $("li.active").removeClass("active");
-                curentPage.next().addClass('active');
-            }
-        }
-    } else {
-        loadRate(value);
-        $("li.active").removeClass("active");
-        e.target.parentElement.classList.add('active');
-    }
-})
+
 
 

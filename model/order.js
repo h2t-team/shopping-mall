@@ -33,6 +33,10 @@ module.exports = function(sequelize, DataTypes) {
     created_at: {
       type: DataTypes.DATE,
       allowNull: false
+    },
+    note: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     }
   }, {
     sequelize,

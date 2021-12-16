@@ -21,17 +21,20 @@
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/homepage.css">
   <link rel="stylesheet" href="/css/footer.css">
+  {{#if style}}
   <link rel="stylesheet" href="/css/{{style}}">
+  {{/if}}
   <script src="/javascripts/validator.js"></script>
   <title>{{title}}</title>
 </head>
 
-<body>
+<body> 
+  {{> spinner}} 
   {{> header}}
   {{{body}}}
   {{> footer}}
   {{#each scripts }}
-  <script src="/javascripts/{{this}}"></script>    
+  <script src="/javascripts/{{this}}"></script>
   {{/each}}
 </body>
 

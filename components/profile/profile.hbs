@@ -11,20 +11,22 @@
                     </div>
                     <div class="col-lg-8 p-4">
                         {{#with user}}
-                        <form method="post">
+                        <form id="profile-form" method="post" action="/profile" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="fname">First name</label>
                                         <input id="fname" type="text" class="form-control" placeholder="First name"
-                                         name="firstname" value={{first_name}} />
+                                            name="firstname" value={{first_name}} rules="required" />
+                                        <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="lname">Last name</label>
                                         <input id="lname" type="text" class="form-control" placeholder="Last name"
-                                        name="lastname" value={{last_name}} />
+                                            name="lastname" value={{last_name}} rules="required" />
+                                        <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
                             </div>
@@ -33,33 +35,35 @@
                                     <div class="form-group">
                                         <label for="email">Email</label>
                                         <input id="email" type="text" class="form-control" placeholder="Email"
-                                        name="email" value={{email}} />
+                                            name="email" value={{email}} readonly />
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="tel">Tel</label>
-                                        <input id="tel" type="text" class="form-control" placeholder="Tel"
-                                        name="phone" value={{telephone}} />
+                                        <input id="tel" type="text" class="form-control" placeholder="Tel" name="phone"
+                                            value={{telephone}} readonly />
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="desc">Birthday</label>
-                                <input class="form-control" type="date" placeholder="Birthday" 
-                                name="birthday" value={{dob}} />
+                                <input class="form-control" type="date" placeholder="Birthday" name="birthday"
+                                    value={{dob}} rules="required" />
+                                <div class="invalid-feedback"></div>
                             </div>
                             <div class="form-group">
                                 <label>Avatar</label>
                                 <div class="d-flex align-items-center">
                                     <div class="me-3">
-                                        <div class="avatar" style="width: 80px; height: 80px">
-                                            <img src={{avatar avatar}} class="avatar-img rounded"
-                                                alt="..." data-dz-thumbnail />
+                                        <div class="avatar">
+                                            <img src={{avatar avatar}} class="avatar-img rounded" alt="..." width="80"
+                                                height="80" />
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <input type="file" name="photo" class="p-2 fs-6">
+                                        <label for="photo" class="btn px-3">Upload Image</label>
+                                        <input type="file" id="photo" name="photo" class="d-none" accept="image/*" />
                                         </input>
                                     </div>
                                 </div>
@@ -76,3 +80,14 @@
         </div>
     </div>
 </main>
+<script>
+    $(document).ready(() => {
+        Validation('#profile-form');
+        $('#photo').on('change', e => {
+            if (e.target.files.length > 0) {
+                const src = URL.createObjectURL(e.target.files[0]);
+                $(".avatar-img").attr("src", src);
+            }
+        })
+    })
+</script>

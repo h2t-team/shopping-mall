@@ -10,6 +10,9 @@ passport.use(new LocalStrategy(
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });
             }
+            if(user.lock){
+                return done(null, false, { message: 'Your account is locked.' });
+            }
             if (!validPassword(user, password)) {
                 return done(null, false, { message: 'Incorrect password.' });
             }

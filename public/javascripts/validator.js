@@ -6,7 +6,13 @@ function Validation(selector) {
             return regex.test(value) ? undefined : 'Please enter your email.'
         },
         min: min => value => value.length >= min ? undefined : `Please enter at least ${min} characters.`,
-        max: max => value => value.length <= max ? undefined : `Please enter no more than ${max} characters.`
+        max: max => value => value.length <= max ? undefined : `Please enter no more than ${max} characters.`,
+        confirm: id => value => {
+            const src = document.querySelector(`#${id}`);
+            if(src){
+                return src.value === value ? undefined : 'Please make sure your password match.'
+            }
+        }
     }
 
     const form = document.querySelector(selector);
@@ -36,10 +42,11 @@ function Validation(selector) {
             input.onblur = handleValidate;
             input.oninput = handleClearError;
         }
-        
+
         //Handle submit form
         form.onsubmit = (event) => {
             event.preventDefault();
+
             const inputs = form.querySelectorAll('[name][rules]');
             var isValid = true;
             for (let input of inputs) {
@@ -47,8 +54,11 @@ function Validation(selector) {
                     isValid = false;
                 }
             }
-            if (isValid)
+            if (isValid) {
+                $(".loading").removeClass("d-none");
+                $(".loading").addClass("d-flex");
                 form.submit();
+            }
         }
     }
 
@@ -58,10 +68,10 @@ function Validation(selector) {
         for (let rule of rules) {
             errorMessage = rule(event.target.value);
             if (errorMessage) {
+                event.target.classList.add("is-invalid");
                 const parent = event.target.parentElement;
                 if (parent) {
-                    parent.classList.add("invalid");
-                    const message = parent.querySelector('.message');
+                    const message = parent.querySelector('.invalid-feedback');
                     if (message)
                         message.innerText = errorMessage;
                     break;
@@ -72,14 +82,14 @@ function Validation(selector) {
     }
 
     function handleClearError(event) {
-        const parent = event.target.parentElement;
+        const child = event.target;
+        if (child.classList.contains("is-invalid"))
+            child.classList.remove("is-invalid")
+        const parent = child.parentElement;
         if (parent) {
-            if (parent.classList.contains("invalid")) {
-                parent.classList.remove("invalid")
-                const message = parent.querySelector('.message');
-                if (message)
-                    message.innerText = "";
-            }
+            const message = parent.querySelector('.invalid-feedback');
+            if (message)
+                message.innerText = "";
         }
     }
 
