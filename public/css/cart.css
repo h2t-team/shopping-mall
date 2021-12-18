@@ -9,6 +9,10 @@
   border-color: #eeeeee;
 }
 
+.cart-inner .table thead th{
+  color: #123354;
+}
+
 .cart-inner .table tbody tr td {
   padding: 1rem 1.5rem;
   vertical-align: middle;
@@ -37,17 +41,4 @@
   margin-bottom: 0px;
 }
 
-.gray-btn {
-  padding: 0.5rem 2rem;
-  background: var(--cream);
-  border: 1px solid var(--cream);
-  border-radius: 30px;
-  color: var(--black);
-  text-transform: capitalize;
-  font-weight: 500;
-}
-.gray-btn:hover {
-  background: var(--grey);
-  color: var(--white);
-  transition: all 0.3s;
-}
+

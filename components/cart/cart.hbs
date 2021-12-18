@@ -1,21 +1,23 @@
 <main>
-    <section class="cart-area">
+    <section class="shop-section">
         <div class="container">
             <div class="cart-inner">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
-                            <tr>
+                            <tr class=" table-primary">
                                 <th scope="col">Product</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Size</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             {{#each product }}
                             <tr>
+                                <input type="hidden" value={{'product_id'}}>
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
@@ -31,7 +33,7 @@
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="number" name="qty" id="qty" value={{quantity}} title="Quantity:"
+                                        <input type="number" name="qty" value={{quantity}} title="Quantity:"
                                             class="form-control">
                                     </div>
                                 </td>
