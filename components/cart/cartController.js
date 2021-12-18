@@ -9,12 +9,19 @@ const cart = async (req, res) => {
     if (user) {
         try {
             const product = await service.getCartById(user.id);
-            res.render('cart/cart', { title: 'Cart', style: 'cart.css', product });
-            //res.status(200).json(cart);
+            const total = product.reduce((prev, cur) => {
+                return cur.total + prev;
+            }, 0);
+            res.render('cart/cart', { 
+                title: 'Cart', 
+                style: 'cart.css', 
+                scripts: ['cart.js'], 
+                product, 
+                total });
         } catch (err) {
             console.log(err);
         }
-    }else{
+    } else {
         res.redirect('/auth/login')
     }
 }

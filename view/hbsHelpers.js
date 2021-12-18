@@ -48,10 +48,7 @@ const helpers = (hbs) => {
 
     hbs.registerHelper('radioChecked', (id, check) => id == check ? 'checked' : "");
 
-    hbs.registerHelper('currencyFormat', money => {
-        console.log(money);
-        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(money);
-    });
+    hbs.registerHelper('currencyFormat', money => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(money));
 
     hbs.registerHelper('avatar', url => url ? url : "/images/default.png");
 }

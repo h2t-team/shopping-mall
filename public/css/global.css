@@ -30,7 +30,7 @@ header {
     font-size: 2rem;
 }
 .btn {
-    padding: 10px 45px;
+    padding: 0.5rem 2rem;
     border: 1px solid var(--primary);
     background-color: var(--primary);
     font-weight: 500;
@@ -40,19 +40,33 @@ header {
     background-color: var(--white);
     color: var(--primary) !important;
 }
-.delete-btn{
-    padding: .2rem .4rem;
+.delete-btn {
+    padding: 0.2rem 0.4rem;
     line-height: 100%;
     border-radius: 5px;
-    border: 1px solid #DC3545;
-    background-color: #DC3545;
+    border: 1px solid #dc3545;
+    background-color: #dc3545;
     font-weight: 500;
     color: var(--white) !important;
 }
-.delete-btn:hover{
-    color: #DC3545!important;
+.delete-btn:hover {
+    color: #dc3545 !important;
     font-weight: 500;
-    background-color: var(--white); 
+    background-color: var(--white);
+}
+.gray-btn {
+    padding: 0.5rem 2rem;
+    background: var(--cream);
+    border: 1px solid var(--cream);
+    border-radius: 30px;
+    color: var(--black);
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.gray-btn:hover {
+    background: var(--grey);
+    color: var(--white);
+    transition: all 0.3s;
 }
 .nav-btn {
     border: 1px solid #ddd;

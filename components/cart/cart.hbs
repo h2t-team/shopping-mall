@@ -1,7 +1,7 @@
 <main>
-    <section class="cart_area">
+    <section class="cart-area">
         <div class="container">
-            <div class="cart_inner">
+            <div class="cart-inner">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -31,8 +31,8 @@
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="number" name="qty" id="qty" value={{quantity}}
-                                            title="Quantity:" class="form-control">
+                                        <input type="number" name="qty" id="qty" value={{quantity}} title="Quantity:"
+                                            class="form-control">
                                     </div>
                                 </td>
                                 <td class="text-center">
@@ -43,91 +43,30 @@
                                 </td>
                                 <td>
                                     <a href="javascript:void(0)" class="delete-btn"><i class="fas fa-times"></i></a>
-                                </td>                                
-                            </tr>                                
+                                </td>
+                            </tr>
                             {{/each}}
-                            <tr class="bottom_button">
-                                <td>
-                                    <a class="button" href="#">Update Cart</a>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div class="cupon_text d-flex align-items-center">
-                                        <input type="text" placeholder="Coupon Code">
-                                        <a class="btn rounded-pill m-3" href="#">Apply</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <h5>Subtotal</h5>
-                                </td>
-                                <td>
-                                    <h5>$2160.00</h5>
-                                </td>
-                            </tr>
-                            <tr class="shipping_area">
-                                <td class="d-none d-md-block">
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <h5>Shipping</h5>
-                                </td>
-                                <td>
-                                    <div class="shipping_box">
-                                        <ul class="list">
-                                            <li><a href="#">Flat Rate: $5.00</a></li>
-                                            <li><a href="#">Free Shipping</a></li>
-                                            <li><a href="#">Flat Rate: $10.00</a></li>
-                                            <li class="active"><a href="#">Local Delivery: $2.00</a></li>
-                                        </ul>
-                                        <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
-                                        <select class="shipping_select">
-                                            <option value="1">Bangladesh</option>
-                                            <option value="2">India</option>
-                                            <option value="4">Pakistan</option>
-                                        </select>
-                                        <select class="shipping_select">
-                                            <option value="1">Select a State</option>
-                                            <option value="2">Select a State</option>
-                                            <option value="4">Select a State</option>
-                                        </select>
-                                        <input type="text" placeholder="Postcode/Zipcode">
-                                        <a class="gray_btn" href="#">Update Details</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="out_button_area">
-                                <td class="d-none-l">
-
-                                </td>
-                                <td class="">
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="#">Continue Shopping</a>
-                                        <a class="primary-btn ml-2" href="/order/checkout">Proceed to checkout</a>
-                                    </div>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="d-flex flex-wrap justify-content-between mx-3 pb-3 border-bottom">
+                    <div class="">
+                        <a class="gray-btn my-2" id="update-cart" href="#">Update Cart</a>
+                    </div>
+                    <div class="coupon-text d-flex justify-content-end align-items-center">
+                        <input type="text" class="form-control rounded-pill mx-3" placeholder="Coupon Code">
+                        <a class="btn rounded-pill" href="#">Apply</a>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end p-3 border-bottom">
+                    <h5 class="m-2 p-2">Total:</h5>
+                    <h5 class="m-2 p-2">{{currencyFormat ./total}}</h5>
+                </div>
+                <div class="">
+                    <div class="d-flex py-3 justify-content-end align-items-center border-bottom">
+                        <a class="gray-btn mx-3" href="#">Continue Shopping</a>
+                        <a class="btn rounded-pill mx-3" href="/order/checkout">Check Out</a>
+                    </div>
                 </div>
             </div>
         </div>
