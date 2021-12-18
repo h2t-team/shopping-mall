@@ -40,6 +40,20 @@ header {
     background-color: var(--white);
     color: var(--primary) !important;
 }
+.delete-btn{
+    padding: .2rem .4rem;
+    line-height: 100%;
+    border-radius: 5px;
+    border: 1px solid #DC3545;
+    background-color: #DC3545;
+    font-weight: 500;
+    color: var(--white) !important;
+}
+.delete-btn:hover{
+    color: #DC3545!important;
+    font-weight: 500;
+    background-color: var(--white); 
+}
 .nav-btn {
     border: 1px solid #ddd;
     background-color: var(--white);

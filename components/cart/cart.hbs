@@ -8,110 +8,56 @@
                             <tr>
                                 <th scope="col">Product</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Size</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each product }}
                             <tr>
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="/images/shoe.png" alt="">
-                                            <div class="media-body ms-3">
-                                                <p>Minimalistic shop for multipurpose use</p>
+                                            <img src={{'product.product_images.image_url'}} alt="product-image" />
+                                            <div class="media-body ms-5 fs-6">
+                                                <p>{{'product.name'}}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>$360.00</h5>
+                                    <h5>{{currencyFormat this.[product.price]}}</h5>
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <button class="reduced items-count" type="button"><i
-                                                class="fas fa-chevron-left"></i></button>
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1"
-                                            title="Quantity:" class="input-text qty">
-                                        <button class="increase items-count" type="button"><i
-                                                class="fas fa-chevron-right"></i></button>
+                                        <input type="number" name="qty" id="qty" value={{quantity}}
+                                            title="Quantity:" class="form-control">
                                     </div>
                                 </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="/images/shoe.png" alt="">
-                                            <div class="media-body ms-3">
-                                                <p>Minimalistic shop for multipurpose use</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <td class="text-center">
+                                    <h5>{{size}}</h5>
                                 </td>
                                 <td>
-                                    <h5>$360.00</h5>
+                                    <h5>{{currencyFormat total}}</h5>
                                 </td>
                                 <td>
-                                    <div class="product_count">
-                                        <button class="reduced items-count" type="button"><i
-                                                class="fas fa-chevron-left"></i></button>
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1"
-                                            title="Quantity:" class="input-text qty">
-                                        <button class="increase items-count" type="button"><i
-                                                class="fas fa-chevron-right"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="/images/shoe.png" alt="">
-                                            <div class="media-body ms-3">
-                                                <p>Minimalistic shop for multipurpose use</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <button class="reduced items-count" type="button"><i
-                                                class="fas fa-chevron-left"></i></button>
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1"
-                                            title="Quantity:" class="input-text qty">
-                                        <button class="increase items-count" type="button"><i
-                                                class="fas fa-chevron-right"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
+                                    <a href="javascript:void(0)" class="delete-btn"><i class="fas fa-times"></i></a>
+                                </td>                                
+                            </tr>                                
+                            {{/each}}
                             <tr class="bottom_button">
                                 <td>
                                     <a class="button" href="#">Update Cart</a>
                                 </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>
                                     <div class="cupon_text d-flex align-items-center">
                                         <input type="text" placeholder="Coupon Code">
-                                        <a class="primary-btn" href="#">Apply</a>
-                                        <a class="button" href="#">Have a Coupon?</a>
+                                        <a class="btn rounded-pill m-3" href="#">Apply</a>
                                     </div>
                                 </td>
                             </tr>

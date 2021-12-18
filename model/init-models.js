@@ -1,7 +1,6 @@
 var DataTypes = require("sequelize").DataTypes;
 var _admin = require("./admin");
 var _cart = require("./cart");
-var _cart_has_product = require("./cart_has_product");
 var _category = require("./category");
 var _customer = require("./customer");
 var _feedback = require("./feedback");
@@ -15,7 +14,6 @@ var _receiver_address = require("./receiver_address");
 function initModels(sequelize) {
   var admin = _admin(sequelize, DataTypes);
   var cart = _cart(sequelize, DataTypes);
-  var cart_has_product = _cart_has_product(sequelize, DataTypes);
   var category = _category(sequelize, DataTypes);
   var customer = _customer(sequelize, DataTypes);
   var feedback = _feedback(sequelize, DataTypes);
@@ -26,14 +24,12 @@ function initModels(sequelize) {
   var product_size = _product_size(sequelize, DataTypes);
   var receiver_address = _receiver_address(sequelize, DataTypes);
 
-  cart_has_product.belongsTo(cart, { as: "customer", foreignKey: "customer_id"});
-  cart.hasMany(cart_has_product, { as: "cart_has_products", foreignKey: "customer_id"});
   category.belongsTo(category, { as: "parent", foreignKey: "parent_id"});
   category.hasMany(category, { as: "categories", foreignKey: "parent_id"});
   product.belongsTo(category, { as: "category", foreignKey: "category_id"});
   category.hasMany(product, { as: "products", foreignKey: "category_id"});
   cart.belongsTo(customer, { as: "customer", foreignKey: "customer_id"});
-  customer.hasOne(cart, { as: "cart", foreignKey: "customer_id"});
+  customer.hasMany(cart, { as: "carts", foreignKey: "customer_id"});
   feedback.belongsTo(customer, { as: "customer", foreignKey: "customer_id"});
   customer.hasMany(feedback, { as: "feedbacks", foreignKey: "customer_id"});
   order.belongsTo(customer, { as: "customer", foreignKey: "customer_id"});
@@ -42,8 +38,8 @@ function initModels(sequelize) {
   customer.hasMany(receiver_address, { as: "receiver_addresses", foreignKey: "customer_id"});
   order_details.belongsTo(order, { as: "order", foreignKey: "order_id"});
   order.hasMany(order_details, { as: "order_details", foreignKey: "order_id"});
-  cart_has_product.belongsTo(product, { as: "product", foreignKey: "product_id"});
-  product.hasMany(cart_has_product, { as: "cart_has_products", foreignKey: "product_id"});
+  cart.belongsTo(product, { as: "product", foreignKey: "product_id"});
+  product.hasMany(cart, { as: "carts", foreignKey: "product_id"});
   feedback.belongsTo(product, { as: "product", foreignKey: "product_id"});
   product.hasMany(feedback, { as: "feedbacks", foreignKey: "product_id"});
   order_details.belongsTo(product, { as: "product", foreignKey: "product_id"});
@@ -58,7 +54,6 @@ function initModels(sequelize) {
   return {
     admin,
     cart,
-    cart_has_product,
     category,
     customer,
     feedback,

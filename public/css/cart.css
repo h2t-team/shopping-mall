@@ -27,7 +27,7 @@
 }
 
 .cart_inner .table tbody tr td .media img {
-  width: 30%;
+  width: 15%;
 }
 
 .cart_inner .table tbody tr td .media .d-flex {
@@ -60,55 +60,6 @@
   font-size: 15px;
   color: var(--black);
   margin-bottom: 0px;
-}
-
-.cart_inner .table tbody tr td .product_count {
-  margin-bottom: 0px;
-}
-
-.cart_inner .table tbody tr td .product_count input {
-  width: 100px;
-  border: solid 1px var(--cream);
-  outline: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-.cart_inner .table tbody tr td .product_count button {
-  width: 20px;
-  border: none;
-}
-
-.cart_inner .table tbody tr td .product_count button:hover {
-  background-color: #ddd;
-}
-
-.cart_inner .table tbody tr td .product_count .increase {
-  top: -2px;
-}
-
-.cart_inner .table tbody tr td .product_count .increase:before {
-  content: "";
-  height: 40px;
-  width: 1px;
-  position: absolute;
-  left: -3px;
-  top: 0px;
-  background: #eeeeee;
-}
-
-.cart_inner .table tbody tr td .product_count .increase:after {
-  content: "";
-  height: 1px;
-  width: 30px;
-  position: absolute;
-  left: -3px;
-  top: 22px;
-  background: #eeeeee;
-}
-
-.cart_inner .table tbody tr td .product_count .reduced {
-  bottom: -6px;
 }
 
 .cart_inner .table tbody tr.bottom_button .button {

@@ -27,7 +27,7 @@ async function loadRate(page, size) {
             'Content-Type': 'application/json'
         }
     };
-    const response = await fetch(url, request)
+    const response = await fetch(url, request);
     if (response.ok) {
         const data = await response.json();
         $('#review-list').empty();
