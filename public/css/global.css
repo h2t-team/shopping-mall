@@ -118,22 +118,22 @@ header {
     margin-top: 120px;
     margin-bottom: 50px;
 }
-.product-overlay {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 30px 5px;
-    background-color: rgba(255, 255, 255, 0.5);
-    opacity: 0;
+.product-img img {
     transition: 0.3s ease;
-    z-index: -1;
-    transform: translateY(30px);
+}
+.product-card:hover {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 .product-card:hover .product-overlay {
     opacity: 1;
     z-index: 1;
     transform: translateY(0);
+}
+.product-img {
+    overflow: hidden;
+}
+.product-card:hover .product-img img {
+    transform: scale(1.05);
 }
 .product-icon {
     padding: 7px 12px;
@@ -166,6 +166,7 @@ header {
     position: relative;
     top: 70px;
 }
+
 @media screen and (max-width: 767px) {
     .btn {
         padding: 8px 25px !important;
