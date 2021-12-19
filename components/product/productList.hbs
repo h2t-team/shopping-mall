@@ -9,22 +9,21 @@
                             <form>
                                 <div class="shop-sidebar-type">
                                     <div class="form-check mb-2">
-                                            <input class="form-check-input" type="radio" 
-                                            name="category" checked id='0' onclick="window.location='/product';">
-                                            <label class="form-check-label" for='0'>
-                                                All
-                                            </label>
-                                        </div>
+                                        <input class="form-check-input" type="radio" name="category" checked id='0'
+                                            onclick="window.location='/product';">
+                                        <label class="form-check-label" for='0'>
+                                            All
+                                        </label>
+                                    </div>
                                     {{#each category}}
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input" type="radio" 
-                                            name="category" {{{radioChecked id ../catOption}}} 
-                                            id={{id}} onclick="window.location='?category={{id}}'">
-                                            
-                                            <label class="form-check-label" for={{id}}>
-                                                {{name}} ({{total_products}})
-                                            </label>
-                                        </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="category" {{{radioChecked id
+                                            ../catOption}}} id={{id}} onclick="window.location='?category={{id}}'">
+
+                                        <label class="form-check-label" for={{id}}>
+                                            {{name}} ({{total_products}})
+                                        </label>
+                                    </div>
                                     {{/each}}
                                 </div>
                             </form>
@@ -56,38 +55,31 @@
                     <div class="row">
                         {{#each products.rows}}
                         <div class="col-sm-6 col-lg-4">
-                            <div class="product-card text-center mb-4">
-                                <div class="product-img position-relative">
-                                    <img src={{'product_images.image_url'}} alt="">
-                                    <ul class="product-overlay text-center d-flex justify-content-center">
-                                        <li class="me-1">
-                                            <a href="#" class="product-icon">
-                                                <i class="bi bi-search"></i>
-                                            </a>
-                                        </li>
-                                        <li class="me-1">
-                                            <a href="#" class="product-icon">
-                                                <i class="bi bi-cart3"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="product-icon">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                            <a href="/product/{{id}}">
+                                <div class="product-card text-center mb-4">
+                                    <div class="product-img position-relative">
+                                        <img src={{'product_images.image_url'}} alt="">
+                                        <ul class="product-overlay text-center d-flex justify-content-center">
+                                            <li class="me-1">
+                                                <a href="/product/{{id}}" class="product-icon">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-info">
+                                        <p>{{'category.name'}}</p>
+                                        <a href="/product/{{id}}" class="product-info-name mb-2">{{name}}</a>
+                                        <p class="product-price">{{currencyFormat price}}</p>
+                                    </div>
                                 </div>
-                                <div class="product-info">
-                                    <p>{{'category.name'}}</p>
-                                    <a href="/product/{{id}}" class="product-info-name mb-2">{{name}}</a>
-                                    <p class="product-price">{{currencyFormat price}}</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         {{/each}}
                     </div>
                 </div>
-                <div class="offset-xl-3 offset-lg-4 offset-md-5 col-xl-9 col-lg-8 col-md-7 page-nav d-flex justify-content-center">
+                <div
+                    class="offset-xl-3 offset-lg-4 offset-md-5 col-xl-9 col-lg-8 col-md-7 page-nav d-flex justify-content-center">
                     <ul class="d-flex">
                         {{#page products.count.length page catOption}}
                         {{/page}}

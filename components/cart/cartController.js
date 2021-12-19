@@ -41,10 +41,23 @@ const updateCart = async (req, res) => {
             message: err.message
         })
     }
+}
 
+const deleteFromCart = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const productId = req.body.productId;
+        await service.deleteFromCart(userId, productId);
+        res.status(200).json({success: 'success'});
+    } catch (err) {
+        res.status(500).json({
+            message: err.message
+        })
+    }
 }
 module.exports = {
     page,
     cart,
-    updateCart
+    updateCart,
+    deleteFromCart
 }

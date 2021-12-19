@@ -28,14 +28,26 @@ const updateCart = (userId, productId, quantity, total) => {
         total
     }, {
         where: {
-            [Op.and] : [
-                {'customer_id': userId},
-                {'product_id':productId}
+            [Op.and]: [
+                { 'customer_id': userId },
+                { 'product_id': productId }
             ]
         }
     });
 }
+
+const deleteFromCart = (userId, productId) => {
+    return models.cart.destroy({
+        where: {
+            [Op.and]: [
+                { 'customer_id': userId },
+                { 'product_id': productId }
+            ]
+        }
+    })
+}
 module.exports = {
     getCartById,
-    updateCart
+    updateCart,
+    deleteFromCart
 }

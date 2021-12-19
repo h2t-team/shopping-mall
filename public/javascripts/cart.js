@@ -1,4 +1,5 @@
 $(document).ready(() => {
+    //Update Cart
     $('#update-cart').on('click', async e => {
         const data = [];
         $.each($('.table tbody tr'), function (i, item) {
@@ -24,6 +25,23 @@ $(document).ready(() => {
         $(".loading").addClass("d-flex");
         const response = await fetch(`/cart/update`, request);
         window.location.replace('/cart');
+    });
+
+    //Delete from cart
+    $(document).on('click', '.delete-btn', async e => {
+        const row = getParentElement(e.target, 'tr');
+        const productId = row.querySelector('input[type=hidden]').value;
+        const request = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ productId })
+        };
+        $(".loading").removeClass("d-none");
+        $(".loading").addClass("d-flex");
+        const response = await fetch(`/cart/delete`, request);
+        window.location.replace('/cart');
     })
 })
 
@@ -32,4 +50,12 @@ function reverseFormatNumber(val, locale) {
     var decimalSeparator = Intl.NumberFormat(locale).format(1.1).replace(/\p{Number}/gu, '');
     return parseFloat(val.replace(new RegExp('\\' + thousandSeparator, 'g'), '')
         .replace(new RegExp('\\' + decimalSeparator), '.'));
+}
+
+function getParentElement(child, selector){
+    while(child.parentElement){
+        if(child.parentElement.matches(selector))
+            return child.parentElement;
+        child = child.parentElement;
+    }
 }
