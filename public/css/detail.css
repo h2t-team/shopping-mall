@@ -11,19 +11,6 @@
   border-bottom: dotted 0.5px var(--cream);
 }
 
-.detail .text-detail .product-count input {
-  width: 60px;
-}
-
-.detail .text-detail .product-count button {
-  padding: 0 0.5rem;
-  border: none;
-}
-
-.detail .text-detail .product-count button:hover {
-  background-color: #ddd;
-}
-
 .detail .text-detail .product-count a {
   display: inline-block;
   padding: 0.8rem 0;
@@ -39,17 +26,6 @@
   color: var(--primary);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-}
-
-.detail .text-detail .favorite i {
-  padding: 1rem;
-  background-color: #ddd;
-}
-
-.detail .text-detail .favorite i:hover {
-  background-color: var(--white);
-  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 .rating .nav {
@@ -78,10 +54,6 @@
 
 .rating .tab-content p {
   color: var(--grey);
-}
-
-.rating .tab-content .table {
-  width: 100%;
 }
 
 .rating .tab-content .table td {

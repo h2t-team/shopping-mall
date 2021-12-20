@@ -28,7 +28,7 @@ const detail = async (req, res) => {
         res.render('product/productDetail', {
             title: detail.name,
             style: 'detail.css',
-            scripts: ['productRate.js'],
+            scripts: ['productRate.js', 'addToCart.js'],
             detail,
             related: related.rows,
             size,
@@ -56,7 +56,6 @@ const addRate = async (req, res) => {
 const getRate = async (req, res) => {
     try {
         const productId = req.params.id;
-        console.log(req.query);
         const page = !Number.isNaN(req.query.page) && req.query.page > 0 ? Number.parseInt(req.query.page) : 1;
         const limit = !Number.isNaN(req.query.size) && req.query.size > 0 ? Number.parseInt(req.query.size) : 3;
         const offset = page == 1 ? 0 : (page-1) * limit;
