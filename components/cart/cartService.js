@@ -18,19 +18,41 @@ const getCartById = id => {
                 duplicating: false,
             }],
         }],
-        group: ['product.id']
+        group: ['product.id', 'size']
     })
 }
 
-const updateCart = (userId, productId, quantity, total) => {
+const findInCart = (userId, productId, size) => {
+    return models.cart.findOne({
+        where: {
+            [Op.and]: [
+                { 'customer_id': userId },
+                { 'product_id': productId },
+                { size }
+            ]
+        },
+        raw: true
+    })
+}
+const addToCart = (userId, productId, size, quantity, total) => {
+    return models.cart.create({
+        'customer_id': userId,
+        'product_id': productId,
+        size,
+        quantity,
+        total,
+    });
+}
+const updateCart = (userId, productId, size, quantity, total) => {
     return models.cart.update({
         quantity,
-        total
+        total,
     }, {
         where: {
             [Op.and]: [
                 { 'customer_id': userId },
-                { 'product_id': productId }
+                { 'product_id': productId },
+                { size }
             ]
         }
     });
@@ -48,6 +70,8 @@ const deleteFromCart = (userId, productId) => {
 }
 module.exports = {
     getCartById,
+    findInCart,
+    addToCart,
     updateCart,
     deleteFromCart
 }

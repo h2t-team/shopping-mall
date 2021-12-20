@@ -91,7 +91,8 @@ const detail = id => {
 const size = id => {
     return models.product_size.findAll({
         where: {
-            'product_id': id
+            'product_id': id,
+            quantity: { [Op.not]: 0 }
         },
         attributes: ['size', 'quantity'],
         raw: true
@@ -106,7 +107,7 @@ const image = id => {
     })
 }
 
-const addRate = ({userId, productId, rate, content}) =>{
+const addRate = ({ userId, productId, rate, content }) => {
     return models.feedback.create({
         'customer_id': userId,
         'product_id': productId,
@@ -124,13 +125,13 @@ const getRate = (productId, offset, limit) => {
         order: [
             ['created_at', 'DESC']
         ],
-        where:{
+        where: {
             'product_id': productId
         },
         include: {
             model: models.customer,
-            as:'customer',
-            attributes: ['first_name','last_name','avatar']
+            as: 'customer',
+            attributes: ['first_name', 'last_name', 'avatar']
         }
     })
 }

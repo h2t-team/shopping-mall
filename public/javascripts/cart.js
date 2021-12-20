@@ -5,11 +5,13 @@ $(document).ready(() => {
         $.each($('.table tbody tr'), function (i, item) {
             const productId = item.querySelector('input[type=hidden]').value;
             const quantity = parseInt(item.querySelector('input[type=number]').value);
+            const size = item.querySelector('.size').innerText;
             let price = item.querySelector('h5').innerText;
             price = reverseFormatNumber(price,'vi-VN');
             const total = quantity*price;
             data.push({
                 productId,
+                size,
                 quantity,
                 total
             });
