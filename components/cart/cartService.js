@@ -58,12 +58,13 @@ const updateCart = (userId, productId, size, quantity, total) => {
     });
 }
 
-const deleteFromCart = (userId, productId) => {
+const deleteFromCart = (userId, productId, size) => {
     return models.cart.destroy({
         where: {
             [Op.and]: [
                 { 'customer_id': userId },
-                { 'product_id': productId }
+                { 'product_id': productId },
+                { size }
             ]
         }
     })

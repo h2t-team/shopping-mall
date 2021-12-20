@@ -2,7 +2,7 @@ $(document).ready(()=>{
     loadRate();
     $('#submit-review').on('click', async e => {
         e.preventDefault();
-        const rate = $('input[name=rate]').val();
+        const rate = $('input[type=hidden][name=rate]').val();
         const content = $('input[name=content]').val();
         const request = {
             method: 'POST',
@@ -12,8 +12,11 @@ $(document).ready(()=>{
             body: JSON.stringify({ rate, content })
         };
         const response = await fetch(`/product/${$('input[type=hidden]').val()}/rate`, request)
-        if (response.ok)
+        if (response.ok){
             loadRate();
+            $('input[type=hidden][name=rate]').val("5");
+            $('input[name=content]').val("");
+        }
         else
             window.location.replace('/auth/login')
     });
@@ -34,6 +37,7 @@ async function loadRate(page, size) {
         $.each(data.rates, function (index, item) {
             appendRate(item);
         });
+        $('#total-rate').text(`(${data.total} Reviews)`)
         if ($('ul.pagination li').length - 2 != data.totalPages) {
             $('ul.pagination').empty();
             buildPagination(data.totalPages);
@@ -43,27 +47,27 @@ async function loadRate(page, size) {
 
 function appendRate(rate) {
     let html =
-        `<div class="review-item">\n
-        <div class="d-flex position-relative mb-2">\n
-            <div class="avatar">\n
+        `<div class="review-item">
+        <div class="d-flex position-relative mb-2">
+            <div class="avatar">
                 <img src="${rate['customer.avatar'] ? rate['customer.avatar'] : '/images/default.png'}" 
                 alt="avatar" class="rounded-circle" />
-            </div>\n
-            <div class="info">\n
-                <h5>${rate['customer.first_name']} ${rate['customer.last_name']}</h3>\n
-                <div>\n`;
+            </div>
+            <div class="info">
+                <h5>${rate['customer.first_name']} ${rate['customer.last_name']}</h5>
+                <div>`;
     //add rating start
     for (let i = 1; i <= rate.rate; i++)
         html += `<i class="fas fa-star"></i>`
     for (let i = rate.rate + 1; i <= 5; i++)
         html += `<i class="far fa-star"></i>`
 
-    html += `</div>\n
-            <p>${new Date(rate['created_at']).toDateString()}</p>\n
+    html += `</div>
+            <p>${new Date(rate['created_at']).toDateString()}</p>
             </div>
-        </div>\n
-        <p class="review">${rate.content}</p>\n
-    </div>\n`
+        </div>
+        <p class="review">${rate.content}</p>
+    </div>`
     $('#review-list').append(html);
 }
 

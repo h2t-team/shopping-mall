@@ -1,0 +1,10 @@
+.address-detail {
+    margin-bottom: .5rem;
+}
+.address-detail .label {
+    margin-right: 1.5rem;
+    min-width: 80px;
+    text-align: right;
+    color: var(--grey);
+    font-weight: 500;
+}

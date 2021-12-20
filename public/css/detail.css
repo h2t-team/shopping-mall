@@ -2,6 +2,11 @@
   padding: 2rem 0;
 }
 
+.avatar {
+  width: 15%;
+  padding-right: 1rem;
+}
+
 .detail .text-detail .price {
   color: var(--primary);
 }
@@ -60,10 +65,6 @@
   padding: 0.5rem 2rem;
 }
 
-#review i {
-  color: #fbd600;
-}
-
 #review .overall {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -78,31 +79,14 @@
   font-weight: bolder;
 }
 
-#review .rate{
+#review .rate-overall{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-#review .rate li {
-  padding: 0.1rem;
-}
-
-#review .rate i:first-child {
-  margin-left: 1rem;
-}
-
-#review .rate i:last-child {
-  margin-right: 1rem;
-}
-
-#review .review-item {
-  margin: 2rem 0;
-}
-
-#review .review-item .avatar {
-  width: 15%;
-  padding-right: 1rem;
+#review .review-item{
+  margin-bottom: 1rem;
 }
 
 #review .review-item .info {

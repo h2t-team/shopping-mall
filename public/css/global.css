@@ -41,7 +41,7 @@ header {
     color: var(--primary) !important;
 }
 .delete-btn {
-    padding: 0.2rem 0.4rem;
+    padding: 0.2rem 1rem;
     line-height: 100%;
     border-radius: 5px;
     border: 1px solid #dc3545;
@@ -51,6 +51,20 @@ header {
 }
 .delete-btn:hover {
     color: #dc3545 !important;
+    font-weight: 500;
+    background-color: var(--white);
+}
+.blue-btn{
+    padding: 0.2rem 1rem;
+    line-height: 100%;
+    border-radius: 5px;
+    border: 1px solid #0DCAF0;
+    background-color: #0DCAF0;
+    font-weight: 500;
+    color: var(--white);
+}
+.blue-btn:hover{
+    color: #0DCAF0 !important;
     font-weight: 500;
     background-color: var(--white);
 }
@@ -82,6 +96,10 @@ header {
     color: #f44336;
     border-radius: 0.25rem;
     padding: 0.5rem;
+}
+.fa-star {
+    color: #FBD600;
+    font-size: 1rem;
 }
 .form-group {
     margin-bottom: 1rem;

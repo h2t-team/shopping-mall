@@ -49,9 +49,25 @@ const changePassword = async (req, res) => {
         console.log(err);
     }
 }
+
+const getAddresses = async (req, res) => {
+    const user = req.user;
+    if(user){
+        try{            
+            const addresses = await service.getAddresses(user.id);
+            console.log(addresses);
+            res.render('profile/address', {title: "Addresses", addresses, style: 'addresses.css'});
+        }catch(err){
+            console.log(err);
+        }
+    }else{
+        res.redirect('/auth/login');
+    }
+}
 module.exports = {
     profile,
     update,
     changePasswordPage,
-    changePassword
+    changePassword,
+    getAddresses
 }

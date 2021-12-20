@@ -35,8 +35,18 @@ const updatePass = (userId, hashPass) => {
     })
 }
 
+const getAddresses = userId => {
+    return models.receiver_address.findAll({
+        raw: true,
+        where: {
+            'customer_id': userId
+        }
+    })
+}
+
 module.exports = {
     update,
     updateWithImg,
-    updatePass
+    updatePass,
+    getAddresses
 }

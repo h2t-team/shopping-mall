@@ -38,7 +38,7 @@ const addToCart = async (req, res) => {
                 const newTotal = product.total * newQty / product.quantity;
                 await service.updateCart(user.id, productId, size, newQty, newTotal);
                 res.status(200).json({ success: 'success' });
-            }else{
+            } else {
                 await service.addToCart(user.id, productId, size, quantity, total);
                 res.status(201).json({ success: 'success' });
             }
@@ -71,8 +71,8 @@ const updateCart = async (req, res) => {
 const deleteFromCart = async (req, res) => {
     try {
         const userId = req.user.id;
-        const productId = req.body.productId;
-        await service.deleteFromCart(userId, productId);
+        const { productId, size } = req.body;
+        await service.deleteFromCart(userId, productId, size);
         res.status(200).json({ success: 'success' });
     } catch (err) {
         res.status(500).json({

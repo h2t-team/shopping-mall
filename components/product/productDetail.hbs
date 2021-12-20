@@ -101,80 +101,64 @@
                         <div class="row  justify-content-center">
                             <div class="col-lg-8">
                                 <div class="row mb-3">
-                                    <div class="col-md-6 overall text-center mb-2">
+                                    <div class="col-12 overall text-center mb-2">
                                         <h4 class="fw-bolder">Overall</h4>
                                         <h1>{{detail.rate}}</h1>
-                                        <p>(03 Reviews)</p>
+                                        <p id="total-rate"></p>
                                     </div>
-                                    <div class="col-md-6 rate">
+                                    {{!-- <div class="col-md-6 rate-overall">
                                         <h5 class="mb-2 col-12 text-center">Base on 3 Reviews</h5>
                                         <ul>
                                             <li>
-                                                5 Star
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                01
+                                                <input type="hidden" class="rating" data-readonly value="5"
+                                                    data-filled="fas fa-star" data-empty="far fa-star" />
+                                                <span id="review-5" class="ms-3"></span>
                                             </li>
                                             <li>
-                                                4 Star
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                01
+                                                <input type="hidden" class="rating" data-readonly value="4"
+                                                    data-filled="fas fa-star" data-empty="far fa-star" />
+                                                <span id="review-4" class="ms-3"></span>
                                             </li>
                                             <li>
-                                                3 Star
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                01
+                                                <input type="hidden" class="rating" data-readonly value="3"
+                                                    data-filled="fas fa-star" data-empty="far fa-star" />
+                                                <span id="review-3" class="ms-3"></span>
                                             </li>
                                             <li>
-                                                2 Star
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                01
+                                                <input type="hidden" class="rating" data-readonly value="2"
+                                                    data-filled="fas fa-star" data-empty="far fa-star" />
+                                                <span id="review-2" class="ms-3"></span>
                                             </li>
                                             <li>
-                                                1 Star
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                01
+                                                <input type="hidden" class="rating" data-readonly value="1"
+                                                    data-filled="fas fa-star" data-empty="far fa-star" />
+                                                <span id="review-1" class="ms-3"></span>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                 </div>
+                                {{#if user}}
                                 <div class="add-rating my-3">
                                     <h2 class="mb-2">Add a review</h2>
-                                    <form class="review-form">
+                                    <form class="review-form row">
                                         <input type="hidden" value="{{detail.id}}" />
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="rate-form">Your Rating:</label>
-                                            <input class="form-control" type="number" min="1" max="5" value="5"
-                                                name="rate" id="rate-form" />
+                                            <input type="hidden" name="rate" class="rating" value="5"
+                                                data-filled="fas fa-star fs-4" data-empty="far fa-star fs-4" />
                                         </div>
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="content-form">Your Review:</label>
                                             <input class="form-control" type="text" placeholder="Your review"
                                                 name="content" />
                                         </div>
-                                        <input class="btn mb-2 text-uppercase p-2" type="submit" id="submit-review"
-                                            value="Submit now" />
+                                        <div class="d-flex justify-content-end">
+                                            <input class="col-md-3 btn mb-2 text-uppercase" type="submit" id="submit-review"
+                                                value="Submit now" />
+                                        </div>
                                     </form>
-                                </div>
+                                </div>                                    
+                                {{/if}}
                                 <div id="review-list">
                                 </div>
                                 <ul class="pagination justify-content-center">

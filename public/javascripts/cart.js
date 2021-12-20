@@ -32,13 +32,14 @@ $(document).ready(() => {
     //Delete from cart
     $(document).on('click', '.delete-btn', async e => {
         const row = getParentElement(e.target, 'tr');
-        const productId = row.querySelector('input[type=hidden]').value;
+        const productId = row.querySelector('input[type=hidden]').value;        
+        const size = row.querySelector('.size').innerText;
         const request = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ productId })
+            body: JSON.stringify({ productId, size })
         };
         $(".loading").removeClass("d-none");
         $(".loading").addClass("d-flex");
