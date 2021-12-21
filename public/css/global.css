@@ -26,6 +26,9 @@ header {
     left: 0;
     z-index: 10;
 }
+.text-primary{
+    color: var(--primary);
+}
 .navbar-brand {
     font-size: 2rem;
 }
