@@ -23,10 +23,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(11),
       allowNull: true
     },
-    province: {
-      type: DataTypes.STRING(45),
-      allowNull: true
-    },
     city: {
       type: DataTypes.STRING(45),
       allowNull: true

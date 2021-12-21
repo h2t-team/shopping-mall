@@ -35,32 +35,50 @@ const changePasswordPage = (req, res) => {
 }
 
 const changePassword = async (req, res) => {
-    try{
+    try {
         const user = req.user;
-        const {oldPass, newPass} = req.body;
-        if(!bcrypt.compareSync(oldPass, user.password)){
+        const { oldPass, newPass } = req.body;
+        if (!bcrypt.compareSync(oldPass, user.password)) {
             req.flash('error', 'Invalid Password.')
             return res.redirect('/profile/changePassword')
         }
         const hashPass = bcrypt.hashSync(newPass, 10);
         await service.updatePass(user.id, hashPass);
         res.redirect('/profile')
-    }catch (err) {
+    } catch (err) {
         console.log(err);
     }
 }
 
 const getAddresses = async (req, res) => {
     const user = req.user;
-    if(user){
-        try{            
+    if (user) {
+        try {
             const addresses = await service.getAddresses(user.id);
-            console.log(addresses);
-            res.render('profile/address', {title: "Addresses", addresses, style: 'addresses.css'});
-        }catch(err){
+            res.render('profile/address', { title: "Addresses", addresses, style: 'addresses.css' });
+        } catch (err) {
             console.log(err);
         }
-    }else{
+    } else {
+        res.redirect('/auth/login');
+    }
+}
+
+const addAddressPage = (req, res) => {
+    res.render('profile/addAddress', { tiltle: 'Add Address' });
+}
+
+const addAddress = async (req, res) => {
+    const user = req.user;
+    if (user) {
+        try {
+            const { receiver, tel, city, district, ward, address } = req.body;
+            await service.addAddress(user.id, receiver, tel, city, district, ward, address);
+            res.redirect('/profile/address');
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
         res.redirect('/auth/login');
     }
 }
@@ -69,5 +87,7 @@ module.exports = {
     update,
     changePasswordPage,
     changePassword,
-    getAddresses
+    getAddresses,
+    addAddressPage,
+    addAddress
 }

@@ -44,9 +44,21 @@ const getAddresses = userId => {
     })
 }
 
+const addAddress = (userId, receiver, tel, city, district, ward, address) => {
+    return models.receiver_address.create({
+        'customer_id': userId,
+        'receiver_name': receiver,
+        telephone: tel,
+        city,
+        ward,
+        district,
+        'specific_address': address
+    })
+}
 module.exports = {
     update,
     updateWithImg,
     updatePass,
-    getAddresses
+    getAddresses,
+    addAddress
 }
