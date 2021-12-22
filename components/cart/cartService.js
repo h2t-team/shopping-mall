@@ -69,10 +69,20 @@ const deleteFromCart = (userId, productId, size) => {
         }
     })
 }
+
+const clearCart = userId => {
+    return models.cart.destroy({
+        where: {
+            'customer_id': userId
+        }
+    })
+}
+
 module.exports = {
     getCartById,
     findInCart,
     addToCart,
     updateCart,
-    deleteFromCart
+    deleteFromCart,
+    clearCart
 }

@@ -1,6 +1,7 @@
 <main>
     <section class="shop-section">
         <div class="container">
+            {{#if product}}
             <div class="cart-inner">
                 <div class="table-responsive">
                     <table class="table">
@@ -8,8 +9,8 @@
                             <tr class=" table-primary">
                                 <th scope="col">Product</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Size</th>
                                 <th scope="col">Quantity</th>
+                                <th scope="col">Size</th>
                                 <th scope="col">Total</th>
                                 <th scope="col"></th>
                             </tr>
@@ -34,7 +35,7 @@
                                 <td>
                                     <div class="product_count">
                                         <input type="number" name="qty" value={{quantity}} title="Quantity:"
-                                            class="form-control">
+                                            class="form-control" min="1">
                                     </div>
                                 </td>
                                 <td class="size text-center">
@@ -67,6 +68,19 @@
                     </div>
                 </div>
             </div>
+            {{else}}
+            <div class="d-flex flex-column align-items-center">
+                <div class="my-2">
+                    <img src="/images/empty.png" width="100" alt="empty">
+                </div>
+                <div class="my-2">
+                    <h4>Your shopping cart is empty</h4>
+                </div>
+                <div class="my-2">
+                    <a class="btn rounded-pill mx-3" href="/product">Go Shopping Now</a>
+                </div>
+            </div>
+            {{/if}}
         </div>
     </section>
 </main>
