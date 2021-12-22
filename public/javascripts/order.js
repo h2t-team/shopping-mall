@@ -27,7 +27,8 @@ $(document).ready(function() {
         $(".loading").addClass("d-flex");
         const response = await fetch(`/order/create`, request);
         if (response.ok) {
-            window.location.replace('/order/confirm');
+            const result = await response.json();
+            window.location.replace(`/order/confirm/${result.order.id}`);
         }
     })
 });

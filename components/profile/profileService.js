@@ -1,6 +1,6 @@
 const { models } = require('../../model');
 
-const update = (userId, {firstname, lastname, birthday, url}) =>{
+const update = (userId, { firstname, lastname, birthday, url }) => {
     return models.customer.update({
         'first_name': firstname,
         'last_name': lastname,
@@ -12,7 +12,7 @@ const update = (userId, {firstname, lastname, birthday, url}) =>{
     })
 }
 
-const updateWithImg = (userId, {firstname, lastname, birthday, url}) =>{
+const updateWithImg = (userId, { firstname, lastname, birthday, url }) => {
     return models.customer.update({
         'first_name': firstname,
         'last_name': lastname,
@@ -44,6 +44,11 @@ const getAddresses = userId => {
     })
 }
 
+const getAddress = id => {
+    return models.receiver_address.findByPk(id, {
+        raw: true
+    })
+}
 const addAddress = (userId, receiver, tel, city, district, ward, address) => {
     return models.receiver_address.create({
         'customer_id': userId,
@@ -55,10 +60,37 @@ const addAddress = (userId, receiver, tel, city, district, ward, address) => {
         'specific_address': address
     })
 }
+
+const updateAddress = (id, receiver, tel, city, district, ward, address) => {
+    return models.receiver_address.update({
+        'receiver_name': receiver,
+        telephone: tel,
+        city,
+        ward,
+        district,
+        'specific_address': address
+    }, {
+        where: {
+            id
+        }
+    })
+}
+
+const deleteAddress = id => {
+    return models.receiver_address.destroy({
+        where: {
+            id
+        }
+    })
+}
+
 module.exports = {
     update,
     updateWithImg,
     updatePass,
     getAddresses,
-    addAddress
+    getAddress,
+    addAddress,
+    updateAddress,
+    deleteAddress
 }

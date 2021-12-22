@@ -23,7 +23,32 @@ const createOrderDetail = (orderId, productId, size, quantity, total) => {
     });
 }
 
+const getOrder = orderId => {
+    return models.order.findByPk(orderId, {
+        raw: true,
+        include: [{
+            model: models.receiver_address,
+            as: 'receiver_address',
+        }]
+    });
+}
+
+const getOrderDetail = orderId => {
+    return models.order_details.findAll({
+        raw: true,
+        where: {
+            'order_id': orderId
+        },
+        include: [{
+            model: models.product,
+            as: 'product'
+        }]
+    })
+}
+
 module.exports = {
     createOrder,
-    createOrderDetail
+    createOrderDetail,
+    getOrder,
+    getOrderDetail
 }

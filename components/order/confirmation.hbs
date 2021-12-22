@@ -1,79 +1,53 @@
 <main>
-    <section class="order_details section-margin--small my-5">
+    <section class="shop-section">
         <div class="container">
             <p class="text-center billing-alert">Thank you. Your order has been received.</p>
             <div class="row mb-5">
-                <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+                <div class="col-md-6 mb-4 mb-xl-0">
                     <div class="confirmation-card">
                         <h3 class="billing-title">Order Info</h3>
-                        <table class="order-rable">
-                            <tr>
-                                <td>Order number</td>
-                                <td>: 60235</td>
-                            </tr>
-                            <tr>
-                                <td>Date</td>
-                                <td>: Oct 03, 2017</td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td>: USD 2210</td>
-                            </tr>
-                            <tr>
-                                <td>Payment method</td>
-                                <td>: Check payments</td>
-                            </tr>
-                        </table>
+                        <div class="row">
+                            <div class="col-3">
+                                <p>Order number</p>
+                                <p>Date</p>
+                                <p>Note</p>
+                                <p>Total</p>
+                            </div>
+                            {{#with order}}
+                            <div class="col-9">
+                                <p>: {{id}}</p>
+                                <p>: {{dateFormat this.[created_at]}}</p>
+                                <p>: {{note}}</p>
+                                <p>: {{currencyFormat total}}</p>
+                            </div>
+                            {{/with}}
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
-                    <div class="confirmation-card">
-                        <h3 class="billing-title">Billing Address</h3>
-                        <table class="order-rable">
-                            <tr>
-                                <td>Street</td>
-                                <td>: 56/8 panthapath</td>
-                            </tr>
-                            <tr>
-                                <td>City</td>
-                                <td>: Dhaka</td>
-                            </tr>
-                            <tr>
-                                <td>Country</td>
-                                <td>: Bangladesh</td>
-                            </tr>
-                            <tr>
-                                <td>Postcode</td>
-                                <td>: 1205</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+                <div class="col-md-6 mb-4 mb-xl-0">
                     <div class="confirmation-card">
                         <h3 class="billing-title">Shipping Address</h3>
-                        <table class="order-rable">
-                            <tr>
-                                <td>Street</td>
-                                <td>: 56/8 panthapath</td>
-                            </tr>
-                            <tr>
-                                <td>City</td>
-                                <td>: Dhaka</td>
-                            </tr>
-                            <tr>
-                                <td>Country</td>
-                                <td>: Bangladesh</td>
-                            </tr>
-                            <tr>
-                                <td>Postcode</td>
-                                <td>: 1205</td>
-                            </tr>
-                        </table>
+                        <div class="row">
+                            <div class="col-3">
+                                <p>Receiver</p>
+                                <p>Telephone</p>
+                                <p>Address</p>
+                                <p>City</p>
+                            </div>
+                            {{#with order}}
+                            <div class="col-9">
+                                <p>: {{'receiver_address.receiver_name'}}</p>
+                                <p>: {{'receiver_address.telephone'}}</p>
+                                <p>: {{'receiver_address.specific_address'}}</p>
+                                <p>: Phường {{'receiver_address.ward'}}, Quận {{'receiver_address.district'}},
+                                    {{'receiver_address.city'}}</p>
+                            </div>
+                            {{/with}}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="order_details_table">
+            <div class="order-details-table">
                 <h2>Order Details</h2>
                 <div class="table-responsive">
                     <table class="table">
@@ -85,39 +59,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each detail }}
                             <tr>
                                 <td>
-                                    <p>Pixelstore fresh Blackberry</p>
+                                    <p>{{'product.name'}} - Size: {{size}}</p>
                                 </td>
                                 <td>
-                                    <h5>x 02</h5>
+                                    <h5>{{quantity}}</h5>
                                 </td>
                                 <td>
-                                    <p>$720.00</p>
+                                    <p>{{price}}</p>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <p>Pixelstore fresh Blackberry</p>
-                                </td>
-                                <td>
-                                    <h5>x 02</h5>
-                                </td>
-                                <td>
-                                    <p>$720.00</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Pixelstore fresh Blackberry</p>
-                                </td>
-                                <td>
-                                    <h5>x 02</h5>
-                                </td>
-                                <td>
-                                    <p>$720.00</p>
-                                </td>
-                            </tr>
+                            {{/each}}                            
                             <tr>
                                 <td>
                                     <h4>Subtotal</h4>
@@ -126,7 +80,7 @@
                                     <h5></h5>
                                 </td>
                                 <td>
-                                    <p>$2160.00</p>
+                                    <p>{{currencyFormat totalWOShip}}</p>
                                 </td>
                             </tr>
                             <tr>
@@ -137,7 +91,7 @@
                                     <h5></h5>
                                 </td>
                                 <td>
-                                    <p>Flat rate: $50.00</p>
+                                    <p>{{currencyFormat 15000}}</p>
                                 </td>
                             </tr>
                             <tr>
@@ -148,7 +102,7 @@
                                     <h5></h5>
                                 </td>
                                 <td>
-                                    <h4>$2210.00</h4>
+                                    <h4>{{currencyFormat order.[total]}}</h4>
                                 </td>
                             </tr>
                         </tbody>

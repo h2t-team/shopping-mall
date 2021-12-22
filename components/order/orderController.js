@@ -45,7 +45,7 @@ const createOrder = async (req, res) => {
                 const { productId, size, quantity, total } = item;
                 return orderService.createOrderDetail(order.dataValues.id, productId, size, quantity, total);
             }));
-            if(detail){
+            if (detail) {
                 await cartService.clearCart(user.id);
                 res.status(200).json({ order, detail });
             }
@@ -55,8 +55,27 @@ const createOrder = async (req, res) => {
     }
 }
 
-const confirm = (req, res, next) => {
-    res.render('order/confirmation', { title: 'Confirmation', style: 'confirmation.css' });
+const confirm = async (req, res, next) => {
+    const user = req.user;
+    if (user) {
+        const orderId = req.params.id;
+        const [order, detail] = await Promise.all([
+            orderService.getOrder(orderId),
+            orderService.getOrderDetail(orderId)
+        ]);
+        const totalWOShip = order.total - 15000;
+        res.render('order/confirmation', {
+            title: 'Confirmation',
+            style: 'confirmation.css',
+            order,
+            totalWOShip,
+            detail
+        });
+    }
+    else {
+        res.redirect('/auth/login')
+    }
+
 }
 
 module.exports = {

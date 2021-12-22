@@ -51,6 +51,10 @@ const helpers = (hbs) => {
     hbs.registerHelper('currencyFormat', money => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(money));
 
     hbs.registerHelper('avatar', url => url ? url : "/images/default.png");
+    
+    hbs.registerHelper('dateFormat', date => {
+        console.log(date);
+        return new Date(date).toDateString()});
 }
 module.exports = {
     helpers
