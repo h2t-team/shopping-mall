@@ -1,0 +1,41 @@
+<main>
+    <section class="shop-section">
+        <div class="container">
+            <div class="table-responsive border pt-3 px-3">
+                <table class="table m-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Receiver Name</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Created at</th>
+                            <th scope="col" class="text-center">Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each orders }}
+                        <tr>
+                            <td>
+                                <a href="/">{{'receiver_address.receiver_name'}}</a>                                
+                            </td>
+                            <td class="qty">
+                                {{currencyFormat total}}
+                            </td>
+                            <td class="size">
+                                {{dateFormat this.[created_at]}}
+                            </td>
+                            <td class="text-center">
+                                <span class="badge bg-{{checkStatus status}}">{{status}}</span>
+                            </td>
+                            <td>
+                                <a href="javascript:void(0)" style="font-size: .9rem;" class="delete-btn {{checkDisabled status}}">Cancel</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>

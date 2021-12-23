@@ -51,10 +51,23 @@ const helpers = (hbs) => {
     hbs.registerHelper('currencyFormat', money => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(money));
 
     hbs.registerHelper('avatar', url => url ? url : "/images/default.png");
-    
-    hbs.registerHelper('dateFormat', date => {
-        console.log(date);
-        return new Date(date).toDateString()});
+
+    hbs.registerHelper('dateFormat', date => new Date(date).toLocaleString('en-GB'));
+
+    hbs.registerHelper('checkStatus', status => {
+        if (status === 'Success')
+            return 'success';
+        else if (status === 'Delivering')
+            return 'warning';
+        else if (status === 'Cancel')
+            return 'danger';
+        else return 'secondary';
+    });
+
+    hbs.registerHelper('checkDisabled', status => {
+        if (status !== 'Prepairing')
+            return 'disabled';
+    });
 }
 module.exports = {
     helpers

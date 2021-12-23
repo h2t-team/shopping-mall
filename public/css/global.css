@@ -120,9 +120,17 @@ header {
     border-radius: 0.25rem;
     padding: 0.5rem;
 }
+.disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: .5;
+}
 .fa-star {
     color: #FBD600;
     font-size: 1rem;
+}
+.badge{
+    line-height: 1.5;
 }
 .form-group {
     margin-bottom: 1rem;
@@ -175,15 +183,6 @@ header {
 }
 .product-card:hover .product-img img {
     transform: scale(1.05);
-}
-.product-icon {
-    padding: 7px 12px;
-    background-color: #8894ff;
-    color: var(--white);
-}
-.product-icon:hover {
-    color: var(--white);
-    background-color: var(--primary);
 }
 .product-info {
     padding: 1.25rem;

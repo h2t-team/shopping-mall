@@ -23,7 +23,7 @@ const cart = async (req, res) => {
             console.log(err);
         }
     } else {
-        res.redirect('/auth/login')
+        res.redirect('/auth/login');
     }
 }
 

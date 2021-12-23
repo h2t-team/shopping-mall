@@ -75,11 +75,21 @@ const confirm = async (req, res, next) => {
     else {
         res.redirect('/auth/login')
     }
+}
 
+const orders = async (req, res) => {
+    const user = {id: 'c13b50cf-6d5a-4816-ab11-e4c0b59fad35'};//req.user;
+    if(user){
+        const orders = await orderService.getOrders(user.id);
+        res.render('order/orderList', {title: 'My Order',style: 'order.css', orders})
+    }else{
+        res.redirect('/auth/login')
+    }
 }
 
 module.exports = {
     checkout,
     createOrder,
+    orders,
     confirm
 }

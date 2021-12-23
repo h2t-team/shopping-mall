@@ -123,7 +123,6 @@ const deleteAddress = async (req, res) => {
     if (user) {
         try {
             const { id } = req.body;
-            console.log(id);
             await service.deleteAddress(id);
             res.status(200).json({ success: 'success' });
         } catch (err) {

@@ -35,7 +35,7 @@ $(document).ready(() => {
     $(document).on('click', '.delete-btn', async e => {
         const row = $(e.target).closest('tr');
         const productId = row.find('input[type=hidden]').val();
-        const size = row.find('.size').text();
+        const size = row.find('.size h5').text();
         const request = {
             method: 'POST',
             headers: {

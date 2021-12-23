@@ -46,9 +46,22 @@ const getOrderDetail = orderId => {
     })
 }
 
+const getOrders = userId => {
+    return models.order.findAll({
+        raw: true,
+        include: [{
+            model: models.receiver_address,
+            as: 'receiver_address',
+        }],
+        where: {
+            'customer_id': userId
+        }
+    });
+}
 module.exports = {
     createOrder,
     createOrderDetail,
     getOrder,
-    getOrderDetail
+    getOrderDetail,
+    getOrders
 }
