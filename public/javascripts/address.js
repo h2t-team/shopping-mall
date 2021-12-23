@@ -13,6 +13,14 @@ $(document).ready(function () {
         $(".loading").removeClass("d-none");
         $(".loading").addClass("d-flex");
         const response = await fetch(`/profile/address/delete`, request);
-        window.location.replace('/profile/address');
+        if (response.ok)
+            window.location.replace('/profile');
+        else {
+            $(".loading").addClass("d-none");
+            $(".loading").removeClass("d-flex");
+            const failed = document.getElementById('failed-toast');
+            const toast = new bootstrap.Toast(failed);
+            toast.show();
+        }
     })
 })

@@ -7,10 +7,9 @@
                         <tr>
                             <th scope="col">Receiver Name</th>
                             <th scope="col">Total</th>
-                            <th scope="col">Address</th>
                             <th scope="col">Created at</th>
                             <th scope="col" class="text-center">Status</th>
-                            <th></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,7 +27,7 @@
                             <td class="text-center">
                                 <span class="badge bg-{{checkStatus status}}">{{status}}</span>
                             </td>
-                            <td>
+                            <td style="max-width: 100px">
                                 <a href="javascript:void(0)" style="font-size: .9rem;" class="delete-btn {{checkDisabled status}}">Cancel</a>
                             </td>
                         </tr>

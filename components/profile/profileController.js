@@ -4,8 +4,23 @@ const { uploadImage } = require('../../cloudinary');
 
 const service = require('./profileService');
 
-const profile = (req, res) => {
-    res.render('profile/profile', { title: 'Account' });
+const profile = async (req, res) => {
+    const user = req.user;
+    if (user) {
+        try {
+            const addresses = await service.getAddresses(user.id);
+            res.render('profile/profile', {
+                title: 'Account',
+                addresses,
+                style: 'addresses.css',
+                scripts: ['address.js']
+            });
+        } catch (err) {            
+            console.log(err);
+        }
+    } else {
+        res.redirect('/auth/login');
+    }
 }
 
 const update = (req, res) => {
@@ -50,25 +65,6 @@ const changePassword = async (req, res) => {
     }
 }
 
-const getAddresses = async (req, res) => {
-    const user = req.user;
-    if (user) {
-        try {
-            const addresses = await service.getAddresses(user.id);
-            res.render('profile/address', {
-                title: "Addresses",
-                addresses, 
-                style: 'addresses.css',
-                scripts: ['address.js']
-            });
-        } catch (err) {
-            console.log(err);
-        }
-    } else {
-        res.redirect('/auth/login');
-    }
-}
-
 const addAddressPage = (req, res) => {
     res.render('profile/addAddress', { tiltle: 'Add Address' });
 }
@@ -79,7 +75,7 @@ const addAddress = async (req, res) => {
         try {
             const { receiver, tel, city, district, ward, address } = req.body;
             await service.addAddress(user.id, receiver, tel, city, district, ward, address);
-            res.redirect('/profile/address');
+            res.redirect('/profile');
         } catch (err) {
             console.log(err);
         }
@@ -109,7 +105,7 @@ const updateAddress = async (req, res) => {
         try {
             const { id, receiver, tel, city, district, ward, address } = req.body;
             await service.updateAddress(id, receiver, tel, city, district, ward, address);
-            res.redirect('/profile/address');
+            res.redirect('/profile');
         } catch (err) {
             console.log(err);
         }
@@ -140,7 +136,6 @@ module.exports = {
     update,
     changePasswordPage,
     changePassword,
-    getAddresses,
     addAddressPage,
     addAddress,
     updateAddressPage,

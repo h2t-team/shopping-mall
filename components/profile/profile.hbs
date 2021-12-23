@@ -77,6 +77,72 @@
                 </div>
             </div>
 
+            <div class="card mb-5">
+                <div class="row g-0 p-4">
+                    <div class="col-lg-4 p-4">
+                        <p class="fw-bold mb-3">Shiping Addreses</p>
+                        <p class="text-muted mb-3">
+                            Manage your shipping address.
+                        </p>
+                    </div>
+                    <div class="col-lg-8 p-4">
+                        <div class="d-flex justify-content-end align-items-center mb-4">
+                            <a href="/profile//address/add" class="btn"><i class="fas fa-plus me-2"></i>Add New
+                                Address</a>
+                        </div>
+                        {{#each addresses }}
+                        <div class="border-top p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="address-item">
+                                    <input type="hidden" name="id" value={{id}}>
+                                    <div class="address-detail d-flex">
+                                        <div class="label">Full Name</div>
+                                        <div class="content">
+                                            <h6>{{'receiver_name'}}</h6>
+                                        </div>
+                                    </div>
+                                    <div class="address-detail d-flex">
+                                        <div class="label">Telephone</div>
+                                        <div class="content">{{telephone}}</div>
+                                    </div>
+                                    <div class="address-detail d-flex">
+                                        <div class="label">Address</div>
+                                        <div class="content">
+                                            <span>{{'specific_address'}}</span>
+                                            <br>
+                                            <span>Phường {{ward}}</span>
+                                            <br>
+                                            <span>Quận {{district}}</span>
+                                            <br>
+                                            <span>{{city}}</span>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <a href="/profile/address/{{id}}" class="blue-btn mx-2"><i
+                                            class="fas fa-sync-alt"></i></a>
+                                    <a href="javascript:void(0)" class="delete-btn mx-2"><i
+                                            class="fas fa-times"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="failed-toast" class="toast align-items-center text-white bg-danger border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Can not delete this address.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
         </div>
     </div>
 </main>
