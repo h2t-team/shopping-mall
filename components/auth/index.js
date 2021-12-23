@@ -13,14 +13,15 @@ router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });
-router.post('/forgot-password', controller.sendLinkForgotPasswordToEmail);
 
 router.get('/register', controller.isAuthenticated, controller.registerPage);
 router.post('/register', controller.register);
 router.get('/verify-email', controller.verifyEmail);
-router.post('/forgot-password/:userid/:token', controller.resetPassword);
-router.get('/forgot-password/:userid/:token', controller.forotPassword);
 router.get('/resend-email', controller.resendEmail);
+router.get('/forgot-password', controller.forgotPasswordPage);
+router.post('/forgot-password', controller.forgotPasswordForm);
+router.get('/reset-password/:userid/:token', controller.resetPasswordPage);
+router.post('/reset-password/:userid/:token', controller.resetPasswordForm);
 
 
 

@@ -9,15 +9,12 @@ const isAuthenticated = (req, res, next) => {
         res.redirect('/');
     next();
 }
-
 const login = (req, res) => {
     res.render('auth/login', { title: 'Login', style: 'login.css', message: req.flash('error') });
 }
-
 const registerPage = (req, res) => {
     res.render('auth/register', { title: 'Register', style: 'login.css', message: req.flash('error') });
 }
-
 const register = async(req, res) => {
     //get params
     const {
@@ -49,7 +46,7 @@ const register = async(req, res) => {
     // send active link to email
     const token = jwt.sign({ username, email, phone }, process.env.PRIVATE_KEY, { expiresIn: '20m' });
     try {
-        service.sendEmail(email, token);
+        service.sendVerificationEmail(email, token);
         res.render('auth/verify', { email: email, token: token })
     } catch (err) {
         res.status(500).send({ message: err.message });
@@ -69,7 +66,7 @@ const verifyEmail = async(req, res) => {
                 throw { message: "Cant find user", status: 401 };
             }
             user.status = "active";
-            service.update(user);
+            service.updateUser(user);
             res.render("auth/verifySuccess");
         } else {
             throw { message: "No token found", status: 404 };
@@ -79,11 +76,13 @@ const verifyEmail = async(req, res) => {
         res.status(err.status).send({ message: err.message });
     }
 }
-const sendLinkForgotPasswordToEmail = async(req, res) => {
-    console.log("req", req.body)
-
+const resendEmail = async(req, res) => {}
+const forgotPasswordPage = async(req, res) => {
+    res.render("auth/forgotPassword");
+}
+const forgotPasswordForm = async(req, res) => {
+    console.log(req.body);
     const { email } = req.body;
-
     try {
         const user = await service.findUserByEmail({ email });
         if (!user) {
@@ -91,26 +90,23 @@ const sendLinkForgotPasswordToEmail = async(req, res) => {
         }
         const token = jwt.sign(user, process.env.PRIVATE_KEY, { expiresIn: '20m' });
         try {
-            service.sendEmailResetPassword(user.id, email, token);
+            await service.sendResetPasswordEmail(user.id, email, token);
             res.render('auth/verify', { email: email, token: token })
         } catch (err) {
             res.status(500).send({ message: err.message });
         }
     } catch (err) {
-        console.log("err", err);
         res.status(err.status).send({ message: err.message });
     }
-
 }
-const forotPassword = async(req, res) => {
-    res.render("auth/forgotpw");
+const resetPasswordPage = async(req, res) => {
+    res.render("auth/resetPassword");
 }
-
-const resetPassword = async(req, res) => {
+const resetPasswordForm = async(req, res) => {
     console.log("Token", req.body)
     const { userid, token } = req.params;
     const { password } = req.body;
-    const hashPassword = bcrypt.hashSync(password, 10);
+    const hashPassword = await bcrypt.hashSync(password, 10);
     try {
         if (token) {
             const decodedToken = jwt.verify(token, process.env.PRIVATE_KEY)
@@ -124,9 +120,8 @@ const resetPassword = async(req, res) => {
                 throw { message: "Cant find user", status: 401 };
             }
             user.password = hashPassword;
-            service.update(user);
-            res.status(200).send(({ message: "Update success" }))
-
+            service.updateUser(user);
+            res.status(200).send(({ message: "Update successfully" }))
         } else {
             throw { message: "No token found", status: 404 };
         }
@@ -135,15 +130,16 @@ const resetPassword = async(req, res) => {
         res.status(500).send({ message: err });
     }
 }
-const resendEmail = async(req, res) => {}
+
 module.exports = {
     isAuthenticated,
     login,
     registerPage,
     register,
     verifyEmail,
-    forotPassword,
-    resetPassword,
-    sendLinkForgotPasswordToEmail,
-    resendEmail
+    resendEmail,
+    forgotPasswordPage,
+    forgotPasswordForm,
+    resetPasswordPage,
+    resetPasswordForm,
 }

@@ -24,7 +24,7 @@
                             </div>
                             {{/if}}
                             <div class="col-md-12 mb-3">
-                                <input id="email" class="form-control" type="text" name="username" placeholder="Username" />
+                                <input class="form-control" type="text" name="username" placeholder="Username" />
                             </div>
                             <div class="col-md-12 mb-3">
                                 <input class="form-control" type="password" name="password" placeholder="Password" />
@@ -35,7 +35,7 @@
                             </div>
                             <div class="col-md-12 mb-3 text-center">
                                 <input class="form-control mb-2" type="submit" value="Log In" />
-                                <button id="forgotpass" >Forgot Password?</button>
+                                <a href="/auth/forgot-password">Forgot Password?</a>
                             </div>
                         </form>
                     </div>
@@ -44,21 +44,3 @@
         </div>
     </div>
 </main>
- <script>
-       $('#forgotpass').click(function() {
-      event.preventDefault();
-             const email =   $("#email").val();
-             console.log("EMAIL",email)
-           $.ajax({
-            contentType: "application/json",
-            url: '/auth/forgot-password',
-            dataType: "json",
-            type: 'POST', // http method
-            data: JSON.stringify({email:email }), // data to submit
-        }).done((res) => {
-           $('#button').prop('disabled', true);
-        }).fail((res) => {
-        
-        });
-       })
-   </script>
