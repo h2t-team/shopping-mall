@@ -24,18 +24,12 @@
                             </div>
                             {{/if}}
                             <div class="col-md-12 mb-3">
-                                <input id="email" class="form-control" type="text" name="username" placeholder="Username" />
+                                <input id="password" class="form-control" type="text" name="password" placeholder="New password" />
                             </div>
-                            <div class="col-md-12 mb-3">
-                                <input class="form-control" type="password" name="password" placeholder="Password" />
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <input class="form-check-input m-1" type="checkbox" id="keep-logged" />
-                                <label class="form-check-label" htmlFor="keep-logged">Keep me logged in</label>
-                            </div>
+                          
+                           
                             <div class="col-md-12 mb-3 text-center">
-                                <input class="form-control mb-2" type="submit" value="Log In" />
-                                <button id="forgotpass" >Forgot Password?</button>
+                                <button id="updatePass" >Update Password?</button>
                             </div>
                         </form>
                     </div>
@@ -45,18 +39,18 @@
     </div>
 </main>
  <script>
-       $('#forgotpass').click(function() {
+       $('#updatePass').click(function() {
       event.preventDefault();
-             const email =   $("#email").val();
-             console.log("EMAIL",email)
+             const password =   $("#password").val();
+             console.log("EMAIL",password)
            $.ajax({
             contentType: "application/json",
-            url: '/auth/forgot-password',
             dataType: "json",
             type: 'POST', // http method
-            data: JSON.stringify({email:email }), // data to submit
+            data: JSON.stringify({password:password }), // data to submit
         }).done((res) => {
-           $('#button').prop('disabled', true);
+           $('#updatePass').prop('disabled', true);
+           alert("Update sucess")
         }).fail((res) => {
         
         });
