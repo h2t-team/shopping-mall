@@ -3,8 +3,11 @@
 }
 
 .avatar {
-  width: 15%;
-  padding-right: 1rem;
+  width: 75px;
+  height: 75px;
+}
+.avatar img {
+  width: 100%;
 }
 
 .detail .text-detail .price {
@@ -54,7 +57,7 @@
 }
 
 .rating .tab-content {
-  padding: 2rem;
+  padding: 2rem 1.5rem;
 }
 
 .rating .tab-content p {

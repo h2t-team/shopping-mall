@@ -47,13 +47,13 @@ async function loadRate(page, size) {
 
 function appendRate(rate) {
     let html =
-        `<div class="review-item">
-        <div class="d-flex position-relative mb-2">
-            <div class="avatar">
+        `<div class="review-item border-bottom">
+        <div class="d-flex position-relative my-2 align-items-center">
+            <div class="avatar d-flex align-items-center">
                 <img src="${rate['customer.avatar'] ? rate['customer.avatar'] : '/images/default.png'}" 
                 alt="avatar" class="rounded-circle" />
             </div>
-            <div class="info">
+            <div class="info flex-grow-1 ps-3">
                 <h5>${rate['customer.first_name']} ${rate['customer.last_name']}</h5>
                 <div>`;
     //add rating start
@@ -66,27 +66,27 @@ function appendRate(rate) {
             <p>${new Date(rate['created_at']).toDateString()}</p>
             </div>
         </div>
-        <p class="review">${rate.content}</p>
+        <p class="review pt-2 px-2">${rate.content}</p>
     </div>`
     $('#review-list').append(html);
 }
 
 function buildPagination(totalPages) {
     // Build paging navigation
-    let pageIndex = '<li class="page-item"><a class="page-link"><i class="fas fa-caret-left"></i></a></li>';
+    let pageIndex = '<li class="page-item"><a class="page-link py-2 px-3 cursor-pointer"><i class="fas fa-caret-left"></i></a></li>';
     $("ul.pagination").append(pageIndex);
 
     // create pagination
     for (let i = 1; i <= totalPages; i++) {
         // adding .active class on the first pageIndex 
         if (i == 1) {
-            pageIndex = `<li class='page-item active'><a class='page-link'>${i}</a></li>`
+            pageIndex = `<li class='page-item active'><a class='page-link py-2 px-3 cursor-pointer'>${i}</a></li>`
         } else {
-            pageIndex = `<li class='page-item'><a class='page-link'>${i}</a></li>`
+            pageIndex = `<li class='page-item'><a class='page-link py-2 px-3 cursor-pointer'>${i}</a></li>`
         }
         $("ul.pagination").append(pageIndex);
     }
-    pageIndex = '<li class="page-item"><a class="page-link"><i class="fas fa-caret-right"></i></a></li>';
+    pageIndex = '<li class="page-item"><a class="page-link py-2 px-3 cursor-pointer"><i class="fas fa-caret-right"></i></a></li>';
     $("ul.pagination").append(pageIndex);
 
     //add event 
@@ -121,7 +121,3 @@ function buildPagination(totalPages) {
         }
     })
 }
-
-
-
-

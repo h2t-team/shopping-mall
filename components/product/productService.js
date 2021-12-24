@@ -1,5 +1,6 @@
-const { Op } = require("sequelize");
+const sequelize = require("sequelize");
 const { models } = require('../../model');
+const Op = sequelize.Op;
 
 const category = () => {
     return models.category.findAll({
@@ -53,21 +54,54 @@ const byCategory = (id, page = 0, perPage = 9) => {
     });
 }
 
-const topRate = () => {
+const topRate = (perPage = 8) => {
     return models.product.findAll({
         include: [{
+            model: models.category,
+            as: 'category',
+            attributes: ['name']
+        },
+        {
             model: models.product_image,
             as: 'product_images',
-            attributes: ['image_url']
+            attributes: ['image_url'],
+            duplicating: false,
         }],
         where: {
-            'rate': 5
+            rate: 5
         },
-        limit: 9,
-        duplicating: false,
-        required: true,
-        group: ['product.id'],
-        raw: true
+        limit: perPage,
+        raw: true,
+        group: ['product.id']
+    });
+}
+
+const bestSeller = (perPage = 4) => {
+    return models.product.findAll({
+        attributes: [
+            'id',
+            'name',
+            'price',
+            'rate',
+        ],
+        include: [{
+            model: models.category,
+            as: 'category',
+            attributes: ['name']
+        },
+        {
+            model: models.product_image,
+            as: 'product_images',
+            attributes: ['image_url'],
+            duplicating: false,
+        }, 
+    ],
+        limit: perPage,
+        raw: true,
+        group: ['id'],
+        order: [
+            ['rate', 'DESC']
+        ]
     });
 }
 
@@ -145,5 +179,6 @@ module.exports = {
     size,
     image,
     addRate,
-    getRate
+    getRate, 
+    bestSeller
 }

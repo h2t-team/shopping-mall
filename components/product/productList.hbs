@@ -38,18 +38,17 @@
                     </div>
                     <div class="row">
                         {{#each products.rows}}
-                        <div class="col-sm-6 col-lg-4">
-                            <a href="/product/{{id}}">
-                                <div class="product-card text-center mb-4">
-                                    <div class="product-img position-relative">
-                                        <img src={{'product_images.image_url'}} alt="">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="/product/{{id}}" class="product-info-name mb-2">{{name}}</a>
-                                        <p class="product-price">{{currencyFormat price}}</p>
-                                    </div>
+                        <div class="col-6 col-lg-4 px-1 px-sm-3">
+                            <div class="product-card text-center mb-4">
+                                <a class="product-img position-relative" href="/product/{{id}}">
+                                    <img src={{'product_images.image_url'}} alt="">
+                                </a>
+                                <div class="product-info">
+                                    <p>{{'category.name'}}</p>
+                                    <a href="/product/{{id}}" class="product-info-name mb-2">{{name}}</a>
+                                    <p class="product-price">{{currencyFormat price}}</p>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         {{/each}}
                     </div>

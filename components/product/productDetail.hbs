@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="">
-                                <a href="#" id="add-cart" class="rounded-pill btn py-3"><i
+                                <a href="#" id="add-cart" class="rounded-pill btn"><i
                                         class="fas fa-shopping-cart me-3"></i>Add To Cart</a>
                             </div>
                         </div>
@@ -83,14 +83,14 @@
                         <div class="offset-2 col-8">
                             <table class="table">
                                 <thead>
-                                    <td>Size</td>
-                                    <td>Quantity</td>
+                                    <td class="text-center">Size</td>
+                                    <td class="text-center">Quantity</td>
                                 </thead>
                                 <tbody>
                                     {{#each size}}
                                     <tr>
-                                        <td>{{size}}</td>
-                                        <td>{{quantity}}</td>
+                                        <td class="text-center">{{size}}</td>
+                                        <td class="text-center">{{quantity}}</td>
                                     </tr>
                                     {{/each}}
                                 </tbody>
@@ -106,36 +106,6 @@
                                         <h1>{{detail.rate}}</h1>
                                         <p id="total-rate"></p>
                                     </div>
-                                    {{!-- <div class="col-md-6 rate-overall">
-                                        <h5 class="mb-2 col-12 text-center">Base on 3 Reviews</h5>
-                                        <ul>
-                                            <li>
-                                                <input type="hidden" class="rating" data-readonly value="5"
-                                                    data-filled="fas fa-star" data-empty="far fa-star" />
-                                                <span id="review-5" class="ms-3"></span>
-                                            </li>
-                                            <li>
-                                                <input type="hidden" class="rating" data-readonly value="4"
-                                                    data-filled="fas fa-star" data-empty="far fa-star" />
-                                                <span id="review-4" class="ms-3"></span>
-                                            </li>
-                                            <li>
-                                                <input type="hidden" class="rating" data-readonly value="3"
-                                                    data-filled="fas fa-star" data-empty="far fa-star" />
-                                                <span id="review-3" class="ms-3"></span>
-                                            </li>
-                                            <li>
-                                                <input type="hidden" class="rating" data-readonly value="2"
-                                                    data-filled="fas fa-star" data-empty="far fa-star" />
-                                                <span id="review-2" class="ms-3"></span>
-                                            </li>
-                                            <li>
-                                                <input type="hidden" class="rating" data-readonly value="1"
-                                                    data-filled="fas fa-star" data-empty="far fa-star" />
-                                                <span id="review-1" class="ms-3"></span>
-                                            </li>
-                                        </ul>
-                                    </div> --}}
                                 </div>
                                 {{#if user}}
                                 <div class="add-rating my-3">

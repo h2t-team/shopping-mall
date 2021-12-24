@@ -11,7 +11,7 @@ const helpers = (hbs) => {
             <i class="fas fa-angle-double-left"></i>
         </a></li>\n`;
         //Previous item       
-        item += `<li><a class="direct ${page == 1 ? "disabled" : ""}" 
+        item += `<li class="d-none d-sm-block"><a class="direct ${page == 1 ? "disabled" : ""}" 
                         href="?${category == 0 ? "" : `category=${category}&`}page=${page - 1}">
                             <i class="fas fa-caret-left"></i>
                         </a></li>\n`;
@@ -34,7 +34,7 @@ const helpers = (hbs) => {
         }
         //... item
         item += i <= maxPage ? `<li><a class="disabled" href="#">...</a></li>` : "";
-        item += `<li><a class="direct ${page == maxPage ? "disabled" : ""}" 
+        item += `<li class="d-none d-sm-block"><a class="direct ${page == maxPage ? "disabled" : ""}" 
                         href="?${category == 0 ? "" : `category=${category}&`}page=${page + 1}">
                             <i class="fas fa-caret-right"></i>
                         </a></li>\n`;
