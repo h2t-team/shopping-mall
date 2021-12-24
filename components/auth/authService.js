@@ -3,25 +3,31 @@ const { v4: uuidv4 } = require('uuid');
 const { models } = require('../../model');
 const nodemailer = require('nodemailer');
 const { use } = require("passport");
-const findUser = ({ username, email, phone }) => {
+const findUser = ({ username, email, telephone }) => {
     return models.customer.findOne({
         raw: true,
         where: {
             [Op.or]: [
                 { username },
                 { email },
-                { telephone: phone }
+                { telephone: telephone }
             ]
         }
     })
 }
-const findUserByEmail = ({ email }) => {
-    return models.customer.findOne({
+const findUserByEmail = async(email) => {
+    return await models.customer.findOne({
         raw: true,
         where: {
-            [Op.or]: [
-                { email },
-            ]
+            email: email
+        }
+    })
+}
+const findUserByUsername = async(username) => {
+    return await models.customer.findOne({
+        raw: true,
+        where: {
+            username: username
         }
     })
 }
@@ -37,7 +43,7 @@ const createUser = ({
     lastname,
     username,
     email,
-    phone,
+    telephone,
     birthday,
     hashPassword
 }) => {
@@ -48,7 +54,7 @@ const createUser = ({
         'first_name': firstname,
         'last_name': lastname,
         email,
-        telephone: phone,
+        telephone: telephone,
         dob: birthday,
         'created_at': Date.now()
     });
@@ -69,14 +75,14 @@ const sendVerificationEmail = async(email, token) => {
         }
     });
 }
-const sendResetPasswordEmail = async(userid, email, token) => {
+const sendResetPasswordEmail = async(email, token) => {
     var transporter = await nodemailer.createTransport({ service: 'Gmail', auth: { user: process.env.EMAIL_USERNAME, pass: process.env.EMAIL_PASSWORD } });
     var mailOptions = {
         from: process.env.EMAIL_USERNAME,
         to: email,
         subject: 'Email Reset password - H2T',
         html: `
-        <p>You requested for email reset password, kindly use this <a href="${process.env.CLIENT_URL}/auth/reset-password/${userid}/${token}">link</a> to reset your password </p>`
+        <p>You requested for email reset password, kindly use this <a href="${process.env.CLIENT_URL}/auth/reset-password/${token}">link</a> to reset your password </p>`
     };
     await transporter.sendMail(mailOptions, function(err) {
         if (err) {
@@ -90,5 +96,6 @@ module.exports = {
     sendVerificationEmail,
     updateUser,
     sendResetPasswordEmail,
-    findUserByEmail
+    findUserByEmail,
+    findUserByUsername
 }
