@@ -3,6 +3,9 @@ const { v4: uuidv4 } = require('uuid');
 const { models } = require('../../model');
 const nodemailer = require('nodemailer');
 const { use } = require("passport");
+const fs = require('fs');
+var Handlebars = require('handlebars');
+
 const findUser = ({ username, email, telephone }) => {
     return models.customer.findOne({
         raw: true,
@@ -62,12 +65,26 @@ const createUser = ({
 }
 const sendVerificationEmail = async(email, token) => {
     var transporter = await nodemailer.createTransport({ service: 'Gmail', auth: { user: process.env.EMAIL_USERNAME, pass: process.env.EMAIL_PASSWORD } });
-    var mailOptions = {
+
+    function render(filename, data) {
+        var source = fs.readFileSync(filename, 'utf8').toString();
+        var template = Handlebars.compile(source);
+        var output = template(data);
+        return output;
+    }
+
+    const link = `${process.env.CLIENT_URL}/auth/verify-email?token=${token}`;
+    const title = "Welcome!";
+    const description = "We're excited to have you get started. First, you need to confirm your account. Just press the button below.";
+    const button = "Confirm Account";
+    var data = { email, link, title, description, button }
+
+    var result = render('./view/emailTemplate.hbs', data);
+    const mailOptions = {
         from: process.env.EMAIL_USERNAME,
         to: email,
-        subject: 'Email verification - H2T',
-        html: `
-        <p>You requested for email verification, kindly use this <a href="${process.env.CLIENT_URL}/auth/verify-email?token=${token}">link</a> to verify your email address</p>`
+        subject: 'Verification Email - H2T',
+        html: result,
     };
     transporter.sendMail(mailOptions, function(err) {
         if (err) {
@@ -77,14 +94,29 @@ const sendVerificationEmail = async(email, token) => {
 }
 const sendResetPasswordEmail = async(email, token) => {
     var transporter = await nodemailer.createTransport({ service: 'Gmail', auth: { user: process.env.EMAIL_USERNAME, pass: process.env.EMAIL_PASSWORD } });
-    var mailOptions = {
+
+    function render(filename, data) {
+        var source = fs.readFileSync(filename, 'utf8').toString();
+        var template = Handlebars.compile(source);
+        var output = template(data);
+        return output;
+    }
+
+    const link = `${process.env.CLIENT_URL}/auth/reset-password/${token}`;
+    const title = "Welcome Back!";
+    const description = "There was recently a request to change the password for your account. If you requested this change, press the button below.";
+    const button = "Reset Password";
+    var data = { email, link, title, description, button }
+
+    var result = render('./view/emailTemplate.hbs', data);
+    const mailOptions = {
         from: process.env.EMAIL_USERNAME,
         to: email,
-        subject: 'Email Reset password - H2T',
-        html: `
-        <p>You requested for email reset password, kindly use this <a href="${process.env.CLIENT_URL}/auth/reset-password/${token}">link</a> to reset your password </p>`
+        subject: 'Reset Password Email - H2T',
+        html: result,
     };
-    await transporter.sendMail(mailOptions, function(err) {
+
+    transporter.sendMail(mailOptions, function(err) {
         if (err) {
             return new Error('Technical Issue!, Please click on resend for verify your Email.');
         }

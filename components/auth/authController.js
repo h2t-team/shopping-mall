@@ -70,7 +70,7 @@ const verifyEmail = async(req, res) => {
             } else {
                 user.status = "active";
                 service.updateUser(user);
-                res.render("auth/verifySuccess", { title: "Verify Successfully", message: "Your account has been successfully verified" });
+                res.render("auth/verifySuccess", { title: "Verify Successfully", message: "Your account has been successfully verified." });
             }
 
         } else {
