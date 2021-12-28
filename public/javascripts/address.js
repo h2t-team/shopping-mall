@@ -2,7 +2,6 @@ $(document).ready(function () {
     $(document).on('click', '.delete-btn', async e => {
         const row = $(e.target).closest('.border-top');
         const id = row.find('input[type=hidden]').val();
-        console.log(id);
         const request = {
             method: 'POST',
             headers: {

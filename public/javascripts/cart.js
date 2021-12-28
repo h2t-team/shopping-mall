@@ -2,10 +2,18 @@ $(document).ready(() => {
     //Update Cart
     $('#update-cart').on('click', async e => {
         const data = [];
+        let isValid = true;
         $.each($('.table tbody tr'), function (i, item) {
             const productId = $(item).find('input[type=hidden]').val();
             const quantity = parseInt($(item).find('input[type=number]').val());
             const size = $(item).find('.size h5').text();
+            if (quantity <= 0) {
+                const failed = document.getElementById('failed-toast');
+                const toast = new bootstrap.Toast(failed);
+                toast.show();
+                isValid = false;
+                return;
+            }
             let price = $(item).find('h5').text();
             price = reverseFormatNumber(price, 'vi-VN');
             const total = quantity * price;
@@ -16,6 +24,8 @@ $(document).ready(() => {
                 total
             });
         });
+        if (!isValid)
+            return;
         const request = {
             method: 'POST',
             headers: {
