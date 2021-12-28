@@ -62,10 +62,11 @@ const getRate = async (req, res) => {
         const rates = await service.getRate(productId, offset, limit);
         const totalPages = Math.ceil(rates.count / limit);
         const response = {
-            "totalPages": totalPages,
-            "pageNumber": page,
-            "pageSize": rates.rows.length,
-            "rates": rates.rows
+            total: rates.count,
+            totalPages,
+            pageNumber: page,
+            pageSize: rates.rows.length,
+            rates: rates.rows
         }
         res.status(201).json(response);
     } catch (error) {

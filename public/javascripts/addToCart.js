@@ -4,6 +4,12 @@ $(document).ready(() => {
         const price = reverseFormatNumber($('#price').text(), 'vi-VN');
         const quantity = parseInt($('#qty').val());
         const size = $('#size').val();
+        if (!size || quantity <= 0) {
+            const failed = document.getElementById('failed-toast');
+            const toast = new bootstrap.Toast(failed);
+            toast.show();
+            return;
+        }
         const total = price * quantity;
         const request = {
             method: 'POST',
@@ -17,19 +23,12 @@ $(document).ready(() => {
             const success = document.getElementById('success-toast');
             const toast = new bootstrap.Toast(success);
             toast.show();
-        }else if(response.status == 401){
+        } else if (response.status == 401) {
             window.location.replace('/auth/login')
-        }else{
+        } else {
             const failed = document.getElementById('failed-toast');
             const toast = new bootstrap.Toast(failed);
             toast.show();
         }
     })
 });
-
-function reverseFormatNumber(val, locale) {
-    var thousandSeparator = Intl.NumberFormat(locale).format(11111).replace(/\p{Number}/gu, '');
-    var decimalSeparator = Intl.NumberFormat(locale).format(1.1).replace(/\p{Number}/gu, '');
-    return parseFloat(val.replace(new RegExp('\\' + thousandSeparator, 'g'), '')
-        .replace(new RegExp('\\' + decimalSeparator), '.'));
-}

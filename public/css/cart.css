@@ -3,39 +3,39 @@
   padding-bottom: 55px;
 }
 
-.cart-inner .table th,
-.cart-inner .table td {
+.table th,
+.table td {
   padding: 0.5rem 1.5rem;
   border-color: #eeeeee;
 }
 
-.cart-inner .table thead th{
+.table thead th{
   color: #123354;
 }
 
-.cart-inner .table tbody tr td {
+.table tbody tr td {
   padding: 1rem 1.5rem;
   vertical-align: middle;
   align-self: center;
 }
 
-.cart-inner .table tbody tr td .media img {
+.table tbody tr td .media img {
   width: 15%;
   border-radius: 3px;
 }
 
 @media (max-width: 600px) {
-  .cart-inner .table tbody tr td .media .d-flex img {
+  .table tbody tr td .media .d-flex img {
     min-width: 75px;
   }
 }
 
-.cart-inner .table tbody tr td .media .media-body {
+.table tbody tr td .media .media-body {
   vertical-align: middle;
   align-self: center;
 }
 
-.cart-inner .table tbody tr td h5 {
+.table tbody tr td h5 {
   font-size: 15px;
   color: var(--black);
   margin-bottom: 0px;
