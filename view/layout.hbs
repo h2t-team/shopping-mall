@@ -24,9 +24,6 @@
   {{#if style}}
   <link rel="stylesheet" href="/css/{{style}}">
   {{/if}}
-  <script type="text/javascript" src="/javascripts/boostrap-rating.js"></script>
-  <script src="/javascripts/validator.js"></script>
-  <script src="/javascripts/global.js"></script>
   <title>{{title}}</title>
 </head>
 
@@ -35,6 +32,9 @@
   {{> header}}
   {{{body}}}
   {{> footer}}
+  <script type="text/javascript" src="/javascripts/boostrap-rating.js"></script>
+  <script src="/javascripts/validator.js"></script>
+  <script src="/javascripts/global.js"></script>
   {{#each scripts }}
   <script src="/javascripts/{{this}}"></script>
   {{/each}}

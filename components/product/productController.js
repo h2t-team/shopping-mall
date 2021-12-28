@@ -13,8 +13,36 @@ const list = async (req, res) => {
         products,
         category,
         page,
-        catOption
+        catOption,
+        scripts: ['searchProduct.js']
     });
+}
+
+const search = async (req, res) => {
+    try {
+        const page = !Number.isNaN(req.query.page) && req.query.page > 0 ? Number.parseInt(req.query.page) : 1; 
+        const keyword = req.query.keyword;
+        const catOption = !Number.isNaN(req.query.category) && req.query.category > 0 ? req.query.category : '';
+        console.log(req.query);
+    
+        //request from dtb
+        const category = await service.category();
+        const products = await service.search(catOption, keyword, page - 1);
+        
+        console.log(products);
+        res.render('product/productList', { 
+            title: 'Shop', 
+            products, 
+            category, 
+            page, 
+            catOption, 
+            keyword, 
+            style: 'productlist.css', 
+            scripts: ['searchProduct.js'] });
+    }
+    catch (err) {
+        console.log(err);
+    }
 }
 
 const detail = async (req, res) => {
@@ -78,6 +106,7 @@ const getRate = async (req, res) => {
 
 module.exports = {
     list,
+    search,
     detail,
     addRate,
     getRate
