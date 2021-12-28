@@ -1,0 +1,66 @@
+<div class="error-container d-flex justify-content-center align-items-center vh-100">
+    <div class="error-card shadow">
+        <div class="error-header">
+            <div class="icon-box">
+                <i class="material-icons bi bi-x"></i>
+			</div>
+        </div>
+        <div class="text-center">
+            <h4>Ooops!</h4>	
+			<p>{{message}}</p>
+        </div>
+    </div>
+</div> 
+<style>
+	.error-container {		
+		color: #434e65;
+		width: 525px;
+		margin: 30px auto;
+	}
+	.error-card {
+		padding: 20px;
+		font-size: 16px;
+		border-radius: 5px;
+		border: none;
+        width: 100%;
+	}
+	.error-header {
+		background: #e85e6c;
+		border-bottom: none;   
+        position: relative;
+		text-align: center;
+		margin: -20px -20px 0;
+		border-radius: 5px 5px 0 0;
+		padding: 20px;
+	}
+	.error-container .icon-box {
+		color: #fff;		
+		width: 95px;
+		height: 95px;
+		display: inline-block;
+		border-radius: 50%;
+		z-index: 9;
+		border: 5px solid #fff;
+		text-align: center;
+	}
+	.error-container .icon-box i {
+		font-size: 58px;
+	}
+    .error-container .btn {
+        color: #fff;
+        border-radius: 4px;
+		background: #eeb711;
+		text-decoration: none;
+		transition: all 0.4s;
+        line-height: normal;
+		border-radius: 30px;
+		margin-top: 10px;
+		padding: 6px 20px;
+		min-width: 150px;
+        border: none;
+    }
+	.error-container .btn:hover, .error-container .btn:focus {
+		background: #eda645;
+		outline: none;
+	}
+</style>
