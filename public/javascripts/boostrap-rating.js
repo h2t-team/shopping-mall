@@ -6,7 +6,7 @@
     function Rating(element, options) {
         this.$input = $(element);
         this.$rating = $('<span></span>').css({
-            cursor: 'default'
+            cursor: 'pointer'
         }).insertBefore(this.$input);
         // Merge data and parameter options.
         // Those provided as parameter prevail over the data ones.

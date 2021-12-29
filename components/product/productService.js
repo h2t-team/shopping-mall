@@ -28,6 +28,43 @@ const all = (page = 0, perPage = 9) => {
     });
 }
 
+const byKeyword = (keyword, page = 0, perPage = 9) => {
+    return models.product.findAndCountAll({
+        include: [{
+            model: models.category,
+            as: 'category',
+            attributes: ['name']
+        },
+        {
+            model: models.product_image,
+            as: 'product_images',
+            attributes: ['image_url'],
+            duplicating: false,
+        }],
+        where: {
+            [Op.or]: [
+                {
+                    name: {
+                        [Op.like]: `%${keyword}%`
+                    }
+                }, {
+                    price: {
+                        [Op.like]: `%${keyword}%`
+                    }
+                }, {
+                    '$category.name$': {
+                        [Op.like]: `%${keyword}%`
+                    }
+                }
+            ]
+        },
+        offset: page * perPage,
+        limit: perPage,
+        raw: true,
+        group: ['product.id']
+    });
+}
+
 const byCategory = (id, page = 0, perPage = 9) => {
     return models.product.findAndCountAll({
         include: [{
@@ -47,6 +84,69 @@ const byCategory = (id, page = 0, perPage = 9) => {
             attributes: ['image_url'],
             duplicating: false,
         }],
+        where: {
+            id: {
+                [Op.ne]: id
+            }
+        },
+        offset: page * perPage,
+        limit: perPage,
+        group: ['product.id'],
+        raw: true
+    });
+}
+
+const byFilter = (category, keyword, page = 0, perPage = 9) => {
+    return models.product.findAndCountAll({
+        include: [{
+            model: models.category,
+            as: 'category',
+            attributes: ['name', 'parent_id'],
+        },
+        {
+            model: models.product_image,
+            as: 'product_images',
+            attributes: ['image_url'],
+            duplicating: false,
+        }],
+        where: {
+            [Op.and]: [
+                {
+                    [Op.or]: [
+                        {
+                            name: {
+                                [Op.like]: `%${keyword}%`
+                            }  
+                        }, {
+                            price: {
+                                [Op.like]: `%${keyword}%`
+                            }  
+                        }, {
+                            rate: {
+                                [Op.like]: `%${keyword}%`
+                            } 
+                        },  {
+                            '$category.name$': {
+                                [Op.like]: `%${keyword}%`
+                            } 
+                        }
+                    ]
+                }, {
+                    [Op.or]: [
+                        {
+                            '$category.id$': {
+                                [Op.like]: `%${category}%`
+                            },
+                        },
+                        {
+                            '$category.parent_id$': {
+                                [Op.like]: `%${category}%`
+                            },
+                        },
+                    ]
+                }
+            ]
+        },
         offset: page * perPage,
         limit: perPage,
         group: ['product.id'],
@@ -195,13 +295,15 @@ module.exports = {
     all,
     category,
     byCategory,
+    byFilter,
     topRate,
     detail,
     size,
     image,
     addRate,
     getRate, 
-    bestSeller,
+    bestSeller, 
+    byKeyword,
     getAVGRate,
     updateProductRate
 }

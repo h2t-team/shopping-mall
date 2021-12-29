@@ -25,9 +25,6 @@
   {{#if style}}
   <link rel="stylesheet" href="/css/{{style}}">
   {{/if}}
-  <script type="text/javascript" src="/javascripts/boostrap-rating.js"></script>
-  <script src="/javascripts/validator.js"></script>
-  <script src="/javascripts/global.js"></script>
   <title>{{title}}</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
 
@@ -38,6 +35,9 @@
   {{> header}}
   {{{body}}}
   {{> footer}}
+  <script type="text/javascript" src="/javascripts/boostrap-rating.js"></script>
+  <script src="/javascripts/validator.js"></script>
+  <script src="/javascripts/global.js"></script>
   {{#each scripts }}
   <script src="/javascripts/{{this}}"></script>
   {{/each}}
