@@ -1,43 +1,35 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('feedback', {
+  return sequelize.define('category', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    customer_id: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
+    parent_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
-        model: 'customer',
+        model: 'category',
         key: 'id'
       }
     },
-    product_id: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-      references: {
-        model: 'product',
-        key: 'id'
-      }
-    },
-    content: {
-      type: DataTypes.STRING(255),
+    name: {
+      type: DataTypes.STRING(45),
       allowNull: true
     },
-    rate: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true
     },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: false
+    total_products: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'feedback',
+    tableName: 'category',
     timestamps: false,
     indexes: [
       {
@@ -57,17 +49,10 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "fk_feedback_customer_idx",
+        name: "fk_category_category1_idx",
         using: "BTREE",
         fields: [
-          { name: "customer_id" },
-        ]
-      },
-      {
-        name: "fk_feedback_product_idx",
-        using: "BTREE",
-        fields: [
-          { name: "product_id" },
+          { name: "parent_id" },
         ]
       },
     ]

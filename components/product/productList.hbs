@@ -3,10 +3,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-md-5">
-                    <div class="shop-sidebar mb-4 mx-3">
-                        <h3 class="shop-sidebar-heading px-4 fw-normal">Browse Categories</h3>
-                        <div class="shop-sidebar-list p-4 bg-light">
-                            <form id="categoryForm">
+                    <form id="filterForm">
+                        <div class="shop-sidebar mb-4 mx-3">
+                            <h3 class="shop-sidebar-heading px-4 fw-normal">Browse Categories</h3>
+                            <div class="shop-sidebar-list p-4 bg-light">
                                 <div class="shop-sidebar-type">
                                     <div class="form-check mb-2">
                                         <input class="form-check-input" type="radio" 
@@ -19,22 +19,43 @@
                                     <div class="form-check mb-2">
                                         <input class="form-check-input" type="radio" 
                                         name="category" {{{radioChecked id ../catOption}}} 
-                                        id={{id}}   value="{{id}}">
+                                        id={{id}}  value="{{id}}">
                                         <label class="form-check-label" for={{id}}>
                                             {{name}} ({{total_products}})
                                         </label>
                                     </div>
                                     {{/each}}
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                        <div class="shop-sidebar mb-4 mx-3">
+                            <h3 class="shop-sidebar-heading px-4 fw-normal">Sort By Price</h3>
+                            <div class="shop-sidebar-list p-4 bg-light">
+                                <div class="shop-sidebar-type">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                            name="sort" id='asc' value="ascending">
+                                        <label class="form-check-label" for='asc'>
+                                            Ascending
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                            name="sort" id='desc' value="descending">
+                                        <label class="form-check-label" for='desc'>
+                                            Descending
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-xl-9 col-lg-8 col-md-7">
                     <div class="bg-light mb-4 px-3 pb-3 d-flex align-items-center flex-wrap">
-                        <form id="searchForm" action="/product/search" method="get">
+                        <form id="searchForm" action="/product" method="get">
                             <div class="mt-3 input-group">
-                                <input type="text" name="keyword" class="form-control" id="shop-search" placeholder="Search" value="{{keyword}}">
+                                <input type="text" name="keyword" class="form-control" id="shop-search" placeholder="Search" value="{{keyword}}" autocomplete="off">
                             </div>
                         </form>
                     </div>
@@ -58,7 +79,7 @@
                 <div
                     class="offset-xl-3 offset-lg-4 offset-md-5 col-xl-9 col-lg-8 col-md-7 page-nav d-flex justify-content-center">
                     <ul class="d-flex">
-                        {{#page products.count.length page catOption}}
+                        {{#page products.count.length page url}}
                         {{/page}}
                     </ul>
                 </div>

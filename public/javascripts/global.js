@@ -4,10 +4,3 @@ function reverseFormatNumber(val, locale) {
     return parseFloat(val.replace(new RegExp('\\' + thousandSeparator, 'g'), '')
         .replace(new RegExp('\\' + decimalSeparator), '.'));
 }
-
-// remove the blank field when submit the search form
-$("form").submit(function() {
-    if($(".search").val() == "") {
-            $(".search").attr('disabled', true);
-    }
-});

@@ -1,40 +1,35 @@
 
 $(document).ready(function () {
-    // enter search 
-    $("#searchBtn").on("keydown", event => {
 
-        if (event.keycode === 13) {
-            event.preventDefault();
-            let catOption = $("input[name=category]:checked", "#categoryForm");
-
-            const value = catOption.val();
-            alert(value);
-            let form = $("#searchForm");
-
-            if ($("input[name=category]", "#searchForm").val() === undefined) {
-                $("<input>")
-                    .attr({
-                        name: "category",
-                        value: value,
-                    })
-                    .appendTo(form);
-            } else {
-                $("input[name=category]", "#searchForm").val(value);
+    //enter search 
+    $("#shop-search").on("keyup keypress", event => {
+        if (event.which === 13) {
+            if($("#shop-search").val() == "") {
+                $("#shop-search").attr('disabled', true);
             }
-            form.submit();
+            $("#searchForm").submit();
         }
     });
 
     //filter category
-    $("input[name=category]", "#categoryForm").on('click', event => {
-        let value = event.target.value;
-        if (value != 0) {
-            window.location.assign(
-                `/product?category=${value}`
-            );
+    $("input[name=category]", "#filterForm").on('click', () => {
+        const filterForm = $('#filterForm');
+        const keyword = $("#shop-search").val();
+        if(keyword && $("input[name=keyword]", "#filterForm").val() === undefined) {
+            $("<input>")
+                .attr({
+                    name: "keyword",
+                    value: keyword,
+                    type: 'hidden'
+                })
+                .appendTo(filterForm);
+        }
+        else if (keyword) {
+            $("input[name=keyword]", "#filterForm").val(keyword);
         }
         else {
-            window.location.assign(`/product`);
+            $("#shop-search").attr('disabled', true);
         }
+        filterForm.submit();
     })
 });

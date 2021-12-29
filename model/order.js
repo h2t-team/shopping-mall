@@ -1,9 +1,8 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('feedback', {
+  return sequelize.define('order', {
     id: {
-      autoIncrement: true,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(255),
       allowNull: false,
       primaryKey: true
     },
@@ -15,29 +14,33 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    product_id: {
-      type: DataTypes.STRING(255),
+    receiver_address_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'product',
+        model: 'receiver_address',
         key: 'id'
       }
     },
-    content: {
-      type: DataTypes.STRING(255),
-      allowNull: true
+    total: {
+      type: DataTypes.DECIMAL(10,0),
+      allowNull: false
     },
-    rate: {
-      type: DataTypes.INTEGER,
+    status: {
+      type: DataTypes.STRING(45),
       allowNull: false
     },
     created_at: {
       type: DataTypes.DATE,
       allowNull: false
+    },
+    note: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'feedback',
+    tableName: 'order',
     timestamps: false,
     indexes: [
       {
@@ -57,17 +60,17 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "fk_feedback_customer_idx",
+        name: "fk_order_receiver_address1_idx",
         using: "BTREE",
         fields: [
-          { name: "customer_id" },
+          { name: "receiver_address_id" },
         ]
       },
       {
-        name: "fk_feedback_product_idx",
+        name: "fk_order_customer_idx",
         using: "BTREE",
         fields: [
-          { name: "product_id" },
+          { name: "customer_id" },
         ]
       },
     ]

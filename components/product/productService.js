@@ -28,7 +28,7 @@ const all = (page = 0, perPage = 9) => {
     });
 }
 
-const search = (category, keyword, page = 0, perPage = 9) => {
+const byKeyword = (keyword, page = 0, perPage = 9) => {
     return models.product.findAndCountAll({
         include: [{
             model: models.category,
@@ -42,40 +42,21 @@ const search = (category, keyword, page = 0, perPage = 9) => {
             duplicating: false,
         }],
         where: {
-            [Op.and]:[
+            [Op.or]: [
                 {
-                    [Op.or]: [
-                        {
-                            category_id: {
-                                [Op.like]: `%${category}%`
-                            }
-                            
-                        }, {
-                            '$category.parent_id$': {
-                                [Op.like]: `%${category}%`
-                            }
-                        }
-                    ]
+                    name: {
+                        [Op.like]: `%${keyword}%`
+                    }
+                }, {
+                    price: {
+                        [Op.like]: `%${keyword}%`
+                    }
+                }, {
+                    '$category.name$': {
+                        [Op.like]: `%${keyword}%`
+                    }
                 }
-            ,
-                {
-                    [Op.or]: [
-                        {
-                            name: {
-                                [Op.like]: `%${keyword}%`
-                            }
-                        }, {
-                            price: {
-                                [Op.like]: `%${keyword}%`
-                            }
-                        }, {
-                            '$category.name$': {
-                                [Op.like]: `%${keyword}%`
-                            }
-                        }
-                    ]
-                }
-            ],
+            ]
         },
         offset: page * perPage,
         limit: perPage,
@@ -107,6 +88,64 @@ const byCategory = (id, page = 0, perPage = 9) => {
             id: {
                 [Op.ne]: id
             }
+        },
+        offset: page * perPage,
+        limit: perPage,
+        group: ['product.id'],
+        raw: true
+    });
+}
+
+const byFilter = (category, keyword, page = 0, perPage = 9) => {
+    return models.product.findAndCountAll({
+        include: [{
+            model: models.category,
+            as: 'category',
+            attributes: ['name', 'parent_id'],
+        },
+        {
+            model: models.product_image,
+            as: 'product_images',
+            attributes: ['image_url'],
+            duplicating: false,
+        }],
+        where: {
+            [Op.and]: [
+                {
+                    [Op.or]: [
+                        {
+                            name: {
+                                [Op.like]: `%${keyword}%`
+                            }  
+                        }, {
+                            price: {
+                                [Op.like]: `%${keyword}%`
+                            }  
+                        }, {
+                            rate: {
+                                [Op.like]: `%${keyword}%`
+                            } 
+                        },  {
+                            '$category.name$': {
+                                [Op.like]: `%${keyword}%`
+                            } 
+                        }
+                    ]
+                }, {
+                    [Op.or]: [
+                        {
+                            '$category.id$': {
+                                [Op.like]: `%${category}%`
+                            },
+                        },
+                        {
+                            '$category.parent_id$': {
+                                [Op.like]: `%${category}%`
+                            },
+                        },
+                    ]
+                }
+            ]
         },
         offset: page * perPage,
         limit: perPage,
@@ -256,18 +295,15 @@ module.exports = {
     all,
     category,
     byCategory,
+    byFilter,
     topRate,
     detail,
     size,
     image,
     addRate,
     getRate, 
-<<<<<<< HEAD
     bestSeller, 
-    search
-=======
-    bestSeller,
+    byKeyword,
     getAVGRate,
     updateProductRate
->>>>>>> dc03b94f47494817ec4232d1f59e4503603fce6b
 }
