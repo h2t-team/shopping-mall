@@ -20,7 +20,6 @@ const helpers = (hbs) => {
                         <i class="fas fa-caret-left"></i>
                     </a>
                 </li>\n`;
-
         var i = page > 2 ? page - 1 : 1;
         //... item
         item += i != 1 ? `<li><a class="disabled" href="#">...</a></li>` : "";
@@ -61,6 +60,7 @@ const helpers = (hbs) => {
 
     hbs.registerHelper('avatar', url => url ? url : "/images/default.png");
 
+    hbs.registerHelper('selectSelected', (id, select) => id == select ? "selected" : "");
     hbs.registerHelper('dateFormat', date => new Date(date).toLocaleString('en-GB'));
 
     hbs.registerHelper('checkStatus', status => {

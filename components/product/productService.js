@@ -11,16 +11,17 @@ const category = () => {
 const all = (page = 0, perPage = 9) => {
     return models.product.findAndCountAll({
         include: [{
-            model: models.category,
-            as: 'category',
-            attributes: ['name']
-        },
-        {
-            model: models.product_image,
-            as: 'product_images',
-            attributes: ['image_url'],
-            duplicating: false,
-        }],
+                model: models.category,
+                as: 'category',
+                attributes: ['name']
+            },
+            {
+                model: models.product_image,
+                as: 'product_images',
+                attributes: ['image_url'],
+                duplicating: false,
+            }
+        ],
         offset: page * perPage,
         limit: perPage,
         raw: true,
@@ -65,9 +66,8 @@ const byKeyword = (keyword, page = 0, perPage = 9) => {
     });
 }
 
-const byCategory = (id, page = 0, perPage = 9) => {
-    return models.product.findAndCountAll({
-        include: [{
+const byCategory = (id, sort, page = 0, perPage = 9) => {
+    const includeCondition = id ? [{
             model: models.category,
             as: 'category',
             attributes: ['name'],
@@ -83,16 +83,45 @@ const byCategory = (id, page = 0, perPage = 9) => {
             as: 'product_images',
             attributes: ['image_url'],
             duplicating: false,
-        }],
+        }
+    ] : [{
+            model: models.category,
+            as: 'category',
+            attributes: ['name']
+        },
+        {
+            model: models.product_image,
+            as: 'product_images',
+            attributes: ['image_url'],
+            duplicating: false,
+        }
+    ];
+    var orderCondition;
+    if (sort == "asc") {
+        orderCondition = [
+            ['price', 'ASC'],
+        ];
+    }
+    if (sort == "desc") {
+        orderCondition = [
+            ['price', 'DESC'],
+        ];
+    }
+    if (sort == "default") {
+        orderCondition = [];
+    }
+    return models.product.findAndCountAll({
+        include: includeCondition,
+        offset: page * perPage,
+        limit: perPage,
+        group: ['product.id'],
+        raw: true,
+        order: orderCondition,
         where: {
             id: {
                 [Op.ne]: id
             }
         },
-        offset: page * perPage,
-        limit: perPage,
-        group: ['product.id'],
-        raw: true
     });
 }
 
@@ -208,16 +237,17 @@ const bestSeller = (perPage = 4) => {
 const detail = id => {
     return models.product.findByPk(id, {
         include: [{
-            model: models.category,
-            as: 'category',
-            attributes: ['name']
-        },
-        {
-            model: models.product_image,
-            as: 'product_images',
-            attributes: ['image_url'],
-            duplicating: false
-        }],
+                model: models.category,
+                as: 'category',
+                attributes: ['name']
+            },
+            {
+                model: models.product_image,
+                as: 'product_images',
+                attributes: ['image_url'],
+                duplicating: false
+            }
+        ],
         raw: true
     })
 }
@@ -226,7 +256,9 @@ const size = id => {
     return models.product_size.findAll({
         where: {
             'product_id': id,
-            quantity: { [Op.not]: 0 }
+            quantity: {
+                [Op.not]: 0
+            }
         },
         attributes: ['size', 'quantity'],
         raw: true
@@ -270,7 +302,6 @@ const getRate = (productId, offset, limit) => {
     })
 }
 
-
 const getAVGRate = productId => {
     return models.feedback.findOne({
         raw: true,
@@ -301,7 +332,7 @@ module.exports = {
     size,
     image,
     addRate,
-    getRate, 
+    getRate,
     bestSeller, 
     byKeyword,
     getAVGRate,
