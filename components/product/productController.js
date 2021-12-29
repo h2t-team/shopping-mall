@@ -12,15 +12,11 @@ const list = async(req, res) => {
     const category = await service.category();
     //sort
     var products = [];
-    // if (sortOption == "desc") {
-    //     products = catOption ? await service.byCategoryDESC(catOption, page - 1) : await service.allDESC(page - 1);
-    // }
-    // if (sortOption == "asc") {
-    //     products = catOption ? await service.byCategoryASC(catOption, page - 1) : await service.allASC(page - 1);
-    // }
-    // if (sortOption == "default") {
-    // }
-    products = catOption ? await service.byCategory(catOption, sortOption, page - 1) : await service.all(page - 1);
+    if (catOption || sortOption) {
+        products = await service.byCategory(catOption, sortOption, page - 1);
+    } else {
+        products = await service.all(page - 1);
+    }
     res.render('product/productList', {
         title: 'TiMa Shop',
         style: 'productlist.css',

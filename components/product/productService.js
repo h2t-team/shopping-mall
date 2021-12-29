@@ -46,7 +46,18 @@ const byCategory = (id, sort, page = 0, perPage = 9) => {
             attributes: ['image_url'],
             duplicating: false,
         }
-    ] : [{}];
+    ] : [{
+            model: models.category,
+            as: 'category',
+            attributes: ['name']
+        },
+        {
+            model: models.product_image,
+            as: 'product_images',
+            attributes: ['image_url'],
+            duplicating: false,
+        }
+    ];
     var orderCondition;
     if (sort == "asc") {
         orderCondition = [
@@ -61,8 +72,6 @@ const byCategory = (id, sort, page = 0, perPage = 9) => {
     if (sort == "default") {
         orderCondition = [];
     }
-    console.log(includeCondition);
-    console.log(orderCondition);
     return models.product.findAndCountAll({
         include: includeCondition,
         offset: page * perPage,
@@ -158,112 +167,6 @@ const getRate = (productId, offset, limit) => {
         }
     })
 }
-const allDESC = (page = 0, perPage = 9) => {
-    return models.product.findAndCountAll({
-        include: [{
-                model: models.category,
-                as: 'category',
-                attributes: ['name']
-            },
-            {
-                model: models.product_image,
-                as: 'product_images',
-                attributes: ['image_url'],
-                duplicating: false,
-            }
-        ],
-        offset: page * perPage,
-        limit: perPage,
-        raw: true,
-        group: ['product.id'],
-        order: [
-            ['price', 'DESC'],
-        ]
-    });
-}
-const allASC = (page = 0, perPage = 9) => {
-    return models.product.findAndCountAll({
-        include: [{
-                model: models.category,
-                as: 'category',
-                attributes: ['name']
-            },
-            {
-                model: models.product_image,
-                as: 'product_images',
-                attributes: ['image_url'],
-                duplicating: false,
-            }
-        ],
-        offset: page * perPage,
-        limit: perPage,
-        raw: true,
-        group: ['product.id'],
-        order: [
-            ['price', 'ASC'],
-        ]
-    });
-}
-const byCategoryDESC = (id, page = 0, perPage = 9) => {
-    return models.product.findAndCountAll({
-        include: [{
-                model: models.category,
-                as: 'category',
-                attributes: ['name'],
-                where: {
-                    [Op.or]: [
-                        { id: id },
-                        { 'parent_id': id }
-                    ]
-                }
-            },
-            {
-                model: models.product_image,
-                as: 'product_images',
-                attributes: ['image_url'],
-                duplicating: false,
-            }
-        ],
-        offset: page * perPage,
-        limit: perPage,
-        group: ['product.id'],
-        raw: true,
-        order: [
-            // will return `username` DESC
-            ['price', 'DESC'],
-        ]
-    });
-}
-const byCategoryASC = (id, page = 0, perPage = 9) => {
-    return models.product.findAndCountAll({
-        include: [{
-                model: models.category,
-                as: 'category',
-                attributes: ['name'],
-                where: {
-                    [Op.or]: [
-                        { id: id },
-                        { 'parent_id': id }
-                    ]
-                }
-            },
-            {
-                model: models.product_image,
-                as: 'product_images',
-                attributes: ['image_url'],
-                duplicating: false,
-            }
-        ],
-        offset: page * perPage,
-        limit: perPage,
-        group: ['product.id'],
-        raw: true,
-        order: [
-            // will return `username` DESC
-            ['price', 'ASC'],
-        ]
-    });
-}
 module.exports = {
     all,
     category,
@@ -274,8 +177,4 @@ module.exports = {
     image,
     addRate,
     getRate,
-    byCategoryDESC,
-    allDESC,
-    allASC,
-    byCategoryASC,
 }
