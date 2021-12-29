@@ -170,6 +170,27 @@ const getRate = (productId, offset, limit) => {
     })
 }
 
+
+const getAVGRate = productId => {
+    return models.feedback.findOne({
+        raw: true,
+        where: {
+            'product_id': productId
+        },
+        attributes: [[sequelize.fn('avg', sequelize.col('rate')), 'avgRate']]
+    })
+}
+
+const updateProductRate = (rate, productId) => {
+    return models.product.update({
+        rate
+    },{
+        where: {
+            id: productId
+        }
+    })
+}
+
 module.exports = {
     all,
     category,
@@ -180,5 +201,7 @@ module.exports = {
     image,
     addRate,
     getRate, 
-    bestSeller
+    bestSeller,
+    getAVGRate,
+    updateProductRate
 }

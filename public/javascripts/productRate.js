@@ -4,6 +4,9 @@ $(document).ready(()=>{
         e.preventDefault();
         const rate = $('input[type=hidden][name=rate]').val();
         const content = $('input[name=content]').val();
+        const regex = /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/;
+        if(content.length >= 255 || !regex.test(content))
+            return;
         const request = {
             method: 'POST',
             headers: {
@@ -37,7 +40,8 @@ async function loadRate(page, size) {
         $.each(data.rates, function (index, item) {
             appendRate(item);
         });
-        $('#total-rate').text(`(${data.total} Reviews)`)
+        $('.overall h1').text(data.overall.toFixed(1));
+        $('.overall p').text(`(${data.total} Reviews)`);
         if ($('ul.pagination li').length - 2 != data.totalPages) {
             $('ul.pagination').empty();
             buildPagination(data.totalPages);
