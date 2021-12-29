@@ -4,8 +4,23 @@ const { uploadImage } = require('../../cloudinary');
 
 const service = require('./profileService');
 
-const profile = (req, res) => {
-    res.render('profile/profile', { title: 'Account' });
+const profile = async (req, res) => {
+    const user = req.user;
+    if (user) {
+        try {
+            const addresses = await service.getAddresses(user.id);
+            res.render('profile/profile', {
+                title: 'Account',
+                addresses,
+                style: 'addresses.css',
+                scripts: ['address.js']
+            });
+        } catch (err) {            
+            console.log(err);
+        }
+    } else {
+        res.redirect('/auth/login');
+    }
 }
 
 const update = (req, res) => {
@@ -35,23 +50,95 @@ const changePasswordPage = (req, res) => {
 }
 
 const changePassword = async (req, res) => {
-    try{
+    try {
         const user = req.user;
-        const {oldPass, newPass} = req.body;
-        if(!bcrypt.compareSync(oldPass, user.password)){
+        const { oldPass, newPass } = req.body;
+        if (!bcrypt.compareSync(oldPass, user.password)) {
             req.flash('error', 'Invalid Password.')
             return res.redirect('/profile/changePassword')
         }
         const hashPass = bcrypt.hashSync(newPass, 10);
         await service.updatePass(user.id, hashPass);
         res.redirect('/profile')
-    }catch (err) {
+    } catch (err) {
         console.log(err);
     }
 }
+
+const addAddressPage = (req, res) => {
+    res.render('profile/addAddress', { tiltle: 'Add Address' });
+}
+
+const addAddress = async (req, res) => {
+    const user = req.user;
+    if (user) {
+        try {
+            const { receiver, tel, city, district, ward, address } = req.body;
+            await service.addAddress(user.id, receiver, tel, city, district, ward, address);
+            res.redirect('/profile');
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        res.redirect('/auth/login');
+    }
+}
+
+const updateAddressPage = async (req, res) => {
+    const user = req.user;
+    if (user) {
+        try {
+            const id = req.params.id;
+            const address = await service.getAddress(id);
+            res.render('profile/updateAddress', { tiltle: 'Add Address', address });
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        res.redirect('/auth/login');
+    }
+}
+
+const updateAddress = async (req, res) => {
+    const user = req.user;
+    if (user) {
+        try {
+            const { id, receiver, tel, city, district, ward, address } = req.body;
+            await service.updateAddress(id, receiver, tel, city, district, ward, address);
+            res.redirect('/profile');
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        res.redirect('/auth/login');
+    }
+}
+
+const deleteAddress = async (req, res) => {
+    const user = req.user;
+    if (user) {
+        try {
+            const { id } = req.body;
+            await service.deleteAddress(id);
+            res.status(200).json({ success: 'success' });
+        } catch (err) {
+            res.status(500).json({
+                message: err.message
+            })
+        }
+    } else {
+        res.redirect('/auth/login');
+    }
+}
+
 module.exports = {
     profile,
     update,
     changePasswordPage,
-    changePassword
+    changePassword,
+    addAddressPage,
+    addAddress,
+    updateAddressPage,
+    updateAddress,
+    deleteAddress
 }

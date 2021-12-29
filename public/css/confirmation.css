@@ -62,29 +62,29 @@
   padding-left: 25px;
 }
 
-.order_details_table {
+.order-details-table {
   background: #f1f6f7;
   padding: 30px;
   margin-top: 75px;
 }
 
 @media (min-width: 767px) {
-  .order_details_table {
+  .order-details-table {
     margin-top: 45px;
   }
 }
 
-.order_details_table h2 {
+.order-details-table h2 {
   color: var(--black);
   font-size: 18px;
   padding-bottom: 15px;
 }
 
-.order_details_table .table {
+.order-details-table .table {
   margin-bottom: 0px;
 }
 
-.order_details_table .table thead tr th {
+.order-details-table .table thead tr th {
   border-bottom: 1px solid #ddd;
   font-size: 16px;
   font-weight: normal;
@@ -92,21 +92,21 @@
 }
 
 @media (max-width: 1000px) {
-  .order_details_table .table tbody tr:last-child {
+  .order-details-table .table tbody tr:last-child {
     height: 50px;
   }
 }
 
-.order_details_table .table tbody tr td {
+.order-details-table .table tbody tr td {
   border: 0;
   color: #777777;
 }
 
-.order_details_table .table tbody tr td p {
+.order-details-table .table tbody tr td p {
   margin-bottom: 0px;
 }
 
-.order_details_table .table tbody tr td h5 {
+.order-details-table .table tbody tr td h5 {
   color: var(--black);
   margin-bottom: 0px;
   font-size: 15px;
@@ -114,7 +114,7 @@
   font-weight: 500;
 }
 
-.order_details_table .table tbody tr td h4 {
+.order-details-table .table tbody tr td h4 {
   text-transform: uppercase;
   margin-bottom: 0px;
   color: var(--black);
@@ -123,11 +123,11 @@
   font-weight: 500;
 }
 
-.order_details_table .table tbody tr:last-child td {
+.order-details-table .table tbody tr:last-child td {
   border-top: 1px solid #ddd;
   padding-bottom: 0;
 }
 
-.order_details_table .table tbody tr:last-child td p {
+.order-details-table .table tbody tr:last-child td p {
   color: var(--black);
 }
