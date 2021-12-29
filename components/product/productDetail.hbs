@@ -103,8 +103,8 @@
                                 <div class="row mb-3">
                                     <div class="col-12 overall text-center mb-2">
                                         <h4 class="fw-bolder">Overall</h4>
-                                        <h1>{{detail.rate}}</h1>
-                                        <p id="total-rate"></p>
+                                        <h1></h1>
+                                        <p></p>
                                     </div>
                                 </div>
                                 {{#if user}}
@@ -120,14 +120,15 @@
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="content-form">Your Review:</label>
                                             <input class="form-control" type="text" placeholder="Your review"
-                                                name="content" />
+                                                name="content" rules="max:255|special" />
+                                            <div class="invalid-feedback"></div>
                                         </div>
                                         <div class="d-flex justify-content-end">
-                                            <input class="col-md-3 btn mb-2 text-uppercase" type="submit" id="submit-review"
-                                                value="Submit now" />
+                                            <input class="col-md-3 btn mb-2 text-uppercase" type="submit"
+                                                id="submit-review" value="Submit now" />
                                         </div>
                                     </form>
-                                </div>                                    
+                                </div>
                                 {{/if}}
                                 <div id="review-list">
                                 </div>
@@ -190,3 +191,8 @@
         </div>
     </div>
 </main>
+<script>
+    $(document).ready(() => {
+        Validation('.review-form')
+    })
+</script>

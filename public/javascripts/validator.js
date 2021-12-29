@@ -12,7 +12,11 @@ function Validation(selector) {
             if(src){
                 return src.value === value ? undefined : 'Please make sure your password match.'
             }
-        }
+        },
+        special: value => {
+            const regex = /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/;
+            return regex.test(value) ? undefined : 'The field must not containt special character.'
+        } 
     }
 
     const form = document.querySelector(selector);
