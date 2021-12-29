@@ -61,6 +61,7 @@ const helpers = (hbs) => {
     hbs.registerHelper('avatar', url => url ? url : "/images/default.png");
 
     hbs.registerHelper('selectSelected', (id, select) => id == select ? "selected" : "");
+    
     hbs.registerHelper('dateFormat', date => new Date(date).toLocaleString('en-GB'));
 
     hbs.registerHelper('checkStatus', status => {

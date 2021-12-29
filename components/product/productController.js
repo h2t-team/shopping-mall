@@ -6,16 +6,15 @@ const list = async (req, res) => {
     //get params
     const page = !Number.isNaN(req.query.page) && req.query.page > 0 ? Number.parseInt(req.query.page) : 1;
     const keyword = req.query.keyword ? req.query.keyword : '';
-    let catOption = req.query.category && !Number.isNaN(req.query.category) ? Number.parseInt(req.query.category) : '';
-    var sortOption = req.query.sort;
-    if (!sortOption) {
-        sortOption = "default";
-    }
+    let catOption = req.query.category && !Number.isNaN(req.query.category) && req.query.category > 0 ? Number.parseInt(req.query.category) : '';
+    const sortOption = req.query.sort ? req.query.sort : 'default';
+    
     //request from dtb
     const category = await service.category();
     let products;
     if (catOption || sortOption) {
-        products = await service.byCategory(catOption, sortOption, keyword, page - 1);
+        console.log(sortOption);
+        products = await service.byFilter(catOption, keyword, sortOption, page - 1);
     }
     else {
         products = keyword ? await service.byKeyword(keyword, page - 1) : await service.all(page - 1);
@@ -28,7 +27,7 @@ const list = async (req, res) => {
         category,
         page,
         catOption,
-        sortOption
+        sortOption,
         keyword,
         url,
         scripts: ['searchProduct.js']

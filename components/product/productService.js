@@ -66,8 +66,8 @@ const byKeyword = (keyword, page = 0, perPage = 9) => {
     });
 }
 
-const byCategory = (id, sort, page = 0, perPage = 9) => {
-    const includeCondition = id ? [{
+const byCategory = (id, page = 0, perPage = 9) => {
+    const includeCondition = [{
             model: models.category,
             as: 'category',
             attributes: ['name'],
@@ -84,10 +84,26 @@ const byCategory = (id, sort, page = 0, perPage = 9) => {
             attributes: ['image_url'],
             duplicating: false,
         }
-    ] : [{
+    ]
+    return models.product.findAndCountAll({
+        include: includeCondition,
+        offset: page * perPage,
+        limit: perPage,
+        group: ['product.id'],
+        raw: true,
+        where: {
+            id: {
+                [Op.ne]: id
+            }
+        },
+    });
+}
+
+const byFilter = (category, keyword, sort, page = 0, perPage = 9) => {
+    const includeCondition = [{
             model: models.category,
             as: 'category',
-            attributes: ['name']
+            attributes: ['name'],
         },
         {
             model: models.product_image,
@@ -95,8 +111,8 @@ const byCategory = (id, sort, page = 0, perPage = 9) => {
             attributes: ['image_url'],
             duplicating: false,
         }
-    ];
-    var orderCondition;
+    ]
+    let orderCondition;
     if (sort == "asc") {
         orderCondition = [
             ['price', 'ASC'],
@@ -112,32 +128,6 @@ const byCategory = (id, sort, page = 0, perPage = 9) => {
     }
     return models.product.findAndCountAll({
         include: includeCondition,
-        offset: page * perPage,
-        limit: perPage,
-        group: ['product.id'],
-        raw: true,
-        order: orderCondition,
-        where: {
-            id: {
-                [Op.ne]: id
-            }
-        },
-    });
-}
-
-const byFilter = (category, keyword, page = 0, perPage = 9) => {
-    return models.product.findAndCountAll({
-        include: [{
-            model: models.category,
-            as: 'category',
-            attributes: ['name', 'parent_id'],
-        },
-        {
-            model: models.product_image,
-            as: 'product_images',
-            attributes: ['image_url'],
-            duplicating: false,
-        }],
         where: {
             [Op.and]: [
                 {
@@ -179,6 +169,7 @@ const byFilter = (category, keyword, page = 0, perPage = 9) => {
         offset: page * perPage,
         limit: perPage,
         group: ['product.id'],
+        order: orderCondition,
         raw: true
     });
 }
