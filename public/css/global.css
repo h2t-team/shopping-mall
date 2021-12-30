@@ -162,6 +162,7 @@ header {
 }
 .section-title {
     font-size: 36px;
+    color: var(--black);
 }
 .section-title-style {
     border-bottom: 2px solid var(--primary);

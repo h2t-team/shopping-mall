@@ -1,5 +1,5 @@
-<div class="container d-flex justify-content-center align-items-center vh-100">
-<div class="card">
+<div class="container">
+  <div class="card text-center">
     <div class="mb-5" style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
         <i class="checkmark">✓</i>
     </div>
@@ -8,51 +8,11 @@
       <span id="type">{{type}}</span>
       email has been sent to 
       <span class="fw-bold" id="email">{{email}}</span>
-      (expire after 20 minutes) 
+      (expire after 20 minutes).
     </p>
     <p>
       Don't receive the {{type}} email? Click on 
-      <a href="#" class="fw-bold text-decoration-underline" id="resend">Resend</a>
+      <a href="javascript:void(0)" class="fw-bold text-decoration-underline" id="resend">Resend</a>
     </p>
+  </div>
 </div>
-   <script>
-      $('#resend').click(function(e) {
-        const email=document.getElementById("email").textContent;
-        const type=document.getElementById("type").textContent;
-        $.ajax({
-          contentType: "application/json",
-          url: '/auth/resend-email',
-          dataType: "json",
-          type: 'POST', // http method
-          data: JSON.stringify({email:email,type:type}), // data to submit
-        })
-      });
-   </script>
-</div>
-<style>
-      body {
-        text-align: center;
-        padding: 40px 0;
-        background: #EBF0F5;
-      }
-      p {
-        color: #404F5E;
-        font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
-        font-size:20px;
-        margin: 0;
-      }
-      i {
-        color: #9ABC66;
-        font-size: 100px;
-        line-height: 200px;
-        margin-left:-15px;
-      }
-      .card {
-        background: white;
-        padding: 60px;
-        border-radius: 4px;
-        box-shadow: 0 2px 3px #C8D0D8;
-        display: inline-block;
-        margin: 0 auto;
-      }
-</style>

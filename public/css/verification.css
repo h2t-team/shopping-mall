@@ -1,0 +1,58 @@
+p {
+    color: #404F5E;
+    font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+    font-size:20px;
+    margin: 0;
+}
+i {
+    color: #9ABC66;
+    font-size: 100px;
+    line-height: 200px;
+    margin-left:-15px;
+}
+.card {
+    padding: 85px 10px;
+    border-radius: 5px;
+    box-shadow: 0 -5px 20px 0 rgb(56, 74, 235, 0.1);
+    background-color: var(--white);
+    margin: 10rem auto;
+    align-items: center;
+}
+h1 {
+    color: #88B04B;
+    font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.btn-home {
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: #88B04B !important;
+}
+.btn-home i {
+    font-size:1.25em;
+    padding: 5px;
+}
+.btn-home:hover {
+    background-color: #88B04B;
+    border-color: #88B04B;
+    color: #fff !important;
+}
+.btn-home:hover i {
+    color: #fff !important;
+}
+.email-form input[type=submit] {
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 10rem;
+    border: 1px solid var(--primary);
+    transition: all 0.3s;
+    width: 50%;
+}
+.email-form input[type=submit]:hover {
+    background-color: var(--white);
+    color: var(--primary);
+    font-weight: 500;
+    transition: all 0.3s;
+}
