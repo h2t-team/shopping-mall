@@ -74,6 +74,11 @@ const helpers = (hbs) => {
         else return 'secondary';
     });
 
+    hbs.registerHelper('orderProgress', (status, currentStatus) => {
+        if (status === currentStatus)
+            return 'active';
+    });
+
     hbs.registerHelper('checkDisabled', status => {
         if (status !== 'Prepairing')
             return 'disabled';

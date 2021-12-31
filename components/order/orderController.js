@@ -63,6 +63,7 @@ const confirm = async (req, res, next) => {
             orderService.getOrder(orderId),
             orderService.getOrderDetail(orderId)
         ]);
+        console.log(order)
         const totalWOShip = order.total - 15000;
         res.render('order/confirmation', {
             title: 'Confirmation',
@@ -78,7 +79,7 @@ const confirm = async (req, res, next) => {
 }
 
 const orders = async (req, res) => {
-    const user = {id: 'c13b50cf-6d5a-4816-ab11-e4c0b59fad35'};//req.user;
+    const user = req.user;
     if(user){
         const orders = await orderService.getOrders(user.id);
         res.render('order/orderList', {title: 'My Order',style: 'order.css', orders})

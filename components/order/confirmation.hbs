@@ -1,7 +1,13 @@
 <main>
     <section class="shop-section">
         <div class="container">
-            <p class="text-center billing-alert">Thank you. Your order has been received.</p>
+            <p class="text-center billing-alert">Thank you for ordering.</p>
+            <hr>
+            <div class="row order-status mb-5">
+                <div class="order-progress col-sm-4 {{orderProgress 'Prepairing' order.status}}">Prepairing products</div>
+                <div class="order-progress col-sm-4 {{orderProgress 'Delivering' order.status}}">Delivering</div>
+                <div class="order-progress col-sm-4 {{orderProgress 'Success' order.status}}">Delivered successfully</div>
+            </div>
             <div class="row mb-5">
                 <div class="col-md-6 mb-4 mb-xl-0">
                     <div class="confirmation-card">
@@ -54,8 +60,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">Product</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
+                                <th scope="col" class="text-center">Quantity</th>
+                                <th scope="col" class="text-center">Total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,11 +70,11 @@
                                 <td>
                                     <p>{{'product.name'}} - Size: {{size}}</p>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <h5>{{quantity}}</h5>
                                 </td>
-                                <td>
-                                    <p>{{price}}</p>
+                                <td class="text-center">
+                                    <p>{{currencyFormat price}}</p>
                                 </td>
                             </tr>
                             {{/each}}                            
@@ -79,7 +85,7 @@
                                 <td>
                                     <h5></h5>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <p>{{currencyFormat totalWOShip}}</p>
                                 </td>
                             </tr>
@@ -90,7 +96,7 @@
                                 <td>
                                     <h5></h5>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <p>{{currencyFormat 15000}}</p>
                                 </td>
                             </tr>
@@ -101,7 +107,7 @@
                                 <td>
                                     <h5></h5>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <h4>{{currencyFormat order.[total]}}</h4>
                                 </td>
                             </tr>

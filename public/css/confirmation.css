@@ -131,3 +131,48 @@
 .order-details-table .table tbody tr:last-child td p {
   color: var(--black);
 }
+.order-status {
+  height: 60px;
+  white-space: nowrap;
+}
+.order-progress {
+  text-transform: uppercase;
+  position: relative;
+  height: 60px;
+  color: var(--black);
+  text-align: center;
+  font-size: 18px;
+  line-height: 60px;
+  font-weight: bold;
+}
+.order-progress.active {
+  color: var(--primary)!important;
+}
+.order-progress::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  height: 50%;
+  width: 100%;
+  background-color: #f1f6f7;
+  top: 0;
+  left: 0;
+  transform: skew(35deg);
+  border-top: 1px solid var(--grey);
+  border-left: 1px solid var(--grey);
+  border-right: 1px solid var(--grey);
+}
+.order-progress::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  height: 50%;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: skew(-35deg);
+  background-color: #f1f6f7;
+  border-bottom: 1px solid var(--grey);
+  border-left: 1px solid var(--grey);
+  border-right: 1px solid var(--grey);
+}
