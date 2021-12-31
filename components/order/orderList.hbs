@@ -11,8 +11,8 @@
                     <thead>
                         <tr>
                             <th scope="col">Receiver Name</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Created at</th>
+                            <th scope="col" class="text-center">Total</th>
+                            <th scope="col" class="text-center">Created at</th>
                             <th scope="col" class="text-center">Status</th>
                             <th scope="col"></th>
                         </tr>
@@ -23,10 +23,10 @@
                             <td>
                                 <a href="/order/confirm/{{id}}">{{'receiver_address.receiver_name'}}</a>                                
                             </td>
-                            <td class="qty">
+                            <td class="qty text-center">
                                 {{currencyFormat total}}
                             </td>
-                            <td class="size">
+                            <td class="size text-center">
                                 {{dateFormat this.[created_at]}}
                             </td>
                             <td class="text-center">
