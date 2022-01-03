@@ -80,17 +80,29 @@ const confirm = async (req, res, next) => {
 
 const orders = async (req, res) => {
     const user = req.user;
-    if(user){
+    if (user) {
         const orders = await orderService.getOrders(user.id);
-        res.render('order/orderList', {title: 'My Order',style: 'order.css', orders})
-    }else{
+        res.render('order/orderList', { title: 'My Order', style: 'order.css', scripts: ['orders.js'], orders })
+    } else {
         res.redirect('/auth/login')
     }
 }
 
+const cancel = async (req, res) => {
+    const { orderId } = req.body;
+    try {
+        if (orderId) {
+            await orderService.cancelOrder(orderId);
+            res.status(200).json({ message: "success" });
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
 module.exports = {
     checkout,
     createOrder,
     orders,
-    confirm
+    confirm,
+    cancel
 }

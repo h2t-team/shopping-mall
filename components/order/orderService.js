@@ -58,10 +58,21 @@ const getOrders = userId => {
         }
     });
 }
+
+const cancelOrder = orderId => {
+    return models.order.update({
+        status: 'Cancel'
+    }, {
+        where: {
+            id: orderId
+        }
+    })
+}
 module.exports = {
     createOrder,
     createOrderDetail,
     getOrder,
     getOrderDetail,
-    getOrders
+    getOrders,
+    cancelOrder
 }

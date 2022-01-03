@@ -20,6 +20,7 @@
                     <tbody>
                         {{#each orders }}
                         <tr>
+                            <input type="hidden" name="orderId" value="{{id}}">
                             <td>
                                 <a href="/order/confirm/{{id}}">{{'receiver_address.receiver_name'}}</a>                                
                             </td>

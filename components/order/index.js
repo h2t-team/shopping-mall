@@ -7,4 +7,6 @@ router.get('/', controller.orders);
 router.get('/checkout', controller.checkout);
 router.get('/confirm/:id', controller.confirm);
 router.post('/create', controller.createOrder);
+router.post('/cancel', controller.cancel);
+
 module.exports = router;
