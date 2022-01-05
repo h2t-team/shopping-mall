@@ -42,7 +42,7 @@ async function loadRate(page, size) {
         });
         $('.overall h1').text(data.overall.toFixed(1));
         $('.overall p').text(`(${data.total} Reviews)`);
-        if ($('ul.pagination li').length - 2 != data.totalPages) {
+        if ($('ul.pagination li').length - 2 != data.totalPages && data.totalPages != 0) {
             $('ul.pagination').empty();
             buildPagination(data.totalPages);
         }

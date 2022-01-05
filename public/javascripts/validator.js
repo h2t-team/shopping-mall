@@ -16,6 +16,10 @@ function Validation(selector) {
         special: value => {
             const regex = /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/;
             return regex.test(value) ? undefined : 'The field must not containt special character.'
+        },
+        phone: value => {
+            const regex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+            return regex.test(value) ? undefined : 'Please enter your phone number.'
         } 
     }
 
