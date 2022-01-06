@@ -7,7 +7,7 @@ cloudinary.config({
     api_secret: process.env.API_SECRET
 });
 
-const uploadImage = (imgPath, fileName) => {
+const uploadImage = (imgPath) => {
     return cloudinary.v2.uploader.upload(imgPath, { public_id: uuidv4() });
 }
 

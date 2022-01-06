@@ -4,28 +4,38 @@ $(document).ready(function () {
     //enter search 
     $("#shop-search").on("keyup keypress", event => {
         if (event.which === 13) {
-            if($("#shop-search").val() == "") {
+            if ($("#shop-search").val() == "") {
                 $("#shop-search").attr('disabled', true);
             }
             $("#searchForm").submit();
         }
     });
 
-    //filter category
+    // filter category
     $("input[name=category]", "#filterForm").on('click', () => {
         filter();
-    })
+    });
+    // filter price
+    $("input[name=price]", "#filterForm").on('click', () => {
+        filter();
+    });
+    // filter rating
+    $("input[name=rating]", "#filterForm").on('click', () => {
+        filter();
+    });
 
+    // sort
     $("#sort_select").change(() => {
         filter();
     });
+    
 
     function filter() {
         const filterForm = $('#filterForm');
         const keyword = $("#shop-search").val();
         const sortValue = $("#sort_select").children(":selected").attr("id");
-        
-        if(keyword) {
+
+        if (keyword) {
             // check exist keywords
             if ($("input[name=keyword]", "#filterForm").val() === undefined) {
                 $("<input>")

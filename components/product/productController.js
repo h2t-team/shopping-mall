@@ -5,16 +5,25 @@ const list = async (req, res) => {
 
     //get params
     const page = !Number.isNaN(req.query.page) && req.query.page > 0 ? Number.parseInt(req.query.page) : 1;
-    const keyword = req.query.keyword ? req.query.keyword : '';
     let catOption = req.query.category && !Number.isNaN(req.query.category) && req.query.category > 0 ? Number.parseInt(req.query.category) : '';
+    const priceOption = req.query.price ? req.query.price : '';
+    const ratingOption = req.query.rating && !Number.isNaN(req.query.rating) && req.query.rating > 0 ? Number.parseInt(req.query.rating) : 0;
+    const keyword = req.query.keyword ? req.query.keyword : '';
     const sortOption = req.query.sort ? req.query.sort : 'default';
-    
+
     //request from dtb
     const category = await service.category();
     let products;
-    if (catOption || sortOption) {
-        console.log(sortOption);
-        products = await service.byFilter(catOption, keyword, sortOption, page - 1);
+    if (catOption || priceOption || ratingOption || sortOption) {
+        // price
+        let priceValue;
+        if (priceOption) {
+            priceValue = priceOption.split('-').map(item => parseInt(item));
+        }
+        else {
+            priceValue = [0, 10000000];
+        }
+        products = await service.byFilter(catOption, priceValue, ratingOption, keyword, sortOption, page - 1);
     }
     else {
         products = keyword ? await service.byKeyword(keyword, page - 1) : await service.all(page - 1);
@@ -28,6 +37,8 @@ const list = async (req, res) => {
         page,
         catOption,
         sortOption,
+        priceOption,
+        ratingOption,
         keyword,
         url,
         scripts: ['searchProduct.js']

@@ -5,8 +5,9 @@
                 <div class="col-xl-3 col-lg-4 col-md-5">
                     <form id="filterForm">
                         <div class="shop-sidebar mb-4 mx-3">
-                            <h3 class="shop-sidebar-heading px-4 fw-normal">Browse Categories</h3>
-                            <div class="shop-sidebar-list p-4 bg-light">
+                            <h3 class="shop-sidebar-heading px-4 fw-normal">Product Filter</h3>
+                            <div class="shop-sidebar-list pb-4 px-4 bg-light">
+                                <div class="head">Categories</div>
                                 <div class="shop-sidebar-type">
                                     <div class="form-check mb-2">
                                         <input class="form-check-input" type="radio" 
@@ -27,11 +28,71 @@
                                     {{/each}}
                                 </div>
                             </div>
+                            <div class="shop-sidebar-list pb-4 px-4 bg-light">
+                                <div class="head">Price</div>
+                                <div class="shop-sidebar-type">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                            name="price" id="999000-10000000" value="999000-10000000" {{radioChecked '999000-10000000' priceOption}}>
+                                        <label class="form-check-label" for='999000-10000000'>
+                                            Higher than {{currencyFormat 999000}}
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                            name="price" id="499000-999000" value="499000-999000" {{radioChecked '499000-999000' priceOption}}>
+                                        <label class="form-check-label" for='499000-999000'>
+                                            {{currencyFormat 499000}} - {{currencyFormat 999000}}
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                            name="price" id="199000-499000" value="199000-499000" {{radioChecked '199000-499000' priceOption}}>
+                                        <label class="form-check-label" for='199000-499000'>
+                                            {{currencyFormat 199000}} - {{currencyFormat 499000}}
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                            name="price" id="1000-199000" value="1000-199000" {{radioChecked '1000-199000' priceOption}}>
+                                        <label class="form-check-label" for='1000-199000'>
+                                            Lower than {{currencyFormat 199000}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shop-sidebar-list pb-4 px-4 bg-light">
+                                <div class="head">Ratings</div>
+                                <div class="shop-sidebar-type">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                            name="rating" id="5stars" value="5" {{radioChecked 5 ratingOption}}>
+                                        <label class="form-check-label" for='5stars'>
+                                            <div>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                            name="rating" id="4stars" value="4" {{radioChecked 4 ratingOption}}>
+                                        <label class="form-check-label" for='4stars'>
+                                            <div>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-5">
-                    <div id="slider"></div>
                 </div>
                 <div class="col-xl-9 col-lg-8 col-md-7">
                     <div class="bg-light mb-4 px-3 pb-3 d-flex align-items-center flex-wrap">

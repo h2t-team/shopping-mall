@@ -99,7 +99,7 @@ const byCategory = (id, page = 0, perPage = 9) => {
     });
 }
 
-const byFilter = (category, keyword, sort, page = 0, perPage = 9) => {
+const byFilter = (category, priceValue, rating, keyword, sort, page = 0, perPage = 9) => {
     const includeCondition = [{
             model: models.category,
             as: 'category',
@@ -112,6 +112,7 @@ const byFilter = (category, keyword, sort, page = 0, perPage = 9) => {
             duplicating: false,
         }
     ]
+    // sort
     let orderCondition;
     if (sort == "asc") {
         orderCondition = [
@@ -126,6 +127,7 @@ const byFilter = (category, keyword, sort, page = 0, perPage = 9) => {
     if (sort == "default") {
         orderCondition = [];
     }
+
     return models.product.findAndCountAll({
         include: includeCondition,
         where: {
@@ -163,6 +165,14 @@ const byFilter = (category, keyword, sort, page = 0, perPage = 9) => {
                             },
                         },
                     ]
+                }, {
+                    price: {
+                        [Op.between]: [priceValue[0], priceValue[1]]
+                    }
+                }, {
+                    rate: {
+                        [Op.gte]: rating
+                    }
                 }
             ]
         },

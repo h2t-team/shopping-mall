@@ -5,12 +5,12 @@
     color: var(--white);
 }
 
-.page-nav .disabled{
+.page-nav .disabled {
     pointer-events: none;
     opacity: 0.5;
 }
 
-.page-nav a{
+.page-nav a {
     background-color: var(--white);
     color: var(--primary);
     border: solid 1px var(--primary);
@@ -18,23 +18,35 @@
     margin: 0.3rem;
 }
 
-.page-nav .active{
+.page-nav .active {
     background-color: var(--primary);
     color: var(--white);
 }
-.page-nav a:hover{
+.page-nav a:hover {
     background-color: var(--primary);
     color: var(--white);
     transition: all 0.3s;
 }
 
-.page-nav .direct{
+.page-nav .direct {
     border: solid 1px var(--white);
     color: var(--black);
     background-color: var(--white);
 }
 
-.page-nav .direct:hover{
+.page-nav .direct:hover {
     color: var(--primary);
     background-color: var(--white);
+}
+
+.shop-sidebar-list .head {
+    line-height: 60px;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+    text-transform: uppercase;
+}
+
+input[type="radio"], label {
+    cursor: pointer;
 }
