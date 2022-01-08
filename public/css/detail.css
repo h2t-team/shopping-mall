@@ -2,14 +2,6 @@
   padding: 2rem 0;
 }
 
-.avatar {
-  width: 75px;
-  height: 75px;
-}
-.avatar img {
-  width: 100%;
-}
-
 .detail .text-detail .price {
   color: var(--primary);
 }

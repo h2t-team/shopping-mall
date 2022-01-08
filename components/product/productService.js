@@ -66,15 +66,15 @@ const byKeyword = (keyword, page = 0, perPage = 9) => {
     });
 }
 
-const byCategory = (id, page = 0, perPage = 9) => {
+const byCategory = (category_id, id, page = 0, perPage = 9) => {
     const includeCondition = [{
             model: models.category,
             as: 'category',
             attributes: ['name'],
             where: {
                 [Op.or]: [
-                    { id: id },
-                    { 'parent_id': id }
+                    { id: category_id },
+                    { 'parent_id': category_id }
                 ]
             }
         },

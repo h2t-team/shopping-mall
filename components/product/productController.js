@@ -52,7 +52,7 @@ const detail = async(req, res) => {
             service.size(req.params.id),
             service.image(req.params.id)
         ]);
-        const related = await service.byCategory(detail['category_id']);
+        const related = await service.byCategory(detail['category_id'], req.params.id);
         res.render('product/productDetail', {
             title: detail.name,
             style: 'detail.css',

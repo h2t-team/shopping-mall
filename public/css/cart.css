@@ -20,14 +20,9 @@
 }
 
 .table tbody tr td .media img {
-  width: 15%;
+  width: 54px;
+  height: 54px;
   border-radius: 3px;
-}
-
-@media (max-width: 600px) {
-  .table tbody tr td .media .d-flex img {
-    min-width: 75px;
-  }
 }
 
 .table tbody tr td .media .media-body {

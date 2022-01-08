@@ -7,12 +7,12 @@
                     <table class="table">
                         <thead>
                             <tr class=" table-primary">
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
+                                <th scope="col" style="min-width: 250px;">Product</th>
+                                <th scope="col" class="text-center">Price</th>
                                 <th scope="col">Quantity</th>
-                                <th scope="col">Size</th>
-                                <th scope="col">Total</th>
-                                <th scope="col"></th>
+                                <th scope="col" class="text-center">Size</th>
+                                <th scope="col" class="text-center">Total</th>
+                                <th scope="col" class="text-center"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -23,13 +23,13 @@
                                     <div class="media">
                                         <div class="d-flex">
                                             <img src={{'product.product_images.image_url'}} alt="product-image" />
-                                            <div class="media-body ms-5 fs-6">
+                                            <div class="media-body ms-2 ms-lg-5 fs-6 w-100">
                                                 <p>{{'product.name'}}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <h5>{{currencyFormat this.[product.price]}}</h5>
                                 </td>
                                 <td>
@@ -41,10 +41,10 @@
                                 <td class="size text-center">
                                     <h5>{{size}}</h5>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <h5>{{currencyFormat total}}</h5>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <a href="javascript:void(0)" class="delete-btn"><i class="fas fa-times"></i></a>
                                 </td>
                             </tr>
@@ -59,14 +59,14 @@
                 </div>
             </div>
             <div class="border p-2">
-                <div class="d-flex justify-content-end p-3 border-bottom">
+                <div class="d-flex justify-content-sm-end justify-content-center p-3 border-bottom">
                     <h5 class="m-2 p-2">Total:</h5>
                     <h5 class="m-2 p-2">{{currencyFormat ./total}}</h5>
                 </div>
                 <div class="">
-                    <div class="d-flex py-3 justify-content-end align-items-center">
-                        <a class="gray-btn mx-3" href="/product">Continue Shopping</a>
-                        <a class="btn rounded-pill mx-3" href="/order/checkout">Check Out</a>
+                    <div class="d-flex py-2 justify-content-sm-end justify-content-center align-items-center flex-wrap text-center">
+                        <a class="gray-btn m-2" href="/product">Continue Shopping</a>
+                        <a class="btn rounded-pill m-2" href="/order/checkout">Check Out</a>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                 <div class="my-2">
                     <img src="/images/empty.png" width="100" alt="empty">
                 </div>
-                <div class="my-2">
+                <div class="my-2 text-center">
                     <h4>Your shopping cart is empty</h4>
                 </div>
                 <div class="my-2">

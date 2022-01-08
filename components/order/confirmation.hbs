@@ -3,53 +3,35 @@
         <div class="container">
             <p class="text-center billing-alert">Thank you for ordering.</p>
             <hr>
-            <div class="row order-status mb-5">
-                <div class="order-progress col-sm-4 {{orderProgress 'Prepairing' order.status}}">Prepairing products</div>
-                <div class="order-progress col-sm-4 {{orderProgress 'Delivering' order.status}}">Delivering</div>
-                <div class="order-progress col-sm-4 {{orderProgress 'Success' order.status}}">Delivered successfully</div>
+            <h3 class="my-3">Order Status</h3>
+            <div class="row order-status mb-5 mx-0 ">
+                <div class="order-progress col-md-3 col-6 my-1 {{orderProgress 'Cancel' order.status}}">Cancel</div>
+                <div class="order-progress col-md-3 col-6 my-1 {{orderProgress 'Prepairing' order.status}}">Prepairing</div>
+                <div class="order-progress col-md-3 col-6 my-1 {{orderProgress 'Delivering' order.status}}">Delivering</div>
+                <div class="order-progress col-md-3 col-6 my-1 {{orderProgress 'Success' order.status}}">Delivered</div>
             </div>
-            <div class="row mb-5">
-                <div class="col-md-6 mb-4 mb-xl-0">
-                    <div class="confirmation-card">
+            <div class="row mb-3">
+                <div class="col-md-6 mb-4 mb-xl-0 d-flex flex-column">
+                    <div class="confirmation-card h-100">
                         <h3 class="billing-title">Order Info</h3>
-                        <div class="row">
-                            <div class="col-3">
-                                <p>Order number</p>
-                                <p>Date</p>
-                                <p>Note</p>
-                                <p>Total</p>
-                            </div>
-                            {{#with order}}
-                            <div class="col-9">
-                                <p>: {{id}}</p>
-                                <p>: {{dateFormat this.[created_at]}}</p>
-                                <p>: {{note}}</p>
-                                <p>: {{currencyFormat total}}</p>
-                            </div>
-                            {{/with}}
-                        </div>
+                        {{#with order}}
+                            <p>Order number: {{id}}</p>
+                            <p>Date: {{dateFormat this.[created_at]}}</p>
+                            <p>Note: {{note}}</p>
+                            <p>Total: {{currencyFormat total}}</p>
+                        {{/with}}
                     </div>
                 </div>
-                <div class="col-md-6 mb-4 mb-xl-0">
-                    <div class="confirmation-card">
+                <div class="col-md-6 mb-4 mb-xl-0 d-flex flex-column">
+                    <div class="confirmation-card h-100">
                         <h3 class="billing-title">Shipping Address</h3>
-                        <div class="row">
-                            <div class="col-3">
-                                <p>Receiver</p>
-                                <p>Telephone</p>
-                                <p>Address</p>
-                                <p>City</p>
-                            </div>
                             {{#with order}}
-                            <div class="col-9">
-                                <p>: {{'receiver_address.receiver_name'}}</p>
-                                <p>: {{'receiver_address.telephone'}}</p>
-                                <p>: {{'receiver_address.specific_address'}}</p>
-                                <p>: Phường {{'receiver_address.ward'}}, Quận {{'receiver_address.district'}},
-                                    {{'receiver_address.city'}}</p>
-                            </div>
+                            <p>Receiver: {{'receiver_address.receiver_name'}}</p>
+                            <p>Telephone: {{'receiver_address.telephone'}}</p>
+                            <p>Address: {{'receiver_address.specific_address'}}</p>
+                            <p>City: Phường {{'receiver_address.ward'}}, Quận {{'receiver_address.district'}},
+                                {{'receiver_address.city'}}</p>
                             {{/with}}
-                        </div>
                     </div>
                 </div>
             </div>

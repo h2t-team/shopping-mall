@@ -13,7 +13,7 @@
 }
 
 .login-box, .register-box {
-  box-shadow: 0 10px 40px 0 rgb(56, 74, 235, 0.1);
+  box-shadow: 0 10px 40px 0 rgb(0, 0, 0, 0.1);
 }
 .side-box h3, .side-box p {
   color: var(--white) !important;
