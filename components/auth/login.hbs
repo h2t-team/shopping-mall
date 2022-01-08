@@ -1,8 +1,8 @@
 <main>
     <div class="shop-section">
-        <div class="login container mt-5 mb-5 shadow">
+        <div class="login container mt-5 mb-5">
             <div class="row">
-                <div class="col-lg-6 blue">
+                <div class="col-lg-6 px-lg-0">
                     <div class="side-box">
                         <div class="context text-center">
                             <h3 class="pb-3 fw-bold">New to our website?</h3>
@@ -11,8 +11,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="login-box my-5 py-2">
+                <div class="col-lg-6 px-lg-0">
+                    <div class="login-box py-5">
                         <h3 class="text-uppercase text-center mb-5 fw-bold">Log in to enter</h3>
                         <form method="post" class="row login-form mx-auto">
                             {{#if message}}
@@ -31,11 +31,11 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                 <input class="form-check-input m-1" type="checkbox" id="keep-logged" />
-                                <label class="form-check-label" htmlFor="keep-logged">Keep me logged in</label>
+                                <label class="form-check-label" for="keep-logged">Keep me logged in</label>
                             </div>
-                            <div class="col-md-12 mb-3 text-center">
-                                <input class="form-control mb-2" type="submit" value="Log In" />
-                                <a href="/auth/forgot-password">Forgot Password?</a>
+                            <div class="col-md-12 mb-3 text-center d-flex flex-column align-items-center">
+                                <input class="form-control mb-2 w-75" type="submit" value="Log In" />
+                                <a href="/auth/forgot-password" class="text-decoration-underline mt-3">Forgot Password?</a>
                             </div>
                         </form>
                     </div>

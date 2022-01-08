@@ -51,7 +51,7 @@ async function loadRate(page, size) {
 
 function appendRate(rate) {
     let html =
-        `<div class="review-item border-bottom">
+        `<div class="review-item border-bottom py-1">
         <div class="d-flex position-relative my-2 align-items-center">
             <div class="avatar d-flex align-items-center">
                 <img src="${rate['customer.avatar'] ? rate['customer.avatar'] : '/images/default.png'}" 

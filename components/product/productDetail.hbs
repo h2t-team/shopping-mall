@@ -35,12 +35,12 @@
                             <p><span>Category: </span>{{detail.[category.name]}}</p>
                             <p><span>Availability: </span>In Stock</p>
                             <p class="description my-5 py-4">{{detail.description}}</p>
-                            <div class="product-count mb-5 row">
-                                <div class="col-md-3">
+                            <div class="product-count mb-4 row">
+                                <div class="col-md-3 mb-2">
                                     <label for="qty" class="">Quantity</label>
                                     <input type="number" class="form-control" id="qty" value="1" min="1" />
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3 mb-2">
                                     <label for="size" class="">Size</label>
                                     <select id="size" class="form-select">
                                         {{#each size }}
@@ -80,7 +80,7 @@
                     </div>
                     <div class="tab-pane justfy-content-center" id="instock" role="tabpanel"
                         aria-labelledby="instock-tab">
-                        <div class="offset-2 col-8">
+                        <div class="mx-0 mx-sm-5 px-0 px-sm-5">
                             <table class="table">
                                 <thead>
                                     <td class="text-center">Size</td>
@@ -151,7 +151,7 @@
                 <div class="row">
                     {{#each related}}
                     <div class="col-md-6 col-lg-4">
-                        <div class="border border-1 px-3 m-2">
+                        <div class="border border-1 px-3 m-2 rounded">
                             <div class="product d-flex py-3">
                                 <a href="#"><img src={{'product_images.image_url'}} alt="product" class="rounded"></a>
                                 <div class="detail ms-3">

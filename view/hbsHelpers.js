@@ -9,7 +9,7 @@ const helpers = (hbs) => {
 
         const maxPage = Math.ceil((num / 9));
         //First item
-        var item = `<li>
+        var item = `<li class="d-none d-sm-block">
                         <a class="direct ${page == 1 ? "disabled" : ""}" href="${urlTerm}page=1">
                             <i class="fas fa-angle-double-left"></i>
                         </a>
@@ -45,7 +45,7 @@ const helpers = (hbs) => {
                     </a>
                 </li>\n`;
         // Last item
-        item += `<li>
+        item += `<li class="d-none d-sm-block">
                     <a class="direct ${(page == maxPage || maxPage == 0)  ? "disabled" : ""}" href="${urlTerm}page=${maxPage}">
                         <i class="fas fa-angle-double-right"></i>
                     </a>

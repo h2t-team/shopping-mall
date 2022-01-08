@@ -46,7 +46,7 @@
 .subscribe-title {
     font-size: 28px;
 }
-img {
+img:not(.avatar) {
     width: 100%;
     height: auto;
 }

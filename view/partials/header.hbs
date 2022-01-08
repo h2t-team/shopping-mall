@@ -22,7 +22,7 @@
                     </li>
                 </ul>
                 {{#if user}}
-                <ul class="nav navbar-nav d-none d-sm-flex align-items-center">
+                <ul class="nav navbar-nav d-flex align-items-center">
                     <a class="text-secondary fw-bold p-4" href="/cart"><i class="fas fa-shopping-cart"></i></a>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown"
@@ -30,7 +30,7 @@
                             <span class="me-2">
                                 <span class="fw-bold">{{user.[last_name]}} {{user.[first_name]}}</span>
                             </span>
-                            <img src="{{#avatar user.avatar}} {{/avatar}}" class="rounded-circle" width="36"
+                            <img src="{{#avatar user.avatar}} {{/avatar}}" class="rounded-circle avatar" width="36"
                                 alt="avatar">
                         </a>
                         <div id="account_menu" class="dropdown-menu dropdown-menu-end">
