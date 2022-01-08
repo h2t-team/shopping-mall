@@ -35,6 +35,10 @@ header {
 .cursor-pointer {
     cursor: pointer;
 }
+.d-abs-end{
+    position: absolute !important;
+    right: 0;
+}
 .btn {
     padding: 0.5rem 2rem;
     border: 1px solid var(--primary);

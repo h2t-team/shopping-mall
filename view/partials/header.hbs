@@ -18,39 +18,23 @@
                         <a class="nav-link p-4" href="/product">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-4" href="#">Contact</a>
+                        <a class="nav-link p-4" href="/cart">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-4" href="/order">Order</a>
                     </li>
                 </ul>
                 {{#if user}}
-                <ul class="nav navbar-nav d-flex align-items-center">
-                    <a class="text-secondary fw-bold p-4" href="/cart"><i class="fas fa-shopping-cart"></i></a>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown"
-                            data-bs-caret="false">
-                            <span class="me-2">
-                                <span class="fw-bold">{{user.[last_name]}} {{user.[first_name]}}</span>
-                            </span>
-                            <img src="{{#avatar user.avatar}} {{/avatar}}" class="rounded-circle avatar" width="36"
-                                alt="avatar">
-                        </a>
-                        <div id="account_menu" class="dropdown-menu dropdown-menu-end">
-                            <div class="dropdown-item-text dropdown-item-text--lh">
-                                <div class="fw-bold">{{user.[last_name]}} {{user.[first_name]}}</div>
-                                <div class="text-muted">@{{user.username}}</div>
-                            </div>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/profile">My Account</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/order">My Order</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/profile/changePassword">Change Password</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/auth/logout">Logout</a>
-                        </div>
-                    </li>
-                </ul>
+                <div class="d-flex pb-4 p-sm-0">
+                    <a class="text-secondary fw-bold px-4" href="/profile">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a class="text-secondary fw-bold px-4" href="/logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
                 {{else}}
-                <ul class="nav-btns pb-4 px-4 p-lg-0 d-flex align-items-center">
+                <ul class="nav-btns pb-md-4 px-md-4 p-lg-0 d-flex align-items-center px-4 pb-4">
                     <li>
                         <a href="/auth/register" class="mx-2 fw-bold underline-hover">Sign Up</a>
                     </li>
@@ -60,6 +44,7 @@
                 </ul>
                 {{/if}}
             </div>
+
         </div>
     </nav>
 </header>
