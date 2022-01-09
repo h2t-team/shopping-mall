@@ -13,7 +13,7 @@
                         {{#with user}}
                         <form id="profile-form" method="post" action="/profile" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="col">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="fname">First name</label>
                                         <input id="fname" type="text" class="form-control" placeholder="First name"
@@ -21,7 +21,7 @@
                                         <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="lname">Last name</label>
                                         <input id="lname" type="text" class="form-control" placeholder="Last name"
@@ -31,14 +31,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
                                         <input id="email" type="text" class="form-control" placeholder="Email"
                                             name="email" value={{email}} readonly />
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="tel">Tel</label>
                                         <input id="tel" type="text" class="form-control" placeholder="Tel" name="telephone"
@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Avatar</label>
-                                <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center flex-wrap">
                                     <div class="me-3">
                                         <div class="avatar">
                                             <img src={{avatar avatar}} class="avatar rounded" alt="..." width="80"
@@ -62,15 +62,15 @@
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <label for="photo" class="btn px-3">Upload Image</label>
+                                        <label for="photo" class="btn px-3 mt-3">Upload Image</label>
                                         <input type="file" id="photo" name="photo" class="d-none" accept="image/*" />
                                         </input>
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-end">
-                                <a href="/profile/changePassword" class="btn mx-3">Change Password</a>
-                                <button class="btn me-3">Save</button>
+                            <div class="d-flex justify-content-end flex-wrap">
+                                <a href="/profile/changePassword" class="btn-outline-secondary mb-2">Change Password</a>
+                                <button class="btn ms-3 mb-2">Save</button>
                             </div>
                         </form>
                         {{/with}}
@@ -79,7 +79,7 @@
             </div>
 
             <div class="card mb-5">
-                <div class="row g-0 p-4">
+                <div class="row g-0">
                     <div class="col-lg-4 p-4">
                         <p class="fw-bold mb-3">Shiping Addreses</p>
                         <p class="text-muted mb-3">
@@ -87,13 +87,12 @@
                         </p>
                     </div>
                     <div class="col-lg-8 p-4">
-                        <div class="d-flex justify-content-end align-items-center mb-4">
-                            <a href="/profile//address/add" class="btn"><i class="fas fa-plus me-2"></i>Add New
-                                Address</a>
+                        <div class="d-flex justify-content-start justify-content-sm-end align-items-center mb-4">
+                            <a href="/profile/address/add" class="btn"><i class="fas fa-plus me-2"></i>Add Address</a>
                         </div>
                         {{#each addresses }}
-                        <div class="border-top p-3">
-                            <div class="d-flex justify-content-between align-items-center">
+                        <div class="border-top py-3 px-sm-3">
+                            <div class="d-flex justify-content-between align-items-sm-center align-items-start flex-column flex-sm-row">
                                 <div class="address-item">
                                     <input type="hidden" name="id" value={{id}}>
                                     <div class="address-detail d-flex">
@@ -120,7 +119,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex">
+                                <div class="d-flex align-self-end align-self-sm-center">
                                     <a href="/profile/address/{{id}}" class="blue-btn mx-2"><i
                                             class="fas fa-sync-alt"></i></a>
                                     <a href="javascript:void(0)" class="delete-btn mx-2"><i

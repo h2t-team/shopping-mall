@@ -46,6 +46,13 @@ header {
     font-weight: 500;
     color: var(--white) !important;
 }
+.btn-outline-secondary {
+    padding: 0.5rem 2rem;
+    font-weight: 500;
+    border-radius: 0.25rem;
+    line-height: 1.5;
+    border: 1px solid var(--grey);
+}
 .btn:hover {
     background-color: var(--white);
     color: var(--primary) !important;
@@ -64,7 +71,7 @@ header {
     font-weight: 500;
     background-color: var(--white);
 }
-.blue-btn{
+.blue-btn {
     padding: 0.2rem 1rem;
     line-height: 100%;
     border-radius: 5px;
