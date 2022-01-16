@@ -152,7 +152,7 @@
         $('#photo').on('change', e => {
             if (e.target.files.length > 0) {
                 const src = URL.createObjectURL(e.target.files[0]);
-                $(".avatar-img").attr("src", src);
+                $(".avatar").attr("src", src);
             }
         })
     })

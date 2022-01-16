@@ -18,7 +18,11 @@ $(document).ready(() => {
             },
             body: JSON.stringify({ productId, size, quantity, total })
         };
+        $(".loading").removeClass("d-none");
+        $(".loading").addClass("d-flex");
         const response = await fetch(`/cart/add`, request);
+        $(".loading").removeClass("d-flex");
+        $(".loading").addClass("d-none");
         if (response.ok) {
             const success = document.getElementById('success-toast');
             const toast = new bootstrap.Toast(success);

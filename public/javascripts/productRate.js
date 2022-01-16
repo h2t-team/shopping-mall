@@ -2,10 +2,10 @@ $(document).ready(()=>{
     loadRate();
     $('#submit-review').on('click', async e => {
         e.preventDefault();
+        $("#submit-review").prop('disabled', true);
         const rate = $('input[type=hidden][name=rate]').val();
         const content = $('input[name=content]').val();
-        const regex = /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/;
-        if(content.length >= 255 || !regex.test(content))
+        if(content.length >= 255)
             return;
         const request = {
             method: 'POST',
@@ -14,7 +14,8 @@ $(document).ready(()=>{
             },
             body: JSON.stringify({ rate, content })
         };
-        const response = await fetch(`/product/${$('input[type=hidden]').val()}/rate`, request)
+        const response = await fetch(`/product/${$('input[type=hidden]').val()}/rate`, request);
+        $("#submit-review").prop('disabled', false);
         if (response.ok){
             loadRate();
             $('input[type=hidden][name=rate]').val("5");

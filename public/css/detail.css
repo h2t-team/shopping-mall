@@ -112,3 +112,7 @@
 .top-seller .product:hover .detail a {
   color: var(--primary);
 }
+.review-item .avatar {
+  width: 90px;
+  height: 90px;
+}

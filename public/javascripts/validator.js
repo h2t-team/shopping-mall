@@ -14,7 +14,7 @@ function Validation(selector) {
             }
         },
         special: value => {
-            const regex = /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/;
+            const regex = /^[^\\\\/:*?\"<>|]+$/;
             return regex.test(value) ? undefined : 'The field must not containt special character.'
         },
         phone: value => {
