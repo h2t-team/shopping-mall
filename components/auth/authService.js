@@ -34,14 +34,25 @@ const findUserByUsername = async(username) => {
         }
     })
 }
-const updateUser = async(user) => {
-    return await models.customer.update(user, {
+const updateUserStatus = async(id, status) => {
+    return await models.customer.update({
+        status: status
+    }, {
         where: {
-            id: user.id
+            id: id
         }
     })
 }
-const createUser = ({
+const updateUserPassword = async(id, password) => {
+    return await models.customer.update({
+        password: password
+    }, {
+        where: {
+            id: id
+        }
+    })
+}
+const createUser = async({
     firstname,
     lastname,
     username,
@@ -50,7 +61,7 @@ const createUser = ({
     birthday,
     hashPassword
 }) => {
-    return models.customer.create({
+    return await models.customer.create({
         id: uuidv4(),
         username,
         password: hashPassword,
@@ -126,7 +137,8 @@ module.exports = {
     createUser,
     findUser,
     sendVerificationEmail,
-    updateUser,
+    updateUserStatus,
+    updateUserPassword,
     sendResetPasswordEmail,
     findUserByEmail,
     findUserByUsername

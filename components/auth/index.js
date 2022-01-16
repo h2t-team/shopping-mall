@@ -23,6 +23,28 @@ router.post('/forgot-password', controller.forgotPasswordForm);
 router.get('/reset-password/:token', controller.resetPasswordPage);
 router.post('/reset-password/:token', controller.resetPasswordForm);
 router.get('/reset-password-success', controller.resetPasswordSuccess);
+router.get('/google/callback', passport.authenticate('google', {
+    successRedirect: '/',
+    failureRedirect: '/auth/login',
+    failureFlash: true,
+})
+);
+
+router.get('/google', passport.authenticate('google', {
+    scope: ['profile', 'email'],
+}),
+);
+router.get('/facebook', passport.authenticate('facebook', {
+    scope: [ 'email' ]
+}));
+
+router.get('/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+    });
+
 
 
 module.exports = router;
