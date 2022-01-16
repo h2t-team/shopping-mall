@@ -71,3 +71,31 @@
   color: #666;
   font-size: 0.9rem;
 }
+
+
+/* Twitter */
+.bi-google {
+  color: white;
+}
+.bi-facebook {
+  color: white;
+}
+
+.btn-google {
+  background:  #C32F10;
+  border: 0;
+}
+.btn-google:hover {
+  background:  #C32F10;
+  border: 0;
+}
+.btn-facebook {
+  background:  #2d69da;
+  border: 0;
+}
+.btn-facebook:hover {
+  background:  #2d69da;
+  border: 0;
+}
+
+
