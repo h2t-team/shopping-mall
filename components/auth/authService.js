@@ -133,6 +133,24 @@ const sendResetPasswordEmail = async(email, token) => {
         }
     });
 }
+const checkEmail = async(username, email) => models.customer.findOne({
+    where: {
+        email: email,
+        username: {
+            [Op.not]: username
+        }
+    },
+    raw: true
+})
+const checkTelephone = async(username, telephone) => models.customer.findOne({
+    where: {
+        telephone: telephone,
+        username: {
+            [Op.not]: username
+        }
+    },
+    raw: true
+})
 module.exports = {
     createUser,
     findUser,
@@ -141,5 +159,7 @@ module.exports = {
     updateUserPassword,
     sendResetPasswordEmail,
     findUserByEmail,
-    findUserByUsername
+    findUserByUsername,
+    checkEmail,
+    checkTelephone
 }

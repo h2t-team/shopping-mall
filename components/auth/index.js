@@ -27,24 +27,19 @@ router.get('/google/callback', passport.authenticate('google', {
     successRedirect: '/',
     failureRedirect: '/auth/login',
     failureFlash: true,
-})
-);
+}));
 
 router.get('/google', passport.authenticate('google', {
     scope: ['profile', 'email'],
-}),
-);
+}), );
 router.get('/facebook', passport.authenticate('facebook', {
-    scope: [ 'email' ]
+    scope: ['email']
 }));
 
 router.get('/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
-    function (req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/');
-    });
-
-
-
+    passport.authenticate('facebook', {
+        successRedirect: '/',
+        failureRedirect: '/auth/login',
+        failureFlash: true,
+    }));
 module.exports = router;
