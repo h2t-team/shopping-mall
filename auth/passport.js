@@ -29,7 +29,7 @@ passport.use(
     new GoogleStrategy({
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: '/auth/google/callback'
+            callbackURL: 'https://shopping-mall-admin.herokuapp.com/auth/google/callback'
         },
         async(token, refreshToken, profile, done) => {
             console.log("profile", profile);
@@ -72,7 +72,7 @@ passport.use(
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: "/auth/facebook/callback",
+    callbackURL: "https://shopping-mall-admin.herokuapp.com/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'photos', 'email']
 }, async(token, refreshToken, profile, done) => {
     try {
